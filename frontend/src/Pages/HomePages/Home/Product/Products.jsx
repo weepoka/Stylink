@@ -139,14 +139,14 @@ const Products = () => {
           <h2 className="pb-2 text-xl font-bold text-left text-gray-800 md:text-3xl dark:text-gray-400">
             Featured Products
           </h2>
-          <div className="w-20 mb-6 border-b border-red-700 dark:border-gray-400"></div>
+          {/* <div className="w-60 mb-6 border-b border-button dark:border-gray-400"></div> */}
         </div>
         <div className="my-10 ">
           <div className="flex gap-10 items-center justify-between my-5 ">
             <div className="pt-3">
               <h2 className="text-center  text-md">
                 Showing Products:{" "}
-                <span className="text-[#ea6b28] ml-2 font-bold text-md">
+                <span className="text-heading ml-2 font-bold text-md">
                   {slice.length}
                 </span>
               </h2>
@@ -189,7 +189,8 @@ const Products = () => {
         <div className="text-center mt-8">
           <button
             onClick={() => loadMore()}
-            className="px-3 py-2 text-white duration-300 bg-[#ea6b28] hover:bg-gray-900"
+            className="px-3 py-2 text-white duration-300
+             bg-button hover:bg-gray-900"
           >
             More products
           </button>

@@ -4,9 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Banner.css";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
-import banner0 from "../../../../assets/banner/8642502.jpg";
-import banner2 from "../../../../assets/banner/8642509.jpg";
-import banner1 from "../../../../assets/banner/mega_sale.jpg";
+import banner0 from "../../../../assets/banner/mega_sale-01.png";
+import banner2 from "../../../../assets/banner/mega_sale [Converted]-02-01-01-01.png";
+import banner1 from "../../../../assets/banner/mega_sale [Converted]-02-01.png";
 const Banner = () => {
   const settings = {
     dots: true,
@@ -35,21 +35,21 @@ const Banner = () => {
           <img
             src={banner0}
             alt=""
-            className=" bg-cover md:h-[550px]   w-full"
+            className=" bg-cover md:h-[620px]   w-full"
           />
         </div>
         <div>
           <img
             src={banner1}
             alt=""
-            className=" bg-cover md:h-[550px]  w-full"
+            className=" bg-cover md:h-[620px]   w-full"
           />
         </div>
         <div>
           <img
             src={banner2}
             alt=""
-            className=" bg-cover md:h-[550px]  w-full"
+            className=" bg-cover md:h-[620px]   w-full"
           />
         </div>
       </Slider>
