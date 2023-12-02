@@ -5,14 +5,15 @@ import { HiOutlineMinus } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 // import './Cart.css';
 import { useDispatch, useSelector } from "react-redux";
-import { remove, updateCart } from "../Store/cartSlice";
+
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
-import CheckOutModal from "../Checkout/CheckOutModal";
-import Loading from "../Loading/Loading";
+
 import { toast } from "react-toastify";
 import { Icon } from "@iconify/react";
+import { AuthContext } from "../../../Api/AuthProvider/AuthProvider";
+import { remove, updateCart } from "../../../Redux/Store/cartSlice";
+import CheckOutpage from "./CheckOutpage";
 const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Cart = () => {
   const dispatch = useDispatch();
@@ -219,11 +220,15 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-gray-100  ">
-      <div className="grid grid-cols-1 md:grid-cols-3 max-w-screen-2xl mx-auto  ">
+    <div className="bg-gray-100 pb-5 ">
+      <div className=" container  ">
         {/* //! ====>All Cart Element*/}
-        <div className="col-span-2 mt-10 mx-5  ">
-          <div className=" mb-2 p-6 bg-white font-semibold text-black text-sm md:text-lg rounded overflow-hidden md:w-full ">
+        <div className="pt-10 mx-5  ">
+          <div
+            className=" mb-2 p-6 bg-white font-semibold
+           text-black text-sm md:text-lg rounded 
+           overflow-hidden md:w-full "
+          >
             <div className="grid grid-cols-6 md:gap-14 gap-5 ">
               <div>img</div>
               <div className="hidden sm:block">Name</div>
@@ -233,7 +238,7 @@ const Cart = () => {
               <div className="pl-5 md:pl-0 ">Delete</div>
             </div>
           </div>
-          <div className="h-[500px]  overflow-y-auto">
+          <div className=" h-[400px] overflow-y-auto">
             {products?.map((cartItem, cartIndex) => (
               <div
                 className="  mb-5 p-2 bg-white rounded overflow-hidden md:w-full"
@@ -309,48 +314,93 @@ const Cart = () => {
           </div>
         </div>
         {/* //! ====> Order Summary */}
-
-        <div className="mt-10  mx-5 bg-white rounded overflow-hidden border-2 ">
-          <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
-            Order Summary
-          </h2>
-
-          <ul className="w-3/5 mx-auto mt-10 shadow">
-            <li className="flex justify-between border p-1">
-              Total Cost: <p className="">{totals?.total} TK.</p>
-            </li>
-            <li className="flex justify-between border p-1">
-              Delivery fee: <p className="">{delivery} TK.</p>
-            </li>
-            <li className="flex justify-between border p-1">
-              VAT/Tax 10%: <p className="">{totals.tax} TK.</p>
-            </li>
-            <li className="flex justify-between border p-1 text-base font-bold bg-[#ea6b28] text-white">
-              Grand Total: <p>{totals.grandTotal} TK.</p>
-            </li>
-          </ul>
-          <div className="w-3/5 mx-auto mt-5 gap-2 ">
-            <div className="relative">
-              <label htmlFor="promo-code" className="text-[18px]">
-                Have A Promo Code?
-              </label>
-              <input
-                type="text"
-                className="border border-gray-400 py-[3px] px-2 w-[70%] focus:outline-none"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5  ">
+          <div className="mt-10">
+            <div className="border rounded-md p-3">
+              {" "}
+              <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
+                ADD Address
+              </h2>
+              <CheckOutpage
+                user={profile}
+                setOrder={setOrder}
+                setDetailState={setDetailState}
               />
-              <button
-                type="button"
-                className="absolute bg-red-500 px-1 py-1 text-white"
-              >
-                Apply
-              </button>
+              {detailState ? (
+                <>
+                  {cashOnDelivery ? (
+                    <div className="">
+                      <button
+                        onClick={orderNow}
+                        className="mb-2 mt-3  py-3 px-3 w-full text-center   bg-[#ea6b28]
+                       rounded text-white font-4xl transition duration-700"
+                      >
+                        {loading ? "order progress..." : "Order Now"}
+                      </button>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </>
+              ) : (
+                <>
+                  <div className="p-5 text-center ">
+                    <p className="text-red-500 p-3 mb-2">
+                      *please add your delivery address to go farther step
+                    </p>
+
+                    <label
+                      htmlFor="my-modal-5"
+                      className="px-2 py-2 bg-gray-900 
+                      duration-300 hover:bg-button cursor-pointer text-white"
+                    >
+                      Place Order
+                    </label>
+                  </div>
+                </>
+              )}
             </div>
           </div>
+          <div className="mt-10  mx-5  rounded overflow-hidden border-2 ">
+            <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
+              Order Summary
+            </h2>
 
-          {/* //! ===========>Checkout Page <========== */}
+            <ul className="w-3/5 mx-auto mt-10 shadow">
+              <li className="flex justify-between border p-1">
+                Total Cost: <p className="">{totals?.total} TK.</p>
+              </li>
+              <li className="flex justify-between border p-1">
+                Delivery fee: <p className="">{delivery} TK.</p>
+              </li>
+              <li className="flex justify-between border p-1">
+                VAT/Tax 10%: <p className="">{totals.tax} TK.</p>
+              </li>
+              <li className="flex justify-between border p-1 text-base font-bold bg-[#ea6b28] text-white">
+                Grand Total: <p>{totals.grandTotal} TK.</p>
+              </li>
+            </ul>
+            <div className="w-3/5 mx-auto mt-5 gap-2 ">
+              <div className="relative">
+                <label htmlFor="promo-code" className="text-[18px]">
+                  Have A Promo Code?
+                </label>
+                <input
+                  type="text"
+                  className="border border-gray-400 py-[3px] px-2 w-[70%] focus:outline-none"
+                />
+                <button
+                  type="button"
+                  className="absolute bg-red-500 px-1 py-1 text-white"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
 
-          <div className="flex flex-col justify-center items-center">
-            {detailState && (
+            {/* //! ===========>Checkout Page <========== */}
+
+            <div className="flex flex-col justify-center items-center">
               <div className="my-3 text-xl font-bold mx-2">
                 <div className="flex items-center gap-3 py-2">
                   <input
@@ -391,46 +441,8 @@ const Cart = () => {
                   </p>
                 </div>
               </div>
-            )}
-            {detailState ? (
-              <>
-                {cashOnDelivery ? (
-                  <div className="">
-                    <button
-                      onClick={orderNow}
-                      className="mb-2 mt-3  py-3 px-3 w-full text-center   bg-[#ea6b28]
-                       rounded text-white font-4xl transition duration-700"
-                    >
-                      {loading ? "order progress..." : "Order Now"}
-                    </button>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </>
-            ) : (
-              <>
-                <div className="p-5 text-center ">
-                  <p className="text-red-500 p-3 mb-2">
-                    *please add your delivery address to go farther step
-                  </p>
-
-                  <label
-                    htmlFor="my-modal-5"
-                    className="px-2 py-2 bg-gray-900 duration-300 hover:bg-[#ea6b28] cursor-pointer text-white"
-                  >
-                    Add Address
-                  </label>
-                </div>
-              </>
-            )}
+            </div>
           </div>
-          <CheckOutModal
-            user={profile}
-            setOrder={setOrder}
-            setDetailState={setDetailState}
-            closeModal={closeModal}
-          />
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ const ProductDetails = () => {
                 <img
                   className="object-cover w-full mx-auto 
                   transition-all rounded h-72 group-hover:scale-110"
-                  src="https://i.postimg.cc/mg7F7104/blue-t-shirt.jpg"
+                  src="https://648e99873722947deac636f5--sage-dusk-64ff08.netlify.app/images/shops/shops-1.png"
                   alt=""
                 />
               </div>
@@ -59,7 +59,7 @@ const ProductDetails = () => {
             <div className="h-[70px]">
               <h3 className="mb-2 text-xl font-bold dark:text-white">
                 {" "}
-                Pure Blue Soothing Tshirt
+                Apple Earphones
               </h3>
             </div>
             <div className="flex justify-between pb-3">
