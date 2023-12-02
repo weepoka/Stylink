@@ -32,13 +32,25 @@ const Banner = () => {
     <div className=" homeSlide overflow-hidden pb-5 relative">
       <Slider {...settings}>
         <div className="w-full">
-          <img src={banner0} alt="" className=" bg-cover h-[550px]  w-full" />
+          <img
+            src={banner0}
+            alt=""
+            className=" bg-cover md:h-[550px]   w-full"
+          />
         </div>
         <div>
-          <img src={banner1} alt="" className=" bg-cover h-[550px] w-full" />
+          <img
+            src={banner1}
+            alt=""
+            className=" bg-cover md:h-[550px]  w-full"
+          />
         </div>
         <div>
-          <img src={banner2} alt="" className=" bg-cover h-[550px] w-full" />
+          <img
+            src={banner2}
+            alt=""
+            className=" bg-cover md:h-[550px]  w-full"
+          />
         </div>
       </Slider>
     </div>
