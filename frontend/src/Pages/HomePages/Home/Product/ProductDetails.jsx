@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../Redux/Store/cartSlice";
+import { addToWishList } from "../../../../Redux/Store/wishSlice";
+// import { addToWishList } from "../../../../Redux/Store/wishSlice";
 const ProductDetails = () => {
   // const {
   //   _id,
@@ -22,6 +24,9 @@ const ProductDetails = () => {
   const [pdCount, setPdCount] = useState(1);
   const addToCart = (product) => {
     dispatch(add({ ...product, pdCount }));
+  };
+  const addToWishlist = (product) => {
+    dispatch(addToWishList({ ...product }));
   };
   return (
     <div className="bg-white">
@@ -112,13 +117,18 @@ const ProductDetails = () => {
               </p> */}
               <p>In stock </p>
             </div>
-            <div title="Add to wishlist" className="flex gap-3 mt-3  rating">
+            <div
+              // onClick={() => addToCart(addToWishlist)}
+              title="Add to wishlist"
+              className="flex gap-3 mt-3  rating"
+            >
               <FaHeart size={30} className="hover:text-red-500 transition" />
               <span className="text-md text-gray-500"> wishList</span>
             </div>
 
             <button
               title="Add To Cart"
+              // onClick={() => addToCart(product)}
               className="absolute z-10 flex items-center justify-center p-1 text-center
                text-gray-100 bg-button rounded-full shadow-xl bottom-4 right-4 hover:bg-primary w-11 h-11 "
             >

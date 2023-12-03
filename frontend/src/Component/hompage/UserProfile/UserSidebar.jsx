@@ -1,20 +1,21 @@
 import React from "react";
-import { FaUserAlt } from "react-icons/fa";
+import { FaHeart, FaUserAlt } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
+import { TbShoppingCartCancel } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const UserSidebar = ({ activePage, profile }) => {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col p-3">
       <div className="flexCenter flex-col gap-5 py-5">
         {profile?.image ? (
           <img src={profile.image} alt="" className="w-72 rounded-Full" />
         ) : (
           <FaUserAlt className=" text-3xl" title="image" />
         )}
-        {profile?.name ? <p>{profile?.name}</p> : "Rabbinur"}
+        {profile?.name ? <p>{profile?.name}</p> : "Rabbinur Muktar"}
       </div>
-
+      {/* use profile code start */}
       {activePage === "userProfile" ? (
         <div className="flexStart gap-3 bg-primary text-white hover:bg-secondary hover:text-white p-3">
           <FaUserAlt />
@@ -29,6 +30,8 @@ const UserSidebar = ({ activePage, profile }) => {
           </div>
         </Link>
       )}
+
+      {/* My orders code start */}
       {activePage === "myOrders" ? (
         <div className="flexStart gap-3 hover:bg-secondary bg-primary text-white hover:text-white p-3">
           <FaBagShopping />
@@ -39,6 +42,34 @@ const UserSidebar = ({ activePage, profile }) => {
           <div className="flexStart gap-3 hover:bg-secondary hover:text-white p-3">
             <FaBagShopping />
             <span>My orders</span>
+          </div>
+        </Link>
+      )}
+      {/* My cancelation code start */}
+      {activePage === "myCancellations" ? (
+        <div className="flexStart gap-3 hover:bg-secondary bg-primary text-white hover:text-white p-3">
+          <TbShoppingCartCancel />
+          <span>My Cancellations</span>
+        </div>
+      ) : (
+        <Link to="/profile/myCancellations" className="">
+          <div className="flexStart gap-3 hover:bg-secondary hover:text-white p-3">
+            <TbShoppingCartCancel />
+            <span>My Cancellations</span>
+          </div>
+        </Link>
+      )}
+      {/* my wishlist start */}
+      {activePage === "myWishlist" ? (
+        <div className="flexStart gap-3 hover:bg-secondary bg-primary text-white hover:text-white p-3">
+          <FaHeart />
+          <span>My Wishlist</span>
+        </div>
+      ) : (
+        <Link to="/profile/myWishlist" className="">
+          <div className="flexStart gap-3 hover:bg-secondary hover:text-white p-3">
+            <FaHeart />
+            <span>My Wishlist</span>
           </div>
         </Link>
       )}

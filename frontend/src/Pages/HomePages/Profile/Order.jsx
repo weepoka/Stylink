@@ -74,7 +74,7 @@ const Order = ({ order, activePage }) => {
           <div>
             <h1 className="text-xl font-bold">Order Shipment Details</h1>
           </div>
-          <div>
+          <div className="py-10">
             <CustomStepper
               className="text-heading"
               steps={steps}
@@ -84,16 +84,22 @@ const Order = ({ order, activePage }) => {
             {/* <div>{orderStatus}</div> */}
           </div>
 
-          <div className="flex md:justify-between flex-col md:flex-row gap-2 border-b-2">
-            <div>
-              <h3>
-                Order <span className="text-blue-500"># {order?._id}</span>
+          <div className="flex md:justify-between flex-col md:flex-row gap-2 border-b-[1px] ">
+            <div className="pb-1">
+              <h3 className="font-semibold text-[12px]">
+                Order Number{" "}
+                <span className="text-button ">: {order?._id}</span>
               </h3>
-              <small>Placed on {order?.updatedAt?.toLocaleString()}</small>
+              <p className="font-semibold text-[12px]">
+                Placed on : {order?.updatedAt?.toLocaleString()}
+              </p>
             </div>
             <div>
               <Link to={`/order/${order?._id}`} className="">
-                <button className="text-[#006fba] font-bold flex justify-center items-center gap-2 shadow-md bg-white px-2 py-1">
+                <button
+                  className="text-[#fff] rounded-full  font-bold flex justify-center 
+                items-center gap-2 shadow-md bg-button px-4 py-1"
+                >
                   Invoice <FaDownload />
                 </button>
               </Link>
