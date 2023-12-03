@@ -58,87 +58,114 @@ const CheckOutpage = ({ user, setOrder, setDetailState, closeModal }) => {
       <div className="">
         <div className="">
           <form className="mt-6" autoComplete="off" onSubmit={handleDetails}>
-            {/*//!Name field */}
-            <div className="relative pb-3">
-              <input
-                autoSave="off"
-                autoComplete="off"
-                defaultValue={name}
-                onChange={inputChage}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                type="text"
-                name="name"
-                placeholder="name"
-                required
-              />
-            </div>
+            <div>
+              <h1 className="font-bold pb-2 text-lg lg:text-xl">
+                Contact Info
+              </h1>
+              {/*//!Name field */}
+              <div className="relative pb-3">
+                <input
+                  autoSave="off"
+                  autoComplete="off"
+                  defaultValue={name}
+                  onChange={inputChage}
+                  className="appearance-none border-2 pl-12
+                  shadow-sm 
+                   focus:outline-none  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  required
+                />
+              </div>
 
-            {/*//!Email field */}
-            <div className="relative">
-              <input
-                // value={email}
-                autoComplete="off"
-                // onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                type="email"
-                name="email"
-                disabled
-                placeholder="email"
-                required
-              />
+              <div className="flex gap-5 md:flex-row flex-col w-full">
+                {/*//!Email field */}
+                <div className="relative w-full">
+                  <input
+                    // value={email}
+                    autoComplete="off"
+                    // onChange={(e) => setEmail(e.target.value)}
+                    className="appearance-none border pl-12
+                   border-gray-100 shadow-sm focus:shadow-md
+                    focus:placeholder-gray-600  transition 
+                     rounded-md w-full py-3 text-gray-600 
+                     leading-tight focus:outline-none
+                      focus:ring-gray-600 focus:shadow-outline"
+                    type="email"
+                    name="email"
+                    // disabled
+                    placeholder="email"
+                    required
+                  />
+                </div>
+                <div className="relative w-full ">
+                  {/* //! phone number */}
+                  <input
+                    autoComplete="off"
+                    // defaultValue={phone}
+                    onChange={inputChage}
+                    className="appearance-none border 
+                  pl-12 border-gray-100 shadow-sm 
+                  focus:shadow-md focus:placeholder-gray-600
+                    transition  rounded-md w-full py-3
+                     text-gray-600 leading-tight 
+                     focus:outline-none focus:ring-gray-600
+                      focus:shadow-outline"
+                    name="contactNumber"
+                    type="tel"
+                    pattern="[0-9]{3}[0-9]{3}[0-9]{5}"
+                    placeholder="Phone Number"
+                    // maxLength="11"
+                    required
+                  />
+                </div>
+              </div>
             </div>
-            <div className="relative pt-3 flex">
-              {/* //! phone number */}
-              <input
-                autoComplete="off"
-                // defaultValue={phone}
-                onChange={inputChage}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                name="contactNumber"
-                type="tel"
-                pattern="[0-9]{3}[0-9]{3}[0-9]{5}"
-                placeholder="Phone Number"
-                // maxLength="11"
-                required
-              />
-            </div>
-            <div className="relative mt-3">
-              {/*//!Password field */}
-              <input
-                autoComplete="off"
-                onChange={inputChage}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                type="text"
-                name="address"
-                placeholder="address"
-                required
-              />
-            </div>
-            <div className="relative mt-3">
-              {/*//!Password field */}
-              <input
-                autoComplete="off"
-                onChange={inputChage}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                type="text"
-                name="area"
-                placeholder="area"
-                required
-              />
-            </div>
+            <div>
+              <h1 className="font-bold py-2 mt-5 text-lg lg:text-xl">
+                Shipping Info
+              </h1>
+              <div className="relative mt-1">
+                {/*//!Address field */}
+                <input
+                  autoComplete="off"
+                  onChange={inputChage}
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  type="text"
+                  name="address"
+                  placeholder="address"
+                  required
+                />
+              </div>
+              <div className="flex gap-5 md:flex-row flex-col">
+                <div className="relative mt-3 w-full">
+                  {/*//!Area field */}
+                  <input
+                    autoComplete="off"
+                    onChange={inputChage}
+                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                    type="text"
+                    name="area"
+                    placeholder="area"
+                    required
+                  />
+                </div>
 
-            <div className="relative pt-3 flex">
-              {/* //! phone number */}
-              <input
-                autoComplete="off"
-                onChange={inputChage}
-                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                name="city"
-                type="text"
-                placeholder="city"
-                maxLength="11"
-                required
-              />
+                <div className="relative pt-3 flex w-full">
+                  {/* //! City  */}
+                  <input
+                    autoComplete="off"
+                    onChange={inputChage}
+                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                    name="city"
+                    type="text"
+                    placeholder="city"
+                    maxLength="11"
+                    required
+                  />
+                </div>
+              </div>
             </div>
             <div className="text-red-500 my-2">
               <p>{error}</p>

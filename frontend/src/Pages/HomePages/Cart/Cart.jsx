@@ -314,13 +314,13 @@ const Cart = () => {
           </div>
         </div>
         {/* //! ====> Order Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5  ">
-          <div className="mt-10">
-            <div className="border rounded-md p-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 border p-2 ">
+          <div className="">
+            <div className=" rounded-md p-3">
               {" "}
-              <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
+              {/* <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
                 ADD Address
-              </h2>
+              </h2> */}
               <CheckOutpage
                 user={profile}
                 setOrder={setOrder}
@@ -351,8 +351,8 @@ const Cart = () => {
 
                     <label
                       htmlFor="my-modal-5"
-                      className="px-2 py-2 bg-gray-900 
-                      duration-300 hover:bg-button cursor-pointer text-white"
+                      className="px-2 py-2 hover:bg-gray-900 
+                      duration-300 bg-button cursor-pointer text-white"
                     >
                       Place Order
                     </label>
@@ -361,12 +361,12 @@ const Cart = () => {
               )}
             </div>
           </div>
-          <div className="mt-10  mx-5  rounded overflow-hidden border-2 ">
+          <div className=" mx-5  rounded overflow-hidden  ">
             <h2 className="p-2 text-lg lg:text-2xl font-bold text-center bg-gray-100 w-full">
               Order Summary
             </h2>
 
-            <ul className="w-3/5 mx-auto mt-10 shadow">
+            <ul className="w-3/5 mx-auto mt-5 shadow">
               <li className="flex justify-between border p-1">
                 Total Cost: <p className="">{totals?.total} TK.</p>
               </li>
@@ -376,26 +376,34 @@ const Cart = () => {
               <li className="flex justify-between border p-1">
                 VAT/Tax 10%: <p className="">{totals.tax} TK.</p>
               </li>
-              <li className="flex justify-between border p-1 text-base font-bold bg-[#ea6b28] text-white">
+              <li
+                className="flex justify-between border p-1 text-base font-bold
+               bg-button text-white"
+              >
                 Grand Total: <p>{totals.grandTotal} TK.</p>
               </li>
             </ul>
-            <div className="w-3/5 mx-auto mt-5 gap-2 ">
+            <div className="w-3/5 mx-auto flex flex-col justify-center items-center mt-5 gap-2 ">
               <div className="relative">
                 <label htmlFor="promo-code" className="text-[18px]">
                   Have A Promo Code?
                 </label>
                 <input
                   type="text"
-                  className="border border-gray-400 py-[3px] px-2 w-[70%] focus:outline-none"
+                  className="appearance-none border
+                   w-full border-gray-100 shadow-sm 
+                   focus:shadow-md focus:placeholder-gray-600 
+                    transition pl-5   py-2 text-gray-600 
+                    leading-tight focus:outline-none
+                     focus:ring-gray-600 focus:shadow-outline"
                 />
-                <button
-                  type="button"
-                  className="absolute bg-red-500 px-1 py-1 text-white"
-                >
-                  Apply
-                </button>
               </div>
+              <button
+                type="button"
+                className=" bg-red-500 w-20  px-1 py-2 text-white"
+              >
+                Apply
+              </button>
             </div>
 
             {/* //! ===========>Checkout Page <========== */}

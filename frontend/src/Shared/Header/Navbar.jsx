@@ -236,7 +236,7 @@ const Navbar = () => {
                 <Link to="/cart">
                   <AiOutlineShoppingCart color="#000" />
                   <div
-                    className="absolute top-[-15px] right-[-10px] bg-primary
+                    className="absolute top-[-15px] right-[-10px] bg-button
      w-[25px] h-[25px] rounded-full text-white
       text-[14px] grid place-items-center"
                   >
@@ -417,14 +417,14 @@ const Navbar = () => {
         <div className="fixed top-[45%] right-2 z-[9999] rounded bg-gray-300 px-3 py-2">
           <div className="flex flex-col gap-2 ">
             <div onClick={toggleDiv} className="relative cursor-pointer">
-              <HiOutlineShoppingBag size={25} color="#403bf4" />
+              <HiOutlineShoppingBag size={25} className="text-primary" />
               <p
-                className=" text-white font-bold 
+                className=" text-primary font-bold 
               flexCenter text-[12px] lg:text-[14px]"
               >
                 Tk. {total}
               </p>
-              <div className="bg-[#403bf4] rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+              <div className="bg-button rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
                 {items.length ? items.length : 0}
               </div>
             </div>
