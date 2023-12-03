@@ -1,19 +1,24 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import Order from "./Order";
+
 import { FaUserAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
-
+import Order from "./Order";
+import { AuthContext } from "../../../Api/AuthProvider/AuthProvider";
+import UserSidebar from "../../../Component/hompage/UserProfile/UserSidebar";
+import UserProfile from "../../../Component/hompage/UserProfile/UserProfile";
+const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Profile = () => {
+  const { activePage } = useParams();
+
   // console.log(image);
   const { profile } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   console.log(orders);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER}/order/${profile?._id}`, {
+    fetch(`${apiUrl}/order/${profile?._id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -21,12 +26,12 @@ const Profile = () => {
   }, [profile?._id]);
 
   return (
-    <div>
-      <div className="max-w-screen-2xl mx-auto px-5 md:px-0">
+    <div className="container">
+      <div className=" px-5 md:px-0">
         <div>
           <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
             {/* ====> homepage Navigation */}
-            <NavLink to="/" className="text-[#ea6b28]">
+            <NavLink to="/" className="text-heading font-bold">
               <span className="text-sm">HOME</span>
             </NavLink>
             <span className="ml-1 flex items-center uppercase">
@@ -68,7 +73,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className="flex flex-col md:justify-start md:items-start items-center pt-10">
-                <button className="px-5 py-2 bg-[#ea6b28] rounded-md text-white flex items-center gap-3">
+                <button className="px-5 py-2 bg-button rounded-md text-white flex items-center gap-3">
                   <Link to={`/profile/${profile?._id}`}>Edit</Link>
                   <Icon icon="fa-solid:edit" />
                 </button>
@@ -78,7 +83,7 @@ const Profile = () => {
 
           <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
             {/* ====> homepage Navigation */}
-            <NavLink to="/" className="text-[#ea6b28]">
+            <NavLink to="/" className="text-heading font-bold">
               <span className="text-sm">HOME</span>
             </NavLink>
             <span className="ml-1 flex items-center uppercase font-bold">
@@ -87,10 +92,20 @@ const Profile = () => {
           </div>
 
           <div className="my-20">
-            {orders?.map((order) => (
-              <Order order={order} />
+            {orders?.map((order, i) => (
+              <Order order={order} key={i} />
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="md:flex flex-col md:flex-row  w-full gap-10 justify-start">
+        <div className="w-full md:w-[20%] rounded min-h-[50vh] border border-primary ">
+          <UserSidebar activePage={activePage} />
+        </div>
+        <div className="w-full md:w-[80%] rounded min-h-[50vh] mt-10 md:mt-0 border p-3">
+          {activePage === "userProfile" && <UserProfile />}
+          {activePage === "myOrders" && <Order />}
         </div>
       </div>
     </div>
