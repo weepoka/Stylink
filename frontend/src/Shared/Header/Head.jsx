@@ -1,4 +1,6 @@
 import { Icon } from "@iconify/react";
+import cartSlice from "./../../Redux/Store/cartSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   return (
@@ -21,9 +23,31 @@ const Head = () => {
             <h1>Free shipping order over -Tk. 1000</h1>
           </div>
           <div className=" gap-2 flexEnd ">
-            <Icon icon="ic:baseline-facebook" width={25} />
-            <Icon icon="ri:instagram-fill" width={25} />
-            <Icon icon="mingcute:youtube-fill" width={25} />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.facebook.com/profile.php?id=61553197613641"
+            >
+              <Icon
+                icon="ic:baseline-facebook"
+                width={25}
+                className=" hover:scale-105"
+              />
+            </a>
+            <Link>
+              <Icon
+                icon="ri:instagram-fill"
+                width={25}
+                className=" hover:scale-105"
+              />
+            </Link>
+            <Link>
+              <Icon
+                icon="mingcute:youtube-fill"
+                width={25}
+                className=" hover:scale-105"
+              />
+            </Link>
           </div>
         </div>
       </section>

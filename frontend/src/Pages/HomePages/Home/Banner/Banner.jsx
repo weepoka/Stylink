@@ -35,21 +35,21 @@ const Banner = () => {
           <img
             src={banner0}
             alt=""
-            className=" bg-cover md:h-[620px]   w-full"
+            className=" md:bg-cover md:h-[620px] aspect-video  w-full"
           />
         </div>
         <div>
           <img
             src={banner1}
             alt=""
-            className=" bg-cover md:h-[620px]   w-full"
+            className=" md:bg-cover md:h-[620px] aspect-video   w-full"
           />
         </div>
         <div>
           <img
             src={banner2}
             alt=""
-            className=" bg-cover md:h-[620px]   w-full"
+            className=" md:bg-cover md:h-[620px]  aspect-video  w-full"
           />
         </div>
       </Slider>
