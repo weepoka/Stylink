@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
         path: "/profile/:activePage",
         element: <Profile />,
       },

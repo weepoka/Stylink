@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-
-import { Link } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
+import { Link, NavLink } from "react-router-dom";
 import { FaDownload } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { Stepper, Step } from "react-form-stepper";
+import { AuthContext } from "../../../Api/AuthProvider/AuthProvider";
+import { Icon } from "@iconify/react";
 
 function CustomStepper(props) {
   return (
@@ -16,8 +18,8 @@ function CustomStepper(props) {
         disabledColor: "#eee",
       }}
       styleConfig={{
-        activeBgColor: "#006fba",
-        completedBgColor: "#006fba",
+        activeBgColor: "#237e3d",
+        completedBgColor: "#262262",
         inactiveBgColor: "#eee",
         activeTextColor: "#fff",
         completedTextColor: "#fff",
@@ -26,10 +28,11 @@ function CustomStepper(props) {
     />
   );
 }
-const Order = ({ order }) => {
+const Order = ({ order, activePage }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [activeText, setActiveText] = useState("");
-  const { orderStatus } = order;
+  // const { orderStatus } = order;
+  const orderStatus = "Shipped";
   const steps = [
     { label: "Processing" },
     { label: "Shipped" },
@@ -54,14 +57,26 @@ const Order = ({ order }) => {
   };
   return (
     <div className=" ">
-      <div className="max-w-screen-2xl mx-auto px-5 md:px-0 ">
+      <div
+        className="font-medium  bg-slate-100 py-5 
+      relative  capitalize px-5  flex items-center"
+      >
+        {/* ====> homepage Navigation */}
+        <NavLink to="/" className="text-heading font-bold">
+          <span className="text-sm">HOME</span>
+        </NavLink>
+        <span className="ml-1 flex items-center uppercase">
+          <Icon icon="radix-icons:slash" width={20} /> {activePage}
+        </span>
+      </div>
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-0 pt-5">
         <div className="max-w-7xl mx-auto relative">
           <div>
             <h1 className="text-xl font-bold">Order Shipment Details</h1>
           </div>
           <div>
             <CustomStepper
-              className="text-[#006fba]"
+              className="text-heading"
               steps={steps}
               activeStep={activeStep}
             ></CustomStepper>

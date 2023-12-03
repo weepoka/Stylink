@@ -8,6 +8,7 @@ import Order from "./Order";
 import { AuthContext } from "../../../Api/AuthProvider/AuthProvider";
 import UserSidebar from "../../../Component/hompage/UserProfile/UserSidebar";
 import UserProfile from "../../../Component/hompage/UserProfile/UserProfile";
+import Orders from "./Orders";
 const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Profile = () => {
   const { activePage } = useParams();
@@ -26,20 +27,14 @@ const Profile = () => {
   }, [profile?._id]);
 
   return (
-    <div className="container">
+    <div className="container py-5">
       <div className=" px-5 md:px-0">
         <div>
-          <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
-            {/* ====> homepage Navigation */}
-            <NavLink to="/" className="text-heading font-bold">
-              <span className="text-sm">HOME</span>
-            </NavLink>
-            <span className="ml-1 flex items-center uppercase">
-              <Icon icon="radix-icons:slash" width={20} /> My Profile
-            </span>
+          <div className="font-bold text-[30px]   py-5 relative  capitalize px-5 flex  justify-center items-center">
+            My Profile
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 py-5">
+          {/* <div className="grid grid-cols-1 md:grid-cols-5 gap-10 py-5">
             <div className="md:col-span-2 flex items-center justify-center ">
               {profile?.image ? (
                 <img src={profile.image} alt="" className="w-72 rounded-xl" />
@@ -82,7 +77,6 @@ const Profile = () => {
           </div>
 
           <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
-            {/* ====> homepage Navigation */}
             <NavLink to="/" className="text-heading font-bold">
               <span className="text-sm">HOME</span>
             </NavLink>
@@ -95,17 +89,21 @@ const Profile = () => {
             {orders?.map((order, i) => (
               <Order order={order} key={i} />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="md:flex flex-col md:flex-row  w-full gap-10 justify-start">
-        <div className="w-full md:w-[20%] rounded min-h-[50vh] border border-primary ">
-          <UserSidebar activePage={activePage} />
+        <div className="w-full md:w-[20%] rounded h-[500px] border shadow-2xl ">
+          <UserSidebar activePage={activePage} profile={profile} />
         </div>
         <div className="w-full md:w-[80%] rounded min-h-[50vh] mt-10 md:mt-0 border p-3">
-          {activePage === "userProfile" && <UserProfile />}
-          {activePage === "myOrders" && <Order />}
+          {activePage === "userProfile" && (
+            <UserProfile activePage={activePage} />
+          )}
+          {activePage === "myOrders" && (
+            <Order profile={profile} activePage={activePage} />
+          )}
         </div>
       </div>
     </div>
