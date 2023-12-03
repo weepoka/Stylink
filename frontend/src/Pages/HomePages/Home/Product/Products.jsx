@@ -135,14 +135,14 @@ const Products = () => {
     <div className=" bg-[#f6f9fc]">
       {/* [products] text*/}
       <div className=" container py-10 ">
-        <div className=" my-10">
-          <h2 className="pb-2 text-xl font-bold text-left text-gray-800 md:text-3xl dark:text-gray-400">
+        <div className="  my-10">
+          <h2 className="pb-2 md:px-8 text-xl font-bold text-left text-gray-800 md:text-3xl dark:text-gray-400">
             Featured Products
           </h2>
           {/* <div className="w-60 mb-6 border-b border-button dark:border-gray-400"></div> */}
         </div>
-        <div className="my-10 ">
-          <div className="flex gap-10 items-center justify-between my-5 ">
+        <div className=" my-10 ">
+          <div className="flex md:px-8  gap-10 items-center justify-between my-5 ">
             <div className="pt-3">
               <h2 className="text-center  text-md">
                 Showing Products:{" "}
@@ -177,7 +177,7 @@ const Products = () => {
 
         {/* prodcuts images */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 ">
+        <div className="px-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 ">
           {/* {slice?.map((product) => (
             <ProductDetails
               key={product._id}
