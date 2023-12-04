@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import cartSlice from "./../../Redux/Store/cartSlice";
+
 import { Link } from "react-router-dom";
 
 const Head = () => {
@@ -34,13 +34,17 @@ const Head = () => {
                 className=" hover:scale-105"
               />
             </a>
-            <Link>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com/stylinktech?utm_source=qr&igshid=YzU1NGVlODEzOA=="
+            >
               <Icon
                 icon="ri:instagram-fill"
                 width={25}
                 className=" hover:scale-105"
               />
-            </Link>
+            </a>
             <Link>
               <Icon
                 icon="mingcute:youtube-fill"
