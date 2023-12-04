@@ -8,6 +8,7 @@ import AdminLayout from "../Pages/AdminPage/AdminLayOut/AdminLayout";
 import Dashboard from "../Pages/AdminPage/pages/Dashboard/Dashboard";
 import AdminOrders from "../Pages/AdminPage/pages/AdminOrders/AdminOrders";
 import AdminSingleOrder from "../Pages/AdminPage/pages/AdminOrders/AdminSingleOrder";
+import AdminProducts from "../Pages/AdminPage/pages/AdminProducts/AdminProducts";
 
 export const router = createBrowserRouter([
   {
@@ -63,13 +64,13 @@ export const router = createBrowserRouter([
         element: <AdminOrders></AdminOrders>,
       },
       {
-        path: "adminOrders/:id",
+        path: "orders/:id",
         element: <AdminSingleOrder />,
       },
-      // {
-      //   path: "adminProducts",
-      //   element: <AdminProducts></AdminProducts>,
-      // },
+      {
+        path: "products",
+        element: <AdminProducts></AdminProducts>,
+      },
       // {
       //   path: "adminAddProducts",
       //   element: <AdminAddProducts></AdminAddProducts>,

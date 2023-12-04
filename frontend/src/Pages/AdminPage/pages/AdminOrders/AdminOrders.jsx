@@ -105,9 +105,7 @@ const AdminOrders = () => {
       <div className="grid   grid-cols-1 gap-6 ">
         <div className="pt-4 bg-white rounded shadow dark:text-gray-100 dark:bg-gray-900">
           <div className="flex px-6 pb-4 border-b dark:border-gray-700">
-            <h2 className="text-xl font-bold dark:text-gray-400">
-              Recent Orders
-            </h2>
+            <h2 className="text-xl font-bold dark:text-gray-400">All Orders</h2>
           </div>
           <div className="p-4 overflow-x-auto overflow-y-auto">
             <table className="w-full table-auto">

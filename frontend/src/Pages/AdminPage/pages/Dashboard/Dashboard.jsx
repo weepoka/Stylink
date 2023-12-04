@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Calendar from "react-calendar";
+import { toast } from "react-toastify";
 const Dashboard = () => {
   const [value, onChange] = useState(new Date());
   return (
     <div className="bg-adminBg w-full">
-      <section className="px-4 pt-6">
+      <div className="px-4 pt-10">
+        <h1 className="text-center text-xl font-bold">Dashboard</h1>
+      </div>
+      <section className="px-4 pt-10">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           <div className="p-4 bg-white rounded-lg shadow hover:shadow-xl dark:bg-gray-900">
-            <div className="flex flex-row items-center">
-              <div className="flex-1 text-left md:text-left">
+            <div className="flex flex-row md:flex-col-reverse items-center">
+              <div className="flex-1 text-left md:text-center">
                 <h2 className="mb-2 text-lg font-bold text-gray-600 uppercase dark:text-gray-400">
                   Total orders
                 </h2>
                 <p className="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
                   110{" "}
                 </p>
-                <p className="text-sm font-medium text-gray-400 dark:text-gray-400">
-                  Lorem ipsum dor amet
-                </p>
+                <p className="text-sm font-medium text-gray-400 dark:text-gray-400"></p>
               </div>
               <div className="flex-shrink">
                 <a
@@ -42,16 +44,16 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="p-4 bg-white rounded-lg shadow hover:shadow-xl dark:bg-gray-900">
-            <div className="flex flex-row items-center">
-              <div className="flex-1 text-left md:text-left">
+            <div className="flex md:flex-col-reverse items-center">
+              <div className="flex-1 text-left md:text-center">
                 <h2 className="mb-2 text-lg font-bold text-gray-600 uppercase dark:text-gray-400">
-                  Total Revenue
+                  Total Products
                 </h2>
                 <p className="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
                   569{" "}
                 </p>
                 <p className="text-sm font-medium text-gray-400 dark:text-gray-400">
-                  Lorem ipsum dor amet
+                  {/* Lorem ipsum dor amet */}
                 </p>
               </div>
               <div className="flex-shrink">
@@ -66,7 +68,6 @@ const Dashboard = () => {
                       height="16"
                       className="w-10 h-10"
                       fill="currentColor"
-                      className="bi bi-bag"
                       viewBox="0 0 16 16"
                     >
                       <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
@@ -77,8 +78,8 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="p-4 bg-white rounded-lg shadow hover:shadow-xl dark:bg-gray-900">
-            <div className="flex flex-row items-center">
-              <div className="flex-1 text-left md:text-left">
+            <div className="flex md:flex-col-reverse items-center">
+              <div className="flex-1 text-left md:text-center">
                 <h2 className="mb-2 text-lg font-bold text-gray-600 uppercase dark:text-gray-400">
                   Total Payment
                 </h2>
@@ -86,7 +87,7 @@ const Dashboard = () => {
                   4567{" "}
                 </p>
                 <p className="text-sm font-medium text-gray-400 dark:text-gray-400">
-                  Lorem ipsum dor amet
+                  {/* Lorem ipsum dor amet */}
                 </p>
               </div>
               <div className="flex-shrink">
@@ -112,8 +113,8 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="p-4 bg-white rounded-lg shadow hover:shadow-xl dark:bg-gray-900">
-            <div className="flex flex-row items-center">
-              <div className="flex-1 text-left md:text-left">
+            <div className="flex md:flex-col-reverse items-center">
+              <div className="flex-1 text-left md:text-center">
                 <h2 className="mb-2 text-lg font-bold text-gray-600 uppercase dark:text-gray-400">
                   Total Customers
                 </h2>
@@ -121,7 +122,7 @@ const Dashboard = () => {
                   2310{" "}
                 </p>
                 <p className="text-sm font-medium text-gray-400 dark:text-gray-400">
-                  Lorem ipsum dor amet
+                  {/* Lorem ipsum dor amet */}
                 </p>
               </div>
               <div className="flex-shrink">
@@ -147,7 +148,7 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      <section className="px-4 pt-6">
+      {/* <section className="px-4 pt-6">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="p-6 mb-8 bg-white rounded shadow lg:mb-0 dark:bg-gray-900">
             <div className="flex items-center justify-between mb-3">
@@ -243,7 +244,7 @@ const Dashboard = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="px-4 py-6">
         <div className="grid grid-cols-1 gap-6 ">
           <div className="p-4 bg-white rounded-md shadow md:p-6 dark:bg-gray-900 ">
@@ -251,12 +252,12 @@ const Dashboard = () => {
               <h2 className="py-1 text-xl font-semibold capitalize border-b border-blue-500 dark:text-gray-400">
                 Recent Orders
               </h2>
-              <a
-                href=""
+              <Link
+                to="/admin/orders"
                 className="px-4 py-2 text-sm text-white capitalize bg-blue-500 rounded "
               >
                 view all
-              </a>
+              </Link>
             </div>
             <div>
               <div className="flex justify-between mb-4">
