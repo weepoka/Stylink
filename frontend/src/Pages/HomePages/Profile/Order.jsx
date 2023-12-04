@@ -71,8 +71,13 @@ const Order = ({ order, activePage }) => {
       </div>
       <div className="max-w-screen-2xl mx-auto px-5 md:px-0 pt-5">
         <div className="max-w-7xl mx-auto relative">
-          <div>
-            <h1 className="text-xl font-bold">Order Shipment Details</h1>
+          <div className="px-4 mb-6 lg:mb-0">
+            <h2 className="mb-1 text-lg font-semibold tracking-wide dark:text-gray-300">
+              Your order has been {orderStatus}
+            </h2>
+            {/* <p className="text-sm text-gray-500 dark:text-gray-400">
+              by Pathao on 10th feb, 2022
+            </p> */}
           </div>
           <div className="py-10">
             <CustomStepper

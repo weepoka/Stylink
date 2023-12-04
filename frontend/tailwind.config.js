@@ -8,6 +8,7 @@ export default {
         secondary: "#345083",
         button: "#237e3d",
         heading: "#262262",
+        adminBg: "#f3f4f6",
       },
       container: {
         center: "true",
