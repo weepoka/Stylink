@@ -1,0 +1,25 @@
+.offer-focus :hover {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.offerTimer {
+  background-color: purple;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  /* height: 100vh; */
+  text-align: center;
+  border-radius: 8px;
+}
+.header {
+  font-size: calc(20px + 2vmin);
+  line-height: 2;
+  text-transform: capitalize;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  justify-content: center;
+  padding: 30px;
+}
