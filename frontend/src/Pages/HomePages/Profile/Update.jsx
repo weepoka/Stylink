@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Order from "./Order";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import Loading from "../../Loading/Loading";
-
+const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Update = () => {
   const { profile } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
@@ -27,26 +27,20 @@ const Update = () => {
     try {
       let response;
       if (image && image.name) {
-        response = await fetch(
-          `${process.env.REACT_APP_SERVER}/user/${profile?._id}`,
-          {
-            method: "PUT",
-            body: formDataObj,
-            credentials: "include",
-          }
-        );
+        response = await fetch(`${apiUrl}/user/${profile?._id}`, {
+          method: "PUT",
+          body: formDataObj,
+          credentials: "include",
+        });
       } else {
-        response = await fetch(
-          `${process.env.REACT_APP_SERVER}/user/${profile?._id}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(profileData),
-            credentials: "include",
-          }
-        );
+        response = await fetch(`${apiUrl}/user/${profile?._id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(profileData),
+          credentials: "include",
+        });
       }
 
       const data = await response.json();

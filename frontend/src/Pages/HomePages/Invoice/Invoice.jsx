@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import rashidTelecomLogo from "../../Assets/Images/logo-1-01.png";
+import stylink from "../../../assets/Logo/stylink.png";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaDownload } from "react-icons/fa";
 import { Icon } from "@iconify/react";
@@ -24,7 +24,7 @@ const Invoice = ({ order }) => {
         <div className="" id="print-section" ref={invoiceRef}>
           <div className="py-5 flex justify-between gap-5">
             <div>
-              <img src={rashidTelecomLogo} alt="" className=" w-52" />
+              <img src={stylink} alt="" className=" w-52" />
               <div className="pt-5 font-bold">
                 {/* <p> Time : {date.toLocaleTimeString()}</p> */}
                 <p> Date : {date.toLocaleDateString()}</p>
@@ -33,7 +33,7 @@ const Invoice = ({ order }) => {
             <div className="text-right ">
               <button
                 onClick={handlePrint}
-                className="mt-4 ml-auto bg-[#ea6b28] text-white px-4 py-2 flex gap-2
+                className="mt-4 ml-auto bg-button rounded-full text-white px-4 py-2 flex gap-2
            "
               >
                 Print Invoice <Icon icon="line-md:download-loop" width={30} />
@@ -45,14 +45,12 @@ const Invoice = ({ order }) => {
           <div className="py-5 flex justify-between gap-5">
             <div>
               <h1 className="font-bold text-xl py-2">Bill From:</h1>
-              <p className="font-bold text-xl py-2 text-[#ea6b28]">
-                Global It Park
+              <p className="font-bold text-xl py-2 text-Heading">
+                Stylink Tech
               </p>
-              <p>
-                10 Taher Tower Shopping Center,Shop#219,(1st Floor), <br />
-                Gulshan-2,Dhaka-1212., Dhaka, Bangladesh
-              </p>
-              <p>88 01764875977</p>
+              <p>Road-11, Kallyanpur, Dhaka-1207, Bangladesh</p>
+              <p>+88 013326-01555</p>
+              <p>stylinkitsolution@gmail.com</p>
             </div>
             <div>
               <h1 className="font-bold text-xl py-2">Bill To:</h1>
