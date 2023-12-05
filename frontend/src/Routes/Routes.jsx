@@ -12,6 +12,8 @@ import AdminProducts from "../Pages/AdminPage/pages/AdminProducts/AdminProducts"
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import CategoryProducts from "../Pages/HomePages/CategoryProducts/CategoryProducts";
+import Contact from "../Pages/HomePages/Contact/Contact";
+import AboutUs from "../Pages/HomePages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/AboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "/ContactUs",
+        element: <Contact />,
       },
       {
         path: "/category/:id",

@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import image1 from "../../../../assets/category/category-1.png";
+import image2 from "../../../../assets/category/category-2.png";
 const CategoryCard = () => {
   const settings = {
     dots: false,
@@ -59,14 +60,14 @@ const CategoryCard = () => {
           <div className="bg-white rounded-md p-4 ">
             <div className="relative w-full  flex">
               <span className="absolute left-0 bg-[#f6f9fc] text-black text-[12px] rounded-3xl py-[5px] px-[10px] m-[5px] top-[10px]">
-                headPhone
+                Watch
               </span>
               <span className="right-0 absolute  bg-[#0f3460] text-white text-[12px] py-[5px]  rounded-3xl  px-[10px] m-[5px] top-[10px]">
                 3k orders this week
               </span>
             </div>
             <div className="rounded-[10px]">
-              <img src={image1} alt="" className="w-full rounded-[5px]" />
+              <img src={image2} alt="" className="w-full rounded-[5px]" />
             </div>
           </div>
         </div>
