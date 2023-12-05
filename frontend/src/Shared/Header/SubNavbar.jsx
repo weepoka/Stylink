@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { MdOutlineArrowRight } from "react-icons/md";
 import "./SubNavbar.css";
-import { FaGreaterThan } from "react-icons/fa";
+import { FaCaretDown, FaGreaterThan } from "react-icons/fa";
 // import CategoryFilter from "../../Home/Products/CategoryFilter";
 // import Desktop from "./../../Home/CategoryProducts/Desktop/Desktop";
 import { getCategories } from "../../Api/ApiServices/ApiSerivces";
+import { Icon } from "@iconify/react";
 
 const SubNavbar = () => {
   const [category, setCategory] = useState([]);
   const [categoriesArray, setCategoriesArray] = useState([]);
+  const [openNav, setOpenNav] = React.useState(false);
   // console.log(categoriesArray);
   useEffect(() => {
     getCategories(setCategory, setCategoriesArray);
@@ -71,7 +73,7 @@ const SubNavbar = () => {
                           {item.category}
                         </Link>
 
-                        <ul class=" relative dropdown-nav w-[140px] cursor-pointer">
+                        <ul className=" relative dropdown-nav w-[140px] cursor-pointer">
                           {item.subcategories?.map((sub, idx) => (
                             <li className=" w-full px-2  mt-5 " key={idx}>
                               <Link
@@ -153,285 +155,302 @@ const SubNavbar = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="">
-                    {" "}
-                    <ul className="flex">
-                      {/* <!--Hoverable Link--> */}
-                      <li className="hoverable  ">
-                        <Link
-                          href="#"
-                          className="relative block py-6 px-4 lg:p-6 text-[17px] lg:text-base font-bold text-black hover:text-[#0672b8] "
-                        >
-                          Brands
-                        </Link>
-                        <div className="p-3 mega-menu mb-10 sm:mb-0  overflow-y-auto h-[90vh] md:h-[40vh] ">
-                          <div className="max-w-screen-2xl mx-auto w-full flex flex-wrap justify-between bg-white shadow-xl px-5 py-2">
-                            <div className="w-full text-black mb-0">
-                              <h2 className="font-bold text-2xl text-start ">
-                                All Brands
-                              </h2>
-                              <div className="w-20 mb-6 border-b border-primaryBrands dark:border-gray-400"></div>
-                            </div>
-                            <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6">
-                              <div className="">
-                                <h3 className="font-bold text-xl text-primaryBrands text-bold px-1">
-                                  #
-                                </h3>
-                                <div className="w-5 mb-6 border-b border-secondaryBrands dark:border-gray-400"></div>
-                              </div>
-                              <ul className="text-secondaryBrands ">
-                                <li className="hover:text-primaryBrands mb-1">
-                                  <Link to="category">Sunrise</Link>{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    25
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Lipton{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    256
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Himalaya{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    325
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  ponds{" "}
-                                  <span className="px-1 text-black text-[13px] py-[1px] rounded bg-pink-200">
-                                    125
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  lotus{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    400
-                                  </span>{" "}
-                                </li>
-                              </ul>
-                            </ul>
-                            <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6">
-                              <div className="">
-                                <h3 className="font-bold text-xl text-primaryBrands text-bold px-1">
-                                  #
-                                </h3>
-                                <div className="w-5 mb-6 border-b border-secondaryBrands dark:border-gray-400"></div>
-                              </div>
-                              <ul className="text-secondaryBrands ">
-                                <li className="hover:text-primaryBrands mb-1">
-                                  <Link>Sunrise</Link>{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    25
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Lipton{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    256
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Himalaya{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    325
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  ponds{" "}
-                                  <span className="px-1 text-black text-[13px] py-[1px] rounded bg-pink-200">
-                                    125
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  lotus{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    400
-                                  </span>{" "}
-                                </li>
-                              </ul>
-                            </ul>
-                            <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6">
-                              <div className="">
-                                <h3 className="font-bold text-xl text-primaryBrands text-bold px-1">
-                                  #
-                                </h3>
-                                <div className="w-5 mb-6 border-b border-secondaryBrands dark:border-gray-400"></div>
-                              </div>
-                              <ul className="text-secondaryBrands ">
-                                <li className="hover:text-primaryBrands mb-1">
-                                  <Link>Sunrise</Link>{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    25
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  <Link> Lipton </Link>
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    256
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Himalaya{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    325
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  ponds{" "}
-                                  <span className="px-1 text-black text-[13px] py-[1px] rounded bg-pink-200">
-                                    125
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  lotus{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    400
-                                  </span>{" "}
-                                </li>
-                              </ul>
-                            </ul>
-                            <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6">
-                              <div className="">
-                                <h3 className="font-bold text-xl text-primaryBrands text-bold px-1">
-                                  #
-                                </h3>
-                                <div className="w-5 mb-6 border-b border-secondaryBrands dark:border-gray-400"></div>
-                              </div>
-                              <ul className="text-secondaryBrands ">
-                                <li className="hover:text-primaryBrands mb-1">
-                                  <Link>Sunrise</Link>{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    25
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Lipton{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    256
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  Himalaya{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    325
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  ponds{" "}
-                                  <span className="px-1 text-black text-[13px] py-[1px] rounded bg-pink-200">
-                                    125
-                                  </span>{" "}
-                                </li>
-                                <li className="hover:text-primaryBrands mb-1">
-                                  lotus{" "}
-                                  <span className="px-1 text-black py-[1px] text-[13px] rounded bg-pink-200">
-                                    400
-                                  </span>{" "}
-                                </li>
-                              </ul>
-                            </ul>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         {/* //* first div end */}
-
-        {/* new code for sub menu */}
-
-        {/* //* Hamburger menu div start */}
-        <div className="navbar  bg-base-100  md:hidden ">
-          {/* //! new dynamic line */}
-          <div className="flex-none z-10  w-full">
-            <div className="dropdown ">
-              <label tabIndex={0} className=" btn-circle cursor-pointer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h7"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3  p-2
-                 shadow bg-base-100 rounded-box w-52"
-              >
-                {/* //*dropdown menu started */}
-                {/* {category?.map((item, index) => (
-                  <li tabIndex={0} key="index" className="flex">
-                    <Link to={`category/${item}`} className="p-0, m-0">
-                      <p className="flexCenter">
-                        {item}
-                        <span>
-                          <MdOutlineArrowRight className="text-xl" />
-                        </span>
-                      </p>
-                    </Link>
-                    <span className="dropHidden absolute left-[80%] ">
+        <nav className="container p-4 ">
+          <div className="flex items-center lg:justify-center  text-blue-gray-900">
+            <div className="flex items-center gap-10">
+              <div className="mr-4 hidden md:block">
+                <ul className="mt-2 mb-4 flex flex-col gap-2 md:mb-0 md:mt-0 md:flex-row md:items-center md:gap-6">
+                  {/* {links.map((link, i) => (
+                    <li key={i}>
                       {" "}
-                      <FaGreaterThan className="text-white" />
-                    </span>
-                   
+                      <Link
+                        href={`${link.href}`}
+                        className={`${
+                          link?.href === currentPath
+                            ? "text-secondary"
+                            : `${textColor}`
+                        }  hover:text-[#ec407a] transition-colors`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                 */}
+
+                  <li>
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[110px] top-10 text-center invisible 
+            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
+             bg-white rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[110px] top-0 left-[110px]  invisible group2-hover:visible
+                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[110px] top-10 text-center invisible 
+            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
+             bg-white rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[110px] top-0 left-[110px]  invisible group2-hover:visible
+                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[110px] top-10 text-center invisible 
+            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
+             bg-white rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[110px] top-0 left-[110px]  invisible group2-hover:visible
+                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[110px] top-10 text-center invisible 
+            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
+             bg-white rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[110px] top-0 left-[110px]  invisible group2-hover:visible
+                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                // h-6 w-6
+                className="ml-auto  p-4 text-inherit cursor-pointer
+               hover:bg-transparent focus:bg-transparent
+                active:bg-transparent md:hidden"
+                onClick={() => setOpenNav(!openNav)}
+              >
+                {openNav ? (
+                  // <Icon icon="basil:cross-outline" color="red" width={45} />
+                  ""
+                ) : (
+                  <Icon icon="quill:hamburger" color="#000" width={45} />
+                )}
+              </div>
+            </div>
+            <div
+              className={
+                openNav
+                  ? "fixed top-[0%] w-[100%] md:hidden flex justify-center items-center flex-col text-center h-screen bg-[#ecf0f3] left-0 right-0 ease-in-out duration-500"
+                  : "fixed top-[-100%] left-0 right-0  p-10 h-screen bg-[#ecf0f3] ease-in-out duration-500"
+              }
+            >
+              <div className="flex  items-center absolute top-10 right-10 justify-end">
+                <div
+                  onClick={() => setOpenNav(!openNav)}
+                  className="cursor-pointer"
+                >
+                  {/* <Icon icon="basil:cross-outline" color="red" width={45} /> */}
+                  <Icon icon="game-icons:rose" color="red" width={45} />
+                </div>
+              </div>
+              {/* mobile menu links */}
+              <div className="mr-8 ">
+                <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                  {/* {links.map((link, i) => (
+                  <li key={i}>
+                    {" "}
+                    <Link
+                      href={`${link.href}`}
+                      onClick={() => setOpenNav(false)}
+                      className={`${
+                        link?.href === currentPath
+                          ? "text-secondary"
+                          : "text-primary"
+                      }  hover:text-secondary text-xl transition-colors`}
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))} */}
-                {/* //!new updated code==> */}
-                {categoriesArray?.map((item, index) => (
-                  <li tabIndex={0} key={index} className="flex">
-                    <Link to={`category/${item.category}`} className="p-0, m-0">
-                      <p className="flexCenter">
-                        {item.category}
-                        <span>
-                          <MdOutlineArrowRight className="text-xl" />
-                        </span>
-                      </p>
-                    </Link>
-                    <span className="dropHidden absolute left-[80%] ">
-                      {" "}
-                      <FaGreaterThan className="text-white" />
-                    </span>
-                    <ul className="w-full bg-base-100 ">
-                      {item.subcategories?.map((sub, idx) => (
-                        <li
-                          className=" w-full text-center hover:bg-gray-500 hover:text-white"
-                          key={idx}
-                        >
-                          <Link
-                            style={{ navLinkStyles }}
-                            to={{
-                              pathname: `category/${item.category}`,
-                              search: `?subcategory=${sub}`,
-                            }}
-                            className="flex items-center cursor-pointer my-2 font-bold"
-                            // className="xl:px-10"
+
+                  <li className="py-2">
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-button font-bold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[100px] text-center invisible left-14  z-[99]
+            group-hover:visible group-hover:transition-all  transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[100px] top-0 left-[100px] z-[99]  
+                          invisible group2-hover:visible group-hover:transition-all transition-all
+                           duration-200 group-hover:duration-200 bg-white rounded shadow"
                           >
-                            <span className=" font-bold text-sm">{sub}</span>
-                            <MdOutlineArrowRight className="text-2xl" />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
                   </li>
-                ))}
-              </ul>
+                  <li className="py-2">
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-button font-bold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[100px] text-center invisible left-14  z-[99]
+            group-hover:visible group-hover:transition-all  transition-all duration-200 group-hover:duration-200 bg-white
+            rounded shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[100px] top-0 left-[100px] z-[99]  
+                          invisible group2-hover:visible group-hover:transition-all transition-all
+                           duration-200 group-hover:duration-200 bg-white shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="relative w-[110px] group cursor-pointer ">
+                      <div className="flex items-center justify-center gap-2 hover:text-button font-bold">
+                        Menu <FaCaretDown />{" "}
+                      </div>
+                      <div
+                        className="absolute w-[100px] text-center invisible left-14  z-[99]
+            group-hover:visible group-hover:transition-all  transition-all duration-200 group-hover:duration-200 bg-white shadow"
+                      >
+                        <div className="hover:text-button py-1">Item1</div>
+                        <div className="relative group2 ">
+                          <div className="hover:text-button py-1">Menu</div>
+                          <div
+                            className="absolute w-[100px] top-0 left-[100px] z-[99]  
+                          invisible group2-hover:visible group-hover:transition-all transition-all
+                           duration-200 group-hover:duration-200 bg-white shadow"
+                          >
+                            <div className="hover:text-button py-1">Item1</div>
+                            <div className="hover:text-button py-1">Item2</div>
+                            <div className="hover:text-button py-1">Item3</div>
+                          </div>
+                        </div>
+                        <div className="hover:text-button py-1">Item3</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex gap-4  mt-5">
+                <Link href="">
+                  <Icon icon="simple-icons:youtube" color="red" width={30} />
+                </Link>
+                <Link href="">
+                  <Icon icon="logos:facebook" color="red" width={30} />
+                </Link>
+                <Link href="">
+                  <Icon icon="bi:instagram" color="red" width={30} />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+
+          {/* <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+          {links.map((link, i) => (
+            <li key={link.i}>
+              {" "}
+              <Link
+                href={link.href}
+                className="text-zinc-500 hover:text-zinc-800 transition-colors"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul> */}
+        </nav>
       </div>
     </>
   );

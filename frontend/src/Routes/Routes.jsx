@@ -9,6 +9,7 @@ import Dashboard from "../Pages/AdminPage/pages/Dashboard/Dashboard";
 import AdminOrders from "../Pages/AdminPage/pages/AdminOrders/AdminOrders";
 import AdminSingleOrder from "../Pages/AdminPage/pages/AdminOrders/AdminSingleOrder";
 import AdminProducts from "../Pages/AdminPage/pages/AdminProducts/AdminProducts";
+import Login from "../Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/cart",

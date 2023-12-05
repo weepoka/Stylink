@@ -11,7 +11,7 @@ import {
   AiOutlineUser,
   AiTwotoneDelete,
 } from "react-icons/ai";
-import "./header.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/Logo/stylink.png";
 import { remove } from "../../Redux/Store/cartSlice";
