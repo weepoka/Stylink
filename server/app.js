@@ -23,7 +23,7 @@ try {
         httpOnly: true,
         domain:
           "https://it-product-client.netlify.app/login" ||
-          "http://localhost:3000/login", // Corrected domain format
+          "http://localhost:5173/login", // Corrected domain format
         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
         path: "login",
       },
@@ -42,7 +42,7 @@ let allowedOrigins = [];
 
 if (process.env.NODE_ENV === "development") {
   // Development environment
-  allowedOrigins = ["http://localhost:3000"];
+  allowedOrigins = ["http://localhost:5173"];
 } else {
   // Production environment
   allowedOrigins = ["https://it-product-client.netlify.app"];

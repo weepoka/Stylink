@@ -11,7 +11,7 @@ import {
   AiOutlineUser,
   AiTwotoneDelete,
 } from "react-icons/ai";
-
+import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/Logo/stylink.png";
 import { remove } from "../../Redux/Store/cartSlice";
@@ -113,8 +113,12 @@ const Navbar = () => {
                     </button>
                   </Link>
                 </div>
-                <div className="search1 ">
-                  <div className="dropdown1 md:w-[382px] mt-5  overflow-y-auto  rounded-md ">
+                <div className="text-center flex items-center flex-col ">
+                  <div
+                    className="dropdown1 md:w-[382px] mt-5 absolute z-[999999999] 
+                  bg-gray-200
+                  overflow-y-auto shadow rounded-md "
+                  >
                     {product
                       .filter((item) => {
                         const searchTerm = value.toLowerCase();

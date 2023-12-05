@@ -5,12 +5,9 @@ import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../../../AuthProvider/AuthProvider";
-import ProductsDetails from "../../ProductsDetails/ProductsDetails";
 
 import { AiFillHome } from "react-icons/ai";
-import { RxSlash } from "react-icons/rx";
+
 import {
   Accordion,
   AccordionItem,
@@ -20,8 +17,10 @@ import {
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { Link } from "react-router-dom";
-import { getProductsByCategory } from "../../../Api/ApiServices/ApiSerivces";
+
 import { Icon } from "@iconify/react";
+import { getProductsByCategory } from "../../../Api/ApiServices/ApiSerivces";
+import ProductDetails from "../Home/Product/ProductDetails";
 const CategoryProducts = () => {
   const location = useLocation();
 
@@ -325,10 +324,10 @@ const CategoryProducts = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5  price-range-shadow p-2">
               {instock.map((product) => {
                 return (
-                  <ProductsDetails
+                  <ProductDetails
                     key={product._id}
                     product={product}
-                  ></ProductsDetails>
+                  ></ProductDetails>
                 );
               })}
             </div>

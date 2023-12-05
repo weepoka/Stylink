@@ -10,6 +10,8 @@ import AdminOrders from "../Pages/AdminPage/pages/AdminOrders/AdminOrders";
 import AdminSingleOrder from "../Pages/AdminPage/pages/AdminOrders/AdminSingleOrder";
 import AdminProducts from "../Pages/AdminPage/pages/AdminProducts/AdminProducts";
 import Login from "../Login/Login";
+import SignUp from "../SignUp/SignUp";
+import CategoryProducts from "../Pages/HomePages/CategoryProducts/CategoryProducts";
 
 export const router = createBrowserRouter([
   {
@@ -21,8 +23,16 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/category/:id",
+        element: <CategoryProducts />,
+      },
+      {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
       {
         path: "/cart",
