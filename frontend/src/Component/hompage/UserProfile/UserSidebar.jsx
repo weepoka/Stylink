@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillSetting } from "react-icons/ai";
 import { FaHeart, FaUserAlt } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
 import { TbShoppingCartCancel } from "react-icons/tb";
@@ -70,6 +71,20 @@ const UserSidebar = ({ activePage, profile }) => {
           <div className="flexStart gap-3 hover:bg-secondary hover:text-white p-3">
             <FaHeart />
             <span>My Wishlist</span>
+          </div>
+        </Link>
+      )}
+      {/* my account settings start */}
+      {activePage === "accountSettings" ? (
+        <div className="flexStart gap-3 hover:bg-secondary bg-primary text-white hover:text-white p-3">
+          <AiFillSetting />
+          <span>Password Change</span>
+        </div>
+      ) : (
+        <Link to="/profile/accountSettings" className="">
+          <div className="flexStart gap-3 hover:bg-secondary hover:text-white p-3">
+            <AiFillSetting />
+            <span>Password Change</span>
           </div>
         </Link>
       )}

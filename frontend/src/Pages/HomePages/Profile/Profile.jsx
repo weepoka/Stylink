@@ -12,6 +12,7 @@ import Orders from "./Orders";
 const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 import WishList from "./../WishList/WishList";
 import ProductCancelation from "../../../Component/hompage/UserProfile/ProductCancelation";
+import AccountSettings from "../../../Component/hompage/UserProfile/AccountSettings";
 const Profile = () => {
   const { activePage } = useParams();
 
@@ -96,7 +97,7 @@ const Profile = () => {
       </div>
 
       <div className="md:flex flex-col md:flex-row  w-full gap-10 justify-start ">
-        <div className="w-full md:w-[20%] rounded h-[500px] border shadow ">
+        <div className="w-full lg:w-[20%] rounded h-[500px] border shadow ">
           <UserSidebar activePage={activePage} profile={profile} />
         </div>
         <div className="w-full md:w-[80%] rounded min-h-[50vh] mt-10 md:mt-0 border p-3">
@@ -111,6 +112,9 @@ const Profile = () => {
           )}
           {activePage === "myCancellations" && (
             <ProductCancelation profile={profile} activePage={activePage} />
+          )}
+          {activePage === "accountSettings" && (
+            <AccountSettings profile={profile} activePage={activePage} />
           )}
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Link, useSearchParams, NavLink, useLocation } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { HiOutlineShoppingBag } from "react-icons/hi";
+import { PiShoppingCartBold } from "react-icons/pi";
 import { FaCartShopping } from "react-icons/fa6";
 import {
   AiOutlineClose,
@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/Logo/stylink.png";
 import { remove } from "../../Redux/Store/cartSlice";
 import { AuthContext } from "../../Api/AuthProvider/AuthProvider";
+import { logOut } from "../../Api/ApiServices/Auth";
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
@@ -417,7 +418,7 @@ const Navbar = () => {
         <div className="fixed top-[45%] right-2 z-[9999] rounded bg-gray-300 px-3 py-2">
           <div className="flex flex-col gap-2 ">
             <div onClick={toggleDiv} className="relative cursor-pointer">
-              <HiOutlineShoppingBag size={25} className="text-primary" />
+              <PiShoppingCartBold size={25} className="text-primary" />
               <p
                 className=" text-primary font-bold 
               flexCenter text-[12px] lg:text-[14px]"

@@ -73,7 +73,8 @@ const Order = ({ order, activePage }) => {
         <div className="max-w-7xl mx-auto relative">
           <div className="px-4 mb-6 lg:mb-0">
             <h2 className="mb-1 text-lg font-semibold tracking-wide dark:text-gray-300">
-              Your order has been {orderStatus}
+              Your order has been{" "}
+              <span className="text-button">{orderStatus}</span>
             </h2>
             {/* <p className="text-sm text-gray-500 dark:text-gray-400">
               by Pathao on 10th feb, 2022
