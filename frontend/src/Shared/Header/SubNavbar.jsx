@@ -162,7 +162,7 @@ const SubNavbar = () => {
         </div>
 
         {/* //* first div end */}
-        <nav className="container p-4 ">
+        <nav className="container  ">
           <div className="flex items-center lg:justify-center  text-blue-gray-900">
             <div className="flex items-center gap-10">
               <div className="mr-4 hidden md:block">

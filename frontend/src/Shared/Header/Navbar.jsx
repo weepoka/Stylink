@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useSearchParams, NavLink, useLocation } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
+
 import { TbCurrencyTaka } from "react-icons/tb";
 import { PiShoppingCartBold } from "react-icons/pi";
 import { FaCartShopping } from "react-icons/fa6";
@@ -17,6 +17,7 @@ import logo from "../../assets/Logo/stylink.png";
 import { remove } from "../../Redux/Store/cartSlice";
 import { AuthContext } from "../../Api/AuthProvider/AuthProvider";
 import { logOut } from "../../Api/ApiServices/Auth";
+import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
@@ -82,159 +83,155 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className=" bg-white z-[99999] py-1 border-b text-white  ">
+      <div className=" bg-white z-[99999] py-3 border-b text-white  ">
+        {/* desktop part */}
         <div className="lg:block hidden container ">
-          <div className=" ">
-            <div className="flexBetween  mx-auto  gap-5 ">
-              <div>
-                <Link to="/" className="normal-case text-2xl font-bold">
-                  <img src={logo} alt="" className="w-32" />
+          <div className="flexBetween  mx-auto  gap-5 ">
+            <div>
+              <Link to="/" className="normal-case text-2xl font-bold">
+                <img src={logo} alt="" className="w-32" />
+              </Link>
+            </div>
+
+            <div className="">
+              <div className="lg:flex  xl:w-96 w-full relative ">
+                <input
+                  type="search"
+                  name="search"
+                  value={value}
+                  onChange={onChange}
+                  className="border-2 border-gray-400 px-5  pr-12 py-[6px] 
+                    focus:outline-none w-full text-gray-900 rounded-full"
+                  placeholder="Search for products..."
+                />
+                <Link
+                  to={`/category`}
+                  className="  text-gray-700 text-[26px]   absolute right-[12px] 
+                     top-[55%]  -translate-y-1/2"
+                >
+                  <button onClick={() => onSearch(value)}>
+                    <BsSearch size={22} />
+                  </button>
                 </Link>
               </div>
-
-              <div className="lg:block hidden ">
-                <div className="lg:flex mt-5 xl:w-96 w-full relative ">
-                  <input
-                    type="search"
-                    name="search"
-                    value={value}
-                    onChange={onChange}
-                    className="border-2 border-gray-400 px-5  pr-12 py-[6px] 
-                    focus:outline-none w-full text-gray-900 rounded-full"
-                    placeholder="Search for products..."
-                  />
-                  <Link
-                    to={`/category`}
-                    className="  text-gray-700 text-[26px]   absolute right-[12px] 
-                     top-[55%]  -translate-y-1/2"
-                  >
-                    <button onClick={() => onSearch(value)}>
-                      <BsSearch size={22} />
-                    </button>
-                  </Link>
-                </div>
-                <div className="text-center flex items-center flex-col ">
-                  <div
-                    className="dropdown1 md:w-[382px] mt-5 absolute z-[999999999] 
+              <div className="text-center flex items-center flex-col ">
+                <div
+                  className="dropdown1 md:w-[382px] mt-5 absolute z-[999999999] 
                   bg-gray-200
                   overflow-y-auto shadow rounded-md "
-                  >
-                    {product
-                      .filter((item) => {
-                        const searchTerm = value.toLowerCase();
-                        const fullName = item.name.toLowerCase();
+                >
+                  {product
+                    .filter((item) => {
+                      const searchTerm = value.toLowerCase();
+                      const fullName = item.name.toLowerCase();
 
-                        return (
-                          searchTerm &&
-                          fullName.includes(searchTerm.toLowerCase()) &&
-                          fullName !== searchTerm
-                        );
-                      })
-                      // .slice(0, 10)
-                      .map((item) => (
-                        <Link
+                      return (
+                        searchTerm &&
+                        fullName.includes(searchTerm.toLowerCase()) &&
+                        fullName !== searchTerm
+                      );
+                    })
+                    // .slice(0, 10)
+                    .map((item) => (
+                      <Link
+                        key={item._id}
+                        to={`/SingleProductDetails/${item._id}`}
+                      >
+                        <div
+                          onClick={() => onSearch(item.name)}
+                          className="dropdown1-row "
                           key={item._id}
-                          to={`/SingleProductDetails/${item._id}`}
                         >
-                          <div
-                            onClick={() => onSearch(item.name)}
-                            className="dropdown1-row "
-                            key={item._id}
-                          >
-                            <div className="flex border-b border-b-gray-300 ">
-                              <img
-                                src={item.image}
-                                alt=""
-                                className="w-10 mr-3 ml-3 py-3"
-                              />
-                              <div className=" ml-3 font-bold text-gray-900 py-3">
-                                {" "}
-                                {item.name} <br />
-                                <span className="text-red-500 flex items-center">
-                                  <TbCurrencyTaka />{" "}
-                                  {item.offerPrice
-                                    ? item.offerPrice
-                                    : item.oldPrice}
-                                </span>
-                              </div>
+                          <div className="flex border-b border-b-gray-300 ">
+                            <img
+                              src={item.image}
+                              alt=""
+                              className="w-10 mr-3 ml-3 py-3"
+                            />
+                            <div className=" ml-3 font-bold text-gray-900 py-3">
+                              {" "}
+                              {item.name} <br />
+                              <span className="text-red-500 flex items-center">
+                                <TbCurrencyTaka />{" "}
+                                {item.offerPrice
+                                  ? item.offerPrice
+                                  : item.oldPrice}
+                              </span>
                             </div>
                           </div>
-                        </Link>
-                      ))}
-                  </div>
+                        </div>
+                      </Link>
+                    ))}
                 </div>
               </div>
-              <div className="lg:block hidden">
-                <div className="flexCenter ">
-                  <NavLink to="/profile" className="ml-5">
-                    {profile?._id && (
-                      <div className="flexCenter gap-3  mr-3">
-                        {profile?.image ? (
-                          <img
-                            src={profile.image}
-                            className="w-[40px] h-[40px] rounded-full bg-white border"
-                            alt="profile img"
-                            title="profile img"
-                          />
-                        ) : (
-                          <FaUserAlt
-                            className="text-black  text-center text-md
-                           items-center "
-                          ></FaUserAlt>
-                        )}
-                        <NavLink
-                          to="/profile"
-                          className="text-black  min-w-max"
-                        >
-                          {profile?.name}
-                        </NavLink>
-                        {profile?.isAdmin && profile?.role === "admin" && (
-                          <div className="ml-4 bg-primaryBrands rounded p-2">
-                            <NavLink to="/admin">Dashboard</NavLink>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </NavLink>
-                  <div className="flexCenter">
-                    <Link tabIndex={0} className=" text-white mr-5 ">
-                      {profile?.email ? (
-                        <div>
-                          <span
-                            onClick={handleLogOut}
-                            className="bg-button px-2 py-2 rounded-full"
-                          >
-                            logout
-                          </span>
-                        </div>
+            </div>
+            <div className="flexCenter">
+              <div className="flexCenter ">
+                <NavLink to="/profile" className="ml-5">
+                  {profile?._id && (
+                    <div className="flexCenter gap-3  mr-3">
+                      {profile?.image ? (
+                        <img
+                          src={profile.image}
+                          className="w-[40px] h-[40px] rounded-full bg-white border"
+                          alt="profile img"
+                          title="profile img"
+                        />
                       ) : (
-                        <div className="flexCenter gap-4 md:gap-8  ">
-                          <div className="md:flexCenter  gap-3 hidden">
-                            <div
-                              className="rounded-full border-2
+                        <FaUserAlt
+                          className="text-black  text-center text-md
+                           items-center "
+                        ></FaUserAlt>
+                      )}
+                      <NavLink to="/profile" className="text-black  min-w-max">
+                        {profile?.name}
+                      </NavLink>
+                      {profile?.isAdmin && profile?.role === "admin" && (
+                        <div className="ml-4 bg-primaryBrands rounded p-2">
+                          <NavLink to="/admin">Dashboard</NavLink>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </NavLink>
+                <div className="flexCenter">
+                  <Link tabIndex={0} className=" text-white mr-5 ">
+                    {profile?.email ? (
+                      <div>
+                        <span
+                          onClick={handleLogOut}
+                          className="bg-button px-2 py-2 rounded-full"
+                        >
+                          logout
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flexCenter gap-4 md:gap-8  ">
+                        <div className="md:flexCenter  gap-3 hidden">
+                          <div
+                            className="rounded-full border-2
                                border-gray-900 text-gray-500 text-[32px] w-[40px]
             h-[40px] grid place-items-center
             "
-                            >
-                              <AiOutlineUser
-                                size={25}
-                                className="text-gray-900"
-                              />
-                            </div>
-                            <div>
-                              <p className="font-bold text-gray-900">
-                                <Link to="/login">Account</Link>
-                              </p>
-                              <p className="flex items-center gap-1 text-gray-900">
-                                <Link to="/signup">Registration</Link> Or
-                                <Link to="/login">Login</Link>
-                              </p>
-                            </div>
+                          >
+                            <AiOutlineUser
+                              size={25}
+                              className="text-gray-900"
+                            />
+                          </div>
+                          <div>
+                            <p className="font-bold text-gray-900">
+                              <Link to="/login">Account</Link>
+                            </p>
+                            <p className="flex items-center gap-1 text-gray-900">
+                              <Link to="/signup">Registration</Link> Or
+                              <Link to="/login">Login</Link>
+                            </p>
                           </div>
                         </div>
-                      )}
-                    </Link>
-                  </div>
+                      </div>
+                    )}
+                  </Link>
                 </div>
               </div>
               <div className="text-gray-500 text-[32px]  relative">
@@ -258,14 +255,14 @@ const Navbar = () => {
             className="grid grid-cols-1 lg:grid-cols-4 place-content-center 
         place-items-center items-center mb-2 gap-3"
           >
-            <div className=" lg:col-span-2">
+            <div className=" pt-4">
               <Link to="/" className="normal-case text-2xl font-bold">
                 <img src={logo} alt="" className="w-36 " />
               </Link>
             </div>
             {/* //^ ========>Profile section */}
             <div className=" lg:col-span-2">
-              <div className=" flex-col flexCenter">
+              <div className=" flex-col py-2 flexCenter">
                 {profile?.image ? (
                   <img
                     src={profile?.image}
@@ -274,70 +271,67 @@ const Navbar = () => {
                     title="profile img"
                   />
                 ) : (
-                  <FaUserAlt
-                    className=" text-black  text-center text-xl hidden
-                   items-center "
-                  ></FaUserAlt>
+                  <div className="">
+                    <div className="py-3 flex justify-center w-10 z-[9999]">
+                      <div className="flex gap-4 md:gap-8 items-center  ">
+                        <div className="flex  gap-3 ">
+                          <div
+                            className="rounded-full border-2
+                                         border-gray-600 text-gray-500 text-[32px] w-[50px]
+                      h-[50px] grid place-items-center
+                      "
+                          >
+                            <AiOutlineUser className="text-gray-600" />
+                          </div>
+                          <div>
+                            <p className="font-bold text-gray-600">
+                              <Link to="/login">Account</Link>
+                            </p>
+                            <p
+                              className="flex items-center 
+                                        gap-1 text-gray-600"
+                            >
+                              <Link to="/signup">Registration</Link> Or
+                              <Link to="/login">Login</Link>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
                 <NavLink to="/profile" className="flexCenter">
                   {profile?._id && (
                     <div className="flexCenter gap-2  lg:mr-3">
-                      <div className="flex flex-col">
-                        <div className=" flex-col flexCenter gap-2">
-                          <div className="pt-2">
-                            <NavLink
-                              to="/profile"
-                              className=" min-w-max text-black   capitalize"
-                            >
-                              {profile?.name}
-                            </NavLink>
-                          </div>
-                          <div className=" gap-5 flexCenter pb-3">
-                            {profile?.isAdmin && profile?.role === "admin" && (
-                              <div className="lg:ml-4 bg-secondary rounded px-2 py-1 ">
-                                <NavLink to="/admin">Dashboard</NavLink>
-                              </div>
-                            )}
-                            <div className="">
-                              {profile?.email ? (
-                                <div>
-                                  <NavLink
-                                    className="bg-blue-500 py-[6px] px-2   rounded"
-                                    onClick={handleLogOut}
-                                  >
-                                    logout
-                                  </NavLink>
-                                </div>
-                              ) : (
-                                <div className="py-3 flex justify-center w-10 z-[9999]">
-                                  <div className="flex gap-4 md:gap-8 items-center  ">
-                                    <div className="flex  gap-3 ">
-                                      <div
-                                        className="rounded-full border-2 border-gray-600 text-gray-500 text-[32px] w-[50px]
-                      h-[50px] grid place-items-center
-                      "
-                                      >
-                                        <AiOutlineUser className="text-gray-600" />
-                                      </div>
-                                      <div>
-                                        <p className="font-bold text-gray-600">
-                                          <Link to="/login">Account</Link>
-                                        </p>
-                                        <p
-                                          className="flex items-center 
-                                        gap-1 text-gray-600"
-                                        >
-                                          <Link to="/signup">Registration</Link>{" "}
-                                          Or
-                                          <Link to="/login">Login</Link>
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
+                      <div className=" flex-col flexCenter gap-2">
+                        <div className="pt-2">
+                          <NavLink
+                            to="/profile"
+                            className=" min-w-max text-black   capitalize"
+                          >
+                            {profile?.name}
+                          </NavLink>
+                        </div>
+                        <div className=" gap-5 flexCenter pb-3">
+                          {profile?.isAdmin && profile?.role === "admin" && (
+                            <div className="lg:ml-4 bg-secondary rounded px-2 py-1 ">
+                              <NavLink to="/admin">Dashboard</NavLink>
                             </div>
-                          </div>
+                          )}
+                        </div>
+                        <div>
+                          {profile?.email ? (
+                            <div>
+                              <NavLink
+                                className="bg-blue-500 py-[6px] px-2   rounded"
+                                onClick={handleLogOut}
+                              >
+                                logout
+                              </NavLink>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     </div>

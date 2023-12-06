@@ -8,7 +8,7 @@ import logo from "../assets/Logo/stylink.png";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../Api/AuthProvider/AuthProvider";
 import { signIn } from "../Api/ApiServices/Auth";
-
+import loginImage from "../assets/banner/soft-wave-with-bubble-blue-ocean-white-sand-tropical-beach-summer-season-simple-beach-background-summer-bubble-blue-wave-from-sea-sand-beach-summer-background.jpg";
 const Login = () => {
   const { setProfile } = useContext(AuthContext);
 
@@ -16,6 +16,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState({}); //create for store getting email for reset
+  console.log(user);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -51,112 +52,122 @@ const Login = () => {
     user[name] = value;
   };
   return (
-    <div>
-      <div className="my-5">
-        <div className="">
-          <div className="p-0 lg:w-1/2 mx-auto">
-            <div className="bg-white  p-8 rounded-xl">
-              <p className="text-center text-2xl pb-3  text-gray-900 font-bold">
-                Sign in with
-              </p>
-              <img src={logo} alt="" className="w-48 mx-auto" />
-            </div>
-            <div className="bg-slate-300 rounded-xl py-12 px-4 lg:px-20 ">
-              <p className="text-center text-2xl text-gray-600 font-bold">
-                Login
-              </p>
-              {/* //* Form */}
-              <Form className="mt-6" onSubmit={handleLogin}>
-                <div className="relative ">
-                  {/*//!Email field */}
-                  <input
-                    onChange={handleInputChange}
-                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    // className="input input-bordered"
-                    required
-                  />
-                  <div className="absolute left-0 inset-y-0 flex items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-7 w-7 ml-3 text-gray-400 p-1"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
+    <>
+      <section className="h-full lg:h-screen font-poppins ">
+        <div className="relative z-10 flex justify-center h-screen py-7 lg:py-16 dark:bg-gray-800 2xl:py-44">
+          <div className="absolute top-0 bottom-0 left-0 w-full h-full bg-gray-50 dark:bg-gray-900 lg:bottom-0 lg:h-auto lg:w-full">
+            <div className="absolute inset-0 lg:bg-[#00000066] "></div>
+            <img
+              src={loginImage}
+              alt=""
+              className="hidden object-cover w-full h-full lg:block"
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="relative max-w-6xl px-4 mx-auto">
+              <div className="max-w-xl mx-auto lg:max-w-5xl">
+                <div className="flex flex-wrap items-center -mx-4">
+                  <div className="hidden w-full px-6 mb-16 lg:w-3/5 lg:mb-0 lg:block">
+                    <h2 className="text-4xl font-bold leading-loose text-left text-gray-100 dark:text-gray-300 mb-9 lg:text-6xl ">
+                      Welcome and join our community
+                    </h2>
+                    <p className="text-lg text-left text-gray-200 dark:text-gray-300 ">
+                      You are welcome here!
+                    </p>
                   </div>
-                </div>
-                <div className="relative mt-3">
-                  {/*//!Password field */}
-                  <input
-                    onChange={handleInputChange}
-                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline "
-                    type={visible ? "text" : "password"}
-                    name="password"
-                    placeholder="password"
-                    // className="input input-bordered"
-                    required
-                  />
-
-                  <div className="absolute left-10 inset-y-[-32px] flex items-center">
-                    {visible ? (
-                      <AiOutlineEye
-                        className="absolute right-2 top-12 cursor-pointer"
-                        size={18}
-                        onClick={() => setVisible(false)}
-                      />
-                    ) : (
-                      <AiOutlineEyeInvisible
-                        className="absolute right-2 top-12 cursor-pointer"
-                        size={18}
-                        onClick={() => setVisible(true)}
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-center my-5">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="text-white py-3 rounded-lg bg-gray-900 duration-300 hover:bg-[#ea6b28] w-full"
-                  >
-                    {loading ? "Login ..." : "Login"}
-                  </button>
-                </div>
-                <div>
-                  <div>
-                    <p className="text-red-600">{error}</p>
-                  </div>{" "}
-                  <p className="text-center">
-                    <>
-                      <Link to="/resetPassword">
-                        <button className="btn btn-link ">
-                          Forget Password ?
+                  <div className="w-full px-4 lg:w-2/5">
+                    <div className="p-6 shadow-md lg:p-9 bg-gray-50 dark:bg-gray-900 ">
+                      <h2 className="mb-4 text-xl font-bold lg:mb-8 lg:text-3xl dark:text-gray-400">
+                        Login our account
+                      </h2>
+                      <form action="" className="p-0 m-0">
+                        <div>
+                          <label
+                            for=""
+                            className="text-lg font-medium text-gray-700 dark:text-gray-400"
+                          >
+                            Email:
+                          </label>
+                          <input
+                            type="email"
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 mt-3 bg-gray-200 rounded-lg dark:text-gray-400 dark:bg-gray-800 "
+                            name="email"
+                            placeholder="Enter your email"
+                          />
+                        </div>
+                        <div className="mt-5">
+                          <div>
+                            <label
+                              for=""
+                              className="text-lg font-medium text-gray-700 dark:text-gray-400 "
+                            >
+                              Password:
+                            </label>
+                            <div className="relative flex items-center mt-2">
+                              <input
+                                type={visible ? "text" : "password"}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-3 bg-gray-200 rounded-lg dark:text-gray-400 dark:bg-gray-800 "
+                                name="password"
+                                placeholder="Enter password"
+                              />
+                              <div className="absolute right-2 inset-y-[-32px] flex items-center">
+                                {visible ? (
+                                  <AiOutlineEye
+                                    className="absolute right-2 top-12 cursor-pointer"
+                                    size={18}
+                                    onClick={() => setVisible(false)}
+                                  />
+                                ) : (
+                                  <AiOutlineEyeInvisible
+                                    className="absolute right-2 top-12 cursor-pointer"
+                                    size={18}
+                                    onClick={() => setVisible(true)}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-5 text-right">
+                          <Link
+                            to="/resetPassword"
+                            className="text-sm font-semibold text-blue-700
+                            dark:text-blue-300 dark:hover:text-blue-500"
+                          >
+                            forgot password?
+                          </Link>
+                        </div>
+                        <button
+                          className="w-full px-4 py-3 mt-5 font-semibold text-gray-200 bg-blue-500 rounded-lg dark:bg-blue-500 hover:text-blue-200 "
+                          type="submit"
+                          disabled={loading}
+                        >
+                          {loading ? "Login ..." : "Login"}
                         </button>
-                      </Link>
-                    </>
-                  </p>
-                  <p className="text-center text-gray-500  font-medium">
-                    New to StyLink Tech ?
-                    <Link
-                      className="text-[#ea6b28] font-bold ml-2"
-                      to="/signup"
-                    >
-                      SignUp
-                    </Link>
-                  </p>
+                        <div>
+                          <p className="text-red-600">{error}</p>
+                        </div>
+                        <div className="flex flex-wrap items-center mt-3 text-sm text-gray-700 lg:text-base lg:mt-5 dark:text-gray-400">
+                          Need an account?
+                          <Link
+                            to="/signup"
+                            className="ml-2 text-base font-semibold text-blue-700 dark:text-blue-300 dark:hover:text-blue-500"
+                          >
+                            Create an account
+                          </Link>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-              </Form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

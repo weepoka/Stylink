@@ -56,164 +56,7 @@ const SignUp = () => {
     setShowPassword((prevPassword) => !prevPassword);
   };
   return (
-    <div>
-      {" "}
-      <div className="my-3">
-        <div className="pt-5 lg:w-1/2 mx-auto">
-          <div className="bg-white rounded-t-lg ">
-            <p className="text-center text-2xl pb-3 text-gray-900 font-bold">
-              Sign up with
-            </p>
-            <img src={logo} alt="" className="w-48 mx-auto" />
-          </div>
-          {/* <div className="bg-slate-300 rounded-xl py-12 px-4 lg:px-24">
-            <p className="text-center text-md font-light">
-              Or sign in with credentials
-            </p>
-        
-            <form className="mt-6" onSubmit={handleSignUp}>
-           
-              <div className="relative pb-3">
-                <input
-                  onChange={(e) => setName(e.target.value)}
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  type="text"
-                  name="name"
-                  placeholder="name"
-                  required
-                />
-                <div className="absolute left-0 inset-y-0 flex items-center">
-                  <FaUser
-                    className="h-7 w-7 mb-3 ml-3 text-gray-400 p-1"
-                    fill="currentColor"
-                  />
-                </div>
-              </div>
-
-           
-              <div className="relative">
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  type="email"
-                  name="email"
-                  placeholder="email"
-                  required
-                />
-                <div className="absolute left-0 inset-y-0 flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7 ml-3 text-gray-400 p-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="relative mt-3">
-             
-                <input
-                  onChange={(e) => setPassord(e.target.value)}
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  required
-                />
-                <div className="absolute left-0 inset-y-0 flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7 ml-3 text-gray-400 p-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="relative mt-3">
-       
-                <input
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="confirm password"
-                  required
-                />
-                <div className="absolute left-0 inset-y-0 flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7 ml-3 text-gray-400 p-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
-                  </svg>
-                </div>
-              </div>
-
-              <div className="relative pt-3 flex">
-        
-                <input
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  name="phone"
-                  type="tel"
-                  placeholder="Phone Number"
-                  maxLength="11"
-                  required
-                />
-                <div className="absolute left-0 inset-y-0 flex items-center">
-                  <BsFillTelephoneFill
-                    className="h-7 w-7 mt-3 ml-3 text-gray-400 p-1"
-                    fill="currentColor"
-                  />
-                </div>
-              </div>
-              <div className="form-control text-gray-900 pt-3">
-                <label
-                  onClick={handleAccepted}
-                  className="label cursor-pointer "
-                >
-                  <input type="checkbox" className="checkbox" />
-                  <span className="label-text text-gray-900 pl-2">
-                    <span className="text-gray-900">
-                      Accept <Link to="/terms">Terms and conditions</Link>
-                    </span>
-                  </span>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button
-                  type="submit"
-                  disabled={!accepted}
-                  className="text-white py-3  px-3 rounded-lg hover:bg-gray-900 duration-300 bg-[#ea6b28]"
-                >
-                  {loading ? <Loading /> : "Sign Up"}
-                </button>
-              </div>
-
-              {error && <p className="text-red-600">{error}</p>}
-              {success && (
-                <p className="text-black text-[18px] font-bold">{success}</p>
-              )}
-            </form>
-
-            <div className="mt-8">
-              <span className=" mt-20 font-bold">
-                Already have an account?
-                <Link to="/login" className="text-[#ea6b28]">
-                  {" "}
-                  Login{" "}
-                </Link>
-              </span>
-            </div>
-          </div> */}
-        </div>
-      </div>
+    <>
       <section className=" font-poppins">
         <div className="flex items-center justify-center h-screen mx-auto max-w-7xl">
           <div className="flex-1">
@@ -445,7 +288,9 @@ const SignUp = () => {
                     </p>
                   </div>
                   <a
-                    href="#"
+                    href="https://www.facebook.com/people/Stylink-Tech/61553197613641/"
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-block px-6 py-2 font-medium bg-green-600 text-gray-50 dark:text-gray-300"
                   >
                     Join now
@@ -456,7 +301,7 @@ const SignUp = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
