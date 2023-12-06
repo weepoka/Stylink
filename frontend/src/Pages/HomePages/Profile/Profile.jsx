@@ -15,7 +15,7 @@ import ProductCancelation from "../../../Component/hompage/UserProfile/ProductCa
 import AccountSettings from "../../../Component/hompage/UserProfile/AccountSettings";
 const Profile = () => {
   const { activePage } = useParams();
-
+  console.log(activePage);
   // console.log(image);
   const { profile } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);

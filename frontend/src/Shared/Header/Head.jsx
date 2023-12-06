@@ -6,8 +6,8 @@ const Head = () => {
   return (
     <>
       <section className="bg-primary text-gray-100 py-2 hidden lg:block">
-        <div className="container grid grid-cols-3 ">
-          <div className=" flexStart  gap-5">
+        <div className="container flex justify-between flex-wrap ">
+          <div className=" flex  gap-5">
             <div className=" flex  items-center gap-1 text-sm font-semibold">
               <Icon icon="bi:telephone-fill" />
               <a href="tel:+88 013326-01555">+88 013326-01555</a>
@@ -45,13 +45,6 @@ const Head = () => {
                 className=" hover:scale-105"
               />
             </a>
-            <Link>
-              <Icon
-                icon="mingcute:youtube-fill"
-                width={25}
-                className=" hover:scale-105"
-              />
-            </Link>
           </div>
         </div>
       </section>

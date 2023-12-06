@@ -17,6 +17,9 @@ import AboutUs from "../Pages/HomePages/AboutUs/AboutUs";
 import ResetPassword from "../Login/ResetPassword";
 import AdminUpdateProduct from "../Pages/AdminPage/pages/AdminProducts/AdminProductUpdate";
 import AddProducts from "../Pages/AdminPage/pages/AdminProducts/AddProducts";
+import AddBanner from "../Pages/AdminPage/pages/AdminBanner/AddBanner";
+import AdminBanners from "../Pages/AdminPage/pages/AdminBanner/AdminBanner";
+import User from "../Pages/AdminPage/pages/User/User";
 
 export const router = createBrowserRouter([
   {
@@ -87,10 +90,10 @@ export const router = createBrowserRouter([
         path: "addBanner",
         element: <AddBanner></AddBanner>,
       },
-      // {
-      //   path: "adminBanners",
-      //   element: <AdminBanner />,
-      // },
+      {
+        path: "adminBanners",
+        element: <AdminBanners />,
+      },
       {
         path: "orders",
         element: <AdminOrders></AdminOrders>,
@@ -106,6 +109,10 @@ export const router = createBrowserRouter([
       {
         path: "addProducts",
         element: <AddProducts></AddProducts>,
+      },
+      {
+        path: "users",
+        element: <User></User>,
       },
     ],
   },

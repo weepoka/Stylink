@@ -293,7 +293,7 @@ const AddProducts = () => {
           encType="multipart/form-data"
         >
           <div className="shadow pb-5">
-            <div className="bg-gray-900 text-white py-2 mb-10">
+            <div className="bg-heading text-white py-2 mb-10">
               <h3 className="font-bold text-xl tracking-wide pl-5">
                 Product Information
               </h3>
@@ -439,7 +439,7 @@ const AddProducts = () => {
           </div>
 
           <div className="shadow pb-5 my-10">
-            <div className="bg-gray-900 text-white py-2 my-10">
+            <div className="bg-heading text-white py-2 my-10">
               <h3 className="font-bold text-xl tracking-wide pl-5">
                 New Products
               </h3>
@@ -468,7 +468,7 @@ const AddProducts = () => {
           </div>
 
           <div className="shadow pb-5 my-10">
-            <div className="bg-gray-900 text-white py-2 my-10">
+            <div className="bg-heading text-white py-2 my-10">
               <h3 className="font-bold text-xl tracking-wide pl-5">
                 Product Price
               </h3>
@@ -567,7 +567,8 @@ const AddProducts = () => {
                   disabled
                   value={offerPrice}
                   id="total"
-                  className="border rounded py-2 px-5 w-full max-w-xs lg:max-w-lg xl:max-w-xl bg-orange-400 text-white"
+                  className="border rounded py-2 px-5 w-full max-w-xs lg:max-w-lg xl:max-w-xl
+                   bg-secondary text-white"
                   placeholder="new price"
                 />
               </div>
@@ -575,7 +576,7 @@ const AddProducts = () => {
           </div>
 
           <div className="shadow pb-5 my-10">
-            <div className="bg-gray-900 text-white py-2 my-10">
+            <div className="bg-heading text-white py-2 my-10">
               <h3 className="font-bold text-xl tracking-wide pl-5">
                 Product Images Upload
               </h3>
@@ -632,7 +633,7 @@ const AddProducts = () => {
           </div>
 
           <div className="shadow pb-5 my-10">
-            <div className="bg-gray-900 text-white py-2 my-10">
+            <div className="bg-heading text-white py-2 my-10">
               <h3 className="font-bold text-xl tracking-wide pl-5">
                 Product Description & Features
               </h3>
@@ -672,13 +673,13 @@ const AddProducts = () => {
                   <div className="flex gap-8 max-w-xs lg:max-w-lg">
                     <span
                       onClick={handleDesctiptionData}
-                      className="bg-[#ea6b28] lg:text-xl cursor-pointer text-white p-1 my-2 block w-1/2 text-center "
+                      className="bg-button lg:text-xl cursor-pointer text-white p-1 my-2 block w-1/2 text-center "
                     >
                       add Description
                     </span>
                     <span
                       onClick={handleOpenModal}
-                      className="bg-[#ea6b28] lg:text-xl cursor-pointer text-white p-1 my-2 block w-1/2 text-center "
+                      className="bg-button lg:text-xl cursor-pointer text-white p-1 my-2 block w-1/2 text-center "
                     >
                       view
                     </span>
@@ -736,7 +737,7 @@ const AddProducts = () => {
                     <div className="flex justify-end">
                       <button
                         onClick={addsingleFeature}
-                        className="text-white font-bold py-1 px-2  bg-[#ea6b28]"
+                        className="text-white font-bold py-1 px-2  bg-button"
                       >
                         add More
                       </button>
@@ -759,13 +760,13 @@ const AddProducts = () => {
                   <div className="flex justify-between">
                     <span
                       onClick={handleFeatureModel}
-                      className="mr-5 cursor-pointer p-1 rounded-md text-white bg-[#ea6b28]"
+                      className="mr-5 cursor-pointer p-1 rounded-md text-white bg-button"
                     >
                       View
                     </span>
                     <button
                       onClick={addFeature}
-                      className="text-white font-bold py-1 px-2  bg-[#ea6b28]"
+                      className="text-white font-bold py-1 px-2  bg-button"
                     >
                       Add Feature
                     </button>
@@ -783,7 +784,7 @@ const AddProducts = () => {
             </span>
             <button
               className="mt-10 flex w-full lg:w-1/2 mx-auto rounded-full justify-center
-			   items-center bg-[#ea6b28] text-white py-2 lg:px-10 uppercase tracking-widest font-extrabold"
+			   items-center bg-button text-white py-2 lg:px-10 uppercase tracking-widest font-extrabold"
               type="submit"
             >
               {loading ? (
