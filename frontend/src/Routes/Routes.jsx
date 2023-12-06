@@ -14,6 +14,7 @@ import SignUp from "../SignUp/SignUp";
 import CategoryProducts from "../Pages/HomePages/CategoryProducts/CategoryProducts";
 import Contact from "../Pages/HomePages/Contact/Contact";
 import AboutUs from "../Pages/HomePages/AboutUs/AboutUs";
+import ResetPassword from "../Login/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/resetPassword",
+        element: <ResetPassword />,
       },
       {
         path: "/signup",
