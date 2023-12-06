@@ -61,7 +61,7 @@ const AddBanner = () => {
   return (
     <div className="p-2 md:p-20 w-full xl:max-w-6xl">
       <div className="shadow pb-5">
-        <div className="bg-gray-900 text-white py-2 mb-10">
+        <div className="bg-heading text-white py-2 mb-10">
           <h3 className="font-bold text-xl tracking-wide pl-5">
             Banner Image Upload
           </h3>

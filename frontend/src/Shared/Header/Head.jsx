@@ -6,7 +6,7 @@ const Head = () => {
   return (
     <>
       <section className="bg-primary text-gray-100 py-2 hidden lg:block">
-        <div className="container flex justify-between flex-wrap ">
+        <div className="container flex justify-between mx-auto flex-wrap ">
           <div className=" flex  gap-5">
             <div className=" flex  items-center gap-1 text-sm font-semibold">
               <Icon icon="bi:telephone-fill" />
@@ -19,7 +19,7 @@ const Head = () => {
               </a>
             </div>
           </div>
-          <div className="text-gray-300 text-center">
+          <div className="text-gray-300 ">
             <h1>Free shipping order over -Tk. 1000</h1>
           </div>
           <div className=" gap-2 flexEnd ">

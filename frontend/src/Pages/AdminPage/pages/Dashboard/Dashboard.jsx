@@ -1,9 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Calendar from "react-calendar";
 import { toast } from "react-toastify";
+const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Dashboard = () => {
   const [value, onChange] = useState(new Date());
+  const [orders, setOrders] = useState([]);
+  console.log(orders);
+  const [products, setProducts] = useState([]);
+  //data fecthing
+  useEffect(() => {
+    fetch(`${apiUrl}/order`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data);
+        setOrders(data.data);
+      });
+  }, []);
+
+  //data fecthing
+  useEffect(() => {
+    fetch(`${apiUrl}/products/displayProducts`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data.data);
+      });
+  }, []);
   return (
     <div className="bg-adminBg w-full">
       <div className="px-4 pt-10">
@@ -18,7 +45,7 @@ const Dashboard = () => {
                   Total orders
                 </h2>
                 <p className="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
-                  110{" "}
+                  {orders?.length ? `${orders.length}` : "0"}
                 </p>
                 <p className="text-sm font-medium text-gray-400 dark:text-gray-400"></p>
               </div>
@@ -50,7 +77,7 @@ const Dashboard = () => {
                   Total Products
                 </h2>
                 <p className="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
-                  569{" "}
+                  {products.length}
                 </p>
                 <p className="text-sm font-medium text-gray-400 dark:text-gray-400">
                   {/* Lorem ipsum dor amet */}

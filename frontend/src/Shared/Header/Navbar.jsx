@@ -85,15 +85,15 @@ const Navbar = () => {
     <div>
       <div className=" bg-white z-[99999] py-3 border-b text-white  ">
         {/* desktop part */}
-        <div className="lg:block hidden container ">
-          <div className="flexBetween  mx-auto  gap-5 ">
+        <div className="lg:block hidden container mx-auto ">
+          <div className="flex justify-between   gap-5 ">
             <div>
               <Link to="/" className="normal-case text-2xl font-bold">
                 <img src={logo} alt="" className="w-32" />
               </Link>
             </div>
 
-            <div className="">
+            <div className="flexCenter ml-24">
               <div className="lg:flex  xl:w-96 w-full relative ">
                 <input
                   type="search"
