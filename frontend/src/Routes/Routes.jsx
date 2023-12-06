@@ -16,6 +16,7 @@ import Contact from "../Pages/HomePages/Contact/Contact";
 import AboutUs from "../Pages/HomePages/AboutUs/AboutUs";
 import ResetPassword from "../Login/ResetPassword";
 import AdminUpdateProduct from "../Pages/AdminPage/pages/AdminProducts/AdminProductUpdate";
+import AddProducts from "../Pages/AdminPage/pages/AdminProducts/AddProducts";
 
 export const router = createBrowserRouter([
   {
@@ -82,10 +83,10 @@ export const router = createBrowserRouter([
         path: "dashboard",
         element: <Dashboard></Dashboard>,
       },
-      // {
-      //   path: "adminAddBanner",
-      //   element: <AddBanner></AddBanner>,
-      // },
+      {
+        path: "addBanner",
+        element: <AddBanner></AddBanner>,
+      },
       // {
       //   path: "adminBanners",
       //   element: <AdminBanner />,
@@ -102,10 +103,10 @@ export const router = createBrowserRouter([
         path: "products",
         element: <AdminProducts></AdminProducts>,
       },
-      // {
-      //   path: "adminAddProducts",
-      //   element: <AdminAddProducts></AdminAddProducts>,
-      // },
+      {
+        path: "addProducts",
+        element: <AddProducts></AddProducts>,
+      },
     ],
   },
   {

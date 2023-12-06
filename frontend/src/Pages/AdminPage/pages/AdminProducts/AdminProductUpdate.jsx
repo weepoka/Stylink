@@ -17,7 +17,6 @@ const ERROR_MESSAGES = {
   IMAGE_LIMIT_EXCEEDED: "Image cannot be more than 3",
 };
 const AdminUpdateProduct = () => {
-  // const storedProduct = useLoaderData();
   // | description
   const [openModal, setOpenModal] = useState();
   const [descriptionData, setDescriptionData] = useState([]);
