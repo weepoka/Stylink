@@ -1,32 +1,48 @@
 import React, { useContext, useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
 import { TbShoppingBag } from "react-icons/tb";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { FcImageFile } from "react-icons/fc";
+import { FaFileImage } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-import { BsCartCheck } from "react-icons/bs";
+import { BiCartAdd } from "react-icons/bi";
+import { BsCartCheck, BsEye } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../../Api/AuthProvider/AuthProvider";
 import { logOut } from "../../../Api/ApiServices/Auth";
 const Sidebar = () => {
-  const menus = [
-    { name: "Dashboard", link: "/admin/dashboard", icon: MdOutlineDashboard },
-    { name: "Orders", link: "/admin/orders", icon: BsCartCheck },
-    { name: "Products", link: "/admin/products", icon: TbShoppingBag },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/", icon: FiFolder },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
-    { name: "Setting", link: "/", icon: RiSettings4Line },
-  ];
   const [open, setOpen] = useState(true);
   const { profile } = useContext(AuthContext);
 
   const handleLogout = () => {
     logOut();
   };
+  const menus = [
+    { name: "Dashboard", link: "/admin/dashboard", icon: MdOutlineDashboard },
+    { name: "Orders", link: "/admin/orders", icon: BsCartCheck },
+    { name: "Products", link: "/admin/products", icon: TbShoppingBag },
+    { name: "Banner", link: "/admin/products", icon: FaFileImage },
+    { name: "Add Products", link: "/", icon: BiCartAdd, margin: true },
+    { name: "Add Banner", link: "/", icon: FcImageFile },
+    // { name: "File Manager", link: "/", icon: FiFolder },
+    // { name: "Cart", link: "/", icon: FiShoppingCart },
+    { name: "Users", link: "/admin/users", icon: AiOutlineUser, margin: true },
+    {
+      name: "Account Setting",
+      link: "/profile/accountSettings",
+      icon: RiSettings4Line,
+    },
+    {
+      name: "Logout",
+      link: "",
+      onClick: `${handleLogout}`,
+      icon: IoIosLogOut,
+      margin: true,
+    },
+  ];
 
   return (
     <div>
@@ -57,7 +73,7 @@ const Sidebar = () => {
             <div className="px-1">
               <h2
                 className={`${
-                  open ? "text-lg  text-center py-2" : "text-sm py-2"
+                  open ? "text-lg  text-center py-2" : "text-sm py-2 hidden"
                 }`}
               >
                 Welcome
@@ -74,13 +90,14 @@ const Sidebar = () => {
               <p className="text-center">
                 <Link
                   to="/profile"
+                  title="Profile"
                   className={`${
                     open
                       ? "text-lg text-center font-semibold py-1"
                       : "text-sm text-center py-2"
                   }`}
                 >
-                  View profile
+                  {open ? "   View profile" : <BsEye />}
                 </Link>
               </p>
             </div>
@@ -89,6 +106,7 @@ const Sidebar = () => {
             {menus?.map((menu, i) => (
               <Link
                 to={menu?.link}
+                onClick={menu?.onClick}
                 key={i}
                 className={` ${
                   menu?.margin && "mt-5"
