@@ -87,17 +87,17 @@ const AdminProductsList = ({ product, handleDelete, index }) => {
         </td>
         <td className="px-6">
           <div className="flex ">
-            <a
-              href="#"
+            <Link
+              // to={`/adminUpdateProduct/${_id}`}
               className="px-4 py-2 mr-4 text-sm text-gray-600 bg-gray-200 rounded-md dark:bg-gray-600 dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-300"
             >
               Edit
-            </a>
+            </Link>
             <a
-              href="#"
+              onClick={() => handleDelete(_id)}
               className="px-4 py-2 text-sm text-gray-100 bg-red-400 rounded-md dark:bg-gray-600 dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-300"
             >
-              Delete
+              <AiFillDelete></AiFillDelete>
             </a>
           </div>
         </td>

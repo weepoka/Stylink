@@ -15,6 +15,7 @@ import CategoryProducts from "../Pages/HomePages/CategoryProducts/CategoryProduc
 import Contact from "../Pages/HomePages/Contact/Contact";
 import AboutUs from "../Pages/HomePages/AboutUs/AboutUs";
 import ResetPassword from "../Login/ResetPassword";
+import AdminUpdateProduct from "../Pages/AdminPage/pages/AdminProducts/AdminProductUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -107,10 +108,10 @@ export const router = createBrowserRouter([
       // },
     ],
   },
-  // {
-  //   path: "adminUpdateProduct/:id",
-  //   element: <AdminUpdateProduct></AdminUpdateProduct>,
-  // },
+  {
+    path: "adminUpdateProduct/:id",
+    element: <AdminUpdateProduct />,
+  },
   {
     path: "*",
     element: <NotFound />,
