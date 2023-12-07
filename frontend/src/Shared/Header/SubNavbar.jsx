@@ -55,52 +55,8 @@ const SubNavbar = () => {
   }, []);
   return (
     <>
-      <div className="border-b pb-2 sticky  top-0 z-[99999] bg-white">
-        {/* <div className="py-5 max-w-screen-2xl mx-auto  text-white  max-sm:hidden sm:hidden md:block ">
-          <div className="flexCenter gap-10 z-10 text-gray-900 font-bold w-full ">
-            product category list
-            <div className=" z-10">
-              <div className=" z-10">
-                <ul className="flexCenter capitalize  gap-5 lg:gap-10  z-[500]">
-                  //!new updated code==>
-                  {categoriesArray?.map((item) => (
-                    <>
-                      <li tabIndex={0} className="dropdown px-3">
-                        <Link
-                          style={{ navLinkStyles }}
-                          to={`category/${item.category}`}
-                        >
-                          {item.category}
-                        </Link>
-
-                        <ul className=" relative dropdown-nav w-[140px] cursor-pointer">
-                          {item.subcategories?.map((sub, idx) => (
-                            <li className=" w-full px-2  mt-5 " key={idx}>
-                              <Link
-                                style={{ navLinkStyles }}
-                                to={{
-                                  pathname: `category/${item.category}`,
-                                  search: `?subcategory=${sub}`,
-                                }}
-                                className="flex items-center cursor-pointer my-2 font-bold"
-                              >
-                                <span className=" font-bold text-sm">
-                                  {sub}
-                                </span>
-                                <MdOutlineArrowRight className="text-2xl" />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
-        <div
+      <div className="border-b py-5 sticky   top-0 z-[99999] bg-white">
+        {/* <div
           className=" container text-white max-sm:hidden
          sm:hidden md:block"
         >
@@ -141,7 +97,8 @@ const SubNavbar = () => {
                                       search: `?subcategory=${sub}`,
                                     }}
                                     className="flex items-center cursor-pointer
-                                     my-2 font-bold  text-gray-800   hover:scale-105 transition duration-300"
+                                     my-2 font-bold  text-gray-800   hover:scale-105 transition
+                                      duration-300"
                                   >
                                     <span className=" font-bold text-sm ">
                                       {sub}
@@ -159,32 +116,62 @@ const SubNavbar = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* //* first div end */}
         <nav className="container  ">
           <div className="flex items-center lg:justify-center  text-blue-gray-900">
             <div className="flex items-center gap-10">
               <div className="mr-4 hidden md:block">
-                <ul className="mt-2 mb-4 flex flex-col gap-2 md:mb-0 md:mt-0 md:flex-row md:items-center md:gap-6">
-                  {/* {links.map((link, i) => (
-                    <li key={i}>
-                      {" "}
+                <ul
+                  className="mt-2 mb-4 flex flex-col gap-4 md:mb-0 md:mt-0 md:flex-row
+                 md:items-center md:gap-6"
+                >
+                  {categoriesArray?.map((item) => (
+                    <li key={item.category} className=" ">
                       <Link
-                        href={`${link.href}`}
-                        className={`${
-                          link?.href === currentPath
-                            ? "text-secondary"
-                            : `${textColor}`
-                        }  hover:text-[#ec407a] transition-colors`}
+                        style={{ navLinkStyles }}
+                        to={`category/${item.category}`}
                       >
-                        {link.label}
+                        <div className="relative   group cursor-pointer ">
+                          <div className="flex items-center capitalize justify-center gap-2 hover:text-heading font-semibold">
+                            {item.category} <FaCaretDown />
+                          </div>
+                          <div
+                            className="absolute w-[160px] p-3 top-10 text-center invisible 
+            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
+             bg-white rounded shadow"
+                          >
+                            {item.subcategories?.map((sub, idx) => (
+                              <li key={idx}>
+                                <div className="relative group2   ">
+                                  <div className="hover:text-button text-sm flex items-center py-1">
+                                    {sub}{" "}
+                                    <MdOutlineArrowRight className="text-2xl" />
+                                  </div>
+                                  <div
+                                    className="absolute w-[150px] top-0 left-[140px]  invisible group2-hover:visible
+                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
+                                  >
+                                    <div className="hover:text-button py-1">
+                                      Item1
+                                    </div>
+                                    <div className="hover:text-button py-1">
+                                      Item2
+                                    </div>
+                                    <div className="hover:text-button py-1">
+                                      Item3
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </div>
+                        </div>
                       </Link>
                     </li>
                   ))}
-                 */}
-
-                  <li>
+                  {/* <li>
                     <div className="relative w-[110px] group cursor-pointer ">
                       <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
                         Menu <FaCaretDown />{" "}
@@ -261,33 +248,7 @@ const SubNavbar = () => {
                         <div className="hover:text-button py-1">Item3</div>
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div className="relative w-[110px] group cursor-pointer ">
-                      <div className="flex items-center justify-center gap-2 hover:text-heading font-semibold">
-                        Menu <FaCaretDown />{" "}
-                      </div>
-                      <div
-                        className="absolute w-[110px] top-10 text-center invisible 
-            group-hover:visible group-hover:transition-all transition-all duration-200 group-hover:duration-200
-             bg-white rounded shadow"
-                      >
-                        <div className="hover:text-button py-1">Item1</div>
-                        <div className="relative group2 ">
-                          <div className="hover:text-button py-1">Menu</div>
-                          <div
-                            className="absolute w-[110px] top-0 left-[110px]  invisible group2-hover:visible
-                           group-hover:transition-all transition-all duration-200 group-hover:duration-200 bg-white rounded shadow"
-                          >
-                            <div className="hover:text-button py-1">Item1</div>
-                            <div className="hover:text-button py-1">Item2</div>
-                            <div className="hover:text-button py-1">Item3</div>
-                          </div>
-                        </div>
-                        <div className="hover:text-button py-1">Item3</div>
-                      </div>
-                    </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 
@@ -436,20 +397,6 @@ const SubNavbar = () => {
               </div>
             </div>
           </div>
-
-          {/* <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-          {links.map((link, i) => (
-            <li key={link.i}>
-              {" "}
-              <Link
-                href={link.href}
-                className="text-zinc-500 hover:text-zinc-800 transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul> */}
         </nav>
       </div>
     </>

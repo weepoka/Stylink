@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiFillDelete } from "react-icons/ai";
 const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
+// console.log(apiUrl);
 const AdminBanners = () => {
   const [banners, setBanners] = useState([]);
   const [refetch, setRefetch] = useState(false);

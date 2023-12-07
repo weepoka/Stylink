@@ -63,7 +63,7 @@ const Sidebar = () => {
               onClick={() => setOpen(!open)}
             />
           </div>
-          <div className="flex-col md:flex justify-center items-center px-4 ">
+          <div className="flex-col border-b  md:flex justify-center items-center px-4 ">
             <div className="flex justify-center items-center">
               <img
                 src={profile?.image}
@@ -73,7 +73,7 @@ const Sidebar = () => {
                 } rounded-full dark:bg-gray-500 `}
               />
             </div>
-            <div className="px-1">
+            <div className="px-1 pb-2">
               <h2
                 className={`${
                   open ? "text-lg  text-center py-2" : "text-sm py-2 hidden"
