@@ -156,7 +156,7 @@ const Navbar = () => {
                             <img
                               src={item.image}
                               alt=""
-                              className="w-10 mr-3 ml-3 py-3"
+                              className="w-20 px-2 object-contain  py-3"
                             />
                             <div className=" ml-3 font-bold text-gray-900 py-3">
                               {" "}
@@ -364,6 +364,7 @@ const Navbar = () => {
                   name="search"
                   value={value}
                   onChange={onChange}
+                  onKeyDown={handleKeyPress}
                   className="border-2 border-gray-50 px-6 py-2 focus:outline-none w-full text-gray-700"
                   placeholder="Search for products..."
                 />
@@ -378,27 +379,37 @@ const Navbar = () => {
               </div>
               <div className="search1">
                 {/* //!==========>Search bar dropdown section */}
-                <div className="dropdown1 md:w-[380px] w- mt-12">
+                <div
+                  className={`dropdown1 w-[300px] ${
+                    dropdownHeight ? "mt-2" : "mt-0"
+                  } overflow-y-scroll ${
+                    showDropdown ? "block" : "hidden"
+                  }  absolute z-[999999999] bg-gray-200 shadow rounded-md`}
+                  style={{ maxHeight: `${dropdownHeight}px` }}
+                >
                   {product
                     ?.filter((item) => {
-                      const searchTerm = value.toLowerCase();
-                      const fullName = item.name.toLowerCase();
-
+                      const searchTerm = value ? value.toLowerCase() : "";
+                      const fullName = item.name ? item.name.toLowerCase() : "";
                       return (
                         searchTerm &&
-                        fullName.includes(searchTerm.toLowerCase()) &&
-                        fullName !== searchTerm
+                        fullName &&
+                        (fullName.includes(searchTerm) ||
+                          fullName === searchTerm)
                       );
                     })
-                    .slice(0, 10)
+
                     .map((item) => (
                       <Link
-                        to={`/SingleProductDetails/${item._id}`}
                         key={item._id}
+                        to={`/SingleProductDetails/${item._id}`}
                       >
                         <div
-                          onClick={() => onSearch(item.name)}
-                          className="dropdown1-row"
+                          onClick={() => {
+                            onSearch(item.name);
+                            setShowDropdown(false);
+                          }}
+                          className="dropdown1-row "
                           key={item._id}
                         >
                           <div className="flex border-b border-b-gray-300 ">
@@ -411,7 +422,10 @@ const Navbar = () => {
                               {" "}
                               {item.name} <br />
                               <span className="text-red-500 flex items-center">
-                                <TbCurrencyTaka /> {item.oldPrice}
+                                <TbCurrencyTaka />{" "}
+                                {item.offerPrice
+                                  ? item.offerPrice
+                                  : item.oldPrice}
                               </span>
                             </div>
                           </div>
