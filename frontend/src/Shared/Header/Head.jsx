@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 
 const Head = () => {
   return (
@@ -20,7 +20,7 @@ const Head = () => {
             </div>
           </div>
           <div className="text-gray-300 ">
-            <h1>Free shipping order over -Tk. 1000</h1>
+            <Marquee>Free shipping order over -Tk. 1000</Marquee>
           </div>
           <div className=" gap-2 flexEnd ">
             <a
