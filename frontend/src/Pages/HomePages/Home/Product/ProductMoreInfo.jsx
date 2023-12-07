@@ -1,6 +1,3 @@
-import React from "react";
-import SingleProductDetials from "../SingleProductDetials";
-
 const ProductMoreInfo = ({ product }) => {
   const { descriptionData, featureDatas } = product;
   // const { MPN, Model, Quality, Zoom } = featureDatas[0]?.features;

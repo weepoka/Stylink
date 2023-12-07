@@ -20,6 +20,7 @@ import AddProducts from "../Pages/AdminPage/pages/AdminProducts/AddProducts";
 import AddBanner from "../Pages/AdminPage/pages/AdminBanner/AddBanner";
 import AdminBanners from "../Pages/AdminPage/pages/AdminBanner/AdminBanner";
 import User from "../Pages/AdminPage/pages/User/User";
+import SingleProductDetails from "../Pages/HomePages/Home/Product/SingleProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: <CategoryProducts />,
+      },
+      {
+        path: "/SingleProductDetails/:id",
+        element: <SingleProductDetails />,
       },
       {
         path: "/login",

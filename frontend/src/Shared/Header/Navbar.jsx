@@ -19,27 +19,18 @@ import { AuthContext } from "../../Api/AuthProvider/AuthProvider";
 import { logOut } from "../../Api/ApiServices/Auth";
 import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const [selectedItem, setSelectedItem] = useState(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const toggleDropdown = () => setOpen(!isOpen);
-
-  const handleItemClick = (id) => {
-    selectedItem == id ? setSelectedItem(null) : setSelectedItem(id);
-  };
-
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartItems);
   const total = useSelector((state) => state.cart.cartTotal);
   // console.log({ total });
   const [isDivVisible, setIsDivVisible] = useState(false);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   const toggleDiv = () => {
     setIsDivVisible(!isDivVisible);
   };
@@ -48,17 +39,17 @@ const Navbar = () => {
   const { product } = useContext(AuthContext);
 
   const [searchParamsF] = useSearchParams();
-  const searchTerm =
-    searchParamsF.get("search") === null ? "" : searchParamsF.get("search");
 
   const [value, setValue] = useState("");
 
   const onChange = (event) => {
     setValue(event.target.value);
+    setShowDropdown(true);
   };
 
   const onSearch = (searchTerm) => {
     setValue(searchTerm);
+    setShowDropdown(false);
   };
 
   const handleLogOut = () => {
@@ -81,6 +72,13 @@ const Navbar = () => {
   const removePd = (id) => {
     dispatch(remove(id));
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      onSearch();
+    }
+  };
+  const dropdownHeight = showDropdown ? Math.min(product.length * 40, 400) : 0;
   return (
     <div>
       <div className=" bg-white z-[99999] py-3 border-b text-white  ">
@@ -100,6 +98,7 @@ const Navbar = () => {
                   name="search"
                   value={value}
                   onChange={onChange}
+                  onKeyDown={handleKeyPress}
                   className="border-2 border-gray-400 px-5  pr-12 py-[6px] 
                     focus:outline-none w-full text-gray-900 rounded-full"
                   placeholder="Search for products..."
@@ -114,31 +113,42 @@ const Navbar = () => {
                   </button>
                 </Link>
               </div>
-              <div className="text-center flex items-center flex-col ">
+              <div className="text-center flex items-center  flex-col ">
                 <div
-                  className="dropdown1 md:w-[382px] mt-5 absolute z-[999999999] 
-                  bg-gray-200
-                  overflow-y-auto shadow rounded-md "
+                  className={`dropdown1 md:w-[382px] ${
+                    dropdownHeight ? "mt-5" : "mt-0"
+                  } overflow-y-scroll ${
+                    showDropdown ? "block" : "hidden"
+                  } -ml-96 absolute z-[999999999] bg-gray-200 shadow rounded-md`}
+                  style={{ maxHeight: `${dropdownHeight}px` }}
+                  // className={`dropdown1 md:w-[382px]  mt-5   ${
+                  //   showDropdown ? " overflow-y-scroll" : "hidden"
+                  // } -ml-96 absolute z-[999999999]
+                  // bg-gray-200
+                  //  shadow rounded-md `}
                 >
                   {product
-                    .filter((item) => {
-                      const searchTerm = value.toLowerCase();
-                      const fullName = item.name.toLowerCase();
-
+                    ?.filter((item) => {
+                      const searchTerm = value ? value.toLowerCase() : "";
+                      const fullName = item.name ? item.name.toLowerCase() : "";
                       return (
                         searchTerm &&
-                        fullName.includes(searchTerm.toLowerCase()) &&
-                        fullName !== searchTerm
+                        fullName &&
+                        (fullName.includes(searchTerm) ||
+                          fullName === searchTerm)
                       );
                     })
-                    // .slice(0, 10)
+                    .slice(0, 5)
                     .map((item) => (
                       <Link
                         key={item._id}
                         to={`/SingleProductDetails/${item._id}`}
                       >
                         <div
-                          onClick={() => onSearch(item.name)}
+                          onClick={() => {
+                            onSearch(item.name);
+                            setShowDropdown(false);
+                          }}
                           className="dropdown1-row "
                           key={item._id}
                         >
@@ -165,6 +175,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+
             <div className="flexCenter">
               <div className="flexCenter ">
                 <NavLink to="/profile" className="ml-5">
