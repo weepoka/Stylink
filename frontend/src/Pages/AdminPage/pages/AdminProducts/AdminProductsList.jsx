@@ -31,7 +31,7 @@ const AdminProductsList = ({ product, handleDelete, index }) => {
 
         <td>
           <Link to={`/adminUpdateProduct/${_id}`}>
-            <p className="text-blue-800 text-2xl font-bold flex justify-center items-center">
+            <p className="text-blue-800 text-2xl font-bold flexCenter">
               {" "}
               <span className="mr-2">
                 <AiFillEdit></AiFillEdit>

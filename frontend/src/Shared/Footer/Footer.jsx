@@ -263,7 +263,7 @@ const Footer = () => {
             </span>
           </a>
         </p>
-        <div className=" flex justify-center items-center md:justify-start md:items-start mt-5">
+        <div className=" flexCenter md:justify-start md:items-start mt-5">
           <p className="footer-social-icon   mx-2  ">
             {" "}
             <a

@@ -261,7 +261,7 @@ const Cart = () => {
                     </p>
                     {/* //!====> Counting qty btn */}
                     <div
-                      className="w-[18vh] sm:mx-2 p-2 sm:p-3 flex justify-between items-center
+                      className="w-[18vh] sm:mx-2 p-2 sm:p-3 flexBetween
                    bg-gray-100 rounded text-black "
                     >
                       <button

@@ -270,7 +270,7 @@ const SubNavbar = () => {
             <div
               className={
                 openNav
-                  ? "fixed top-[0%] w-[100%] md:hidden flex justify-center items-center flex-col text-center h-screen bg-[#ecf0f3] left-0 right-0 ease-in-out duration-500"
+                  ? "fixed top-[0%] w-[100%] md:hidden flexCenter flex-col text-center h-screen bg-[#ecf0f3] left-0 right-0 ease-in-out duration-500"
                   : "fixed top-[-100%] left-0 right-0  p-10 h-screen bg-[#ecf0f3] ease-in-out duration-500"
               }
             >

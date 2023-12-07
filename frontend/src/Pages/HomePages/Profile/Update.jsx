@@ -71,7 +71,7 @@ const Update = () => {
         <div>
           <h1 className="text-2xl py-2 text-center font-bold">My Profile</h1>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 py-10">
-            <div className="col-span-2 flex justify-center items-center">
+            <div className="col-span-2 flexCenter">
               <FaUserAlt className="text-white text-center text-xl mr-2" />{" "}
               <input
                 type="file"

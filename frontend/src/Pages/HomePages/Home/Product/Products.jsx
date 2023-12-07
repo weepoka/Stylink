@@ -153,7 +153,7 @@ const Products = () => {
             </div>
 
             {/* price filtering */}
-            <div className="flex justify-center items-center ">
+            <div className="flexCenter ">
               <label className="mb-0 font-bold text-xl">Filter:</label>
               <div className="form-control ml-3  ">
                 <select

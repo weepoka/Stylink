@@ -174,10 +174,10 @@ const SingleProductDetails = () => {
                         >
                           {offerPrice ? (
                             <div
-                              className=" rounded-2xl flex justify-center items-center bg-[#f5f6fc] 
+                              className=" rounded-2xl flexCenter bg-[#f5f6fc] 
                       py-1 px-3 mr-5"
                             >
-                              <p className="mr-1  flex justify-center items-center">
+                              <p className="mr-1  flexCenter">
                                 <span> Price:</span> <TbCurrencyTaka />{" "}
                                 <span className=" font-bold text-gray-600 text-sm">
                                   {" "}
@@ -194,7 +194,7 @@ const SingleProductDetails = () => {
                               )}
                             </div>
                           ) : (
-                            <div className="rounded-lg  py-1 flex justify-center items-center  ">
+                            <div className="rounded-lg  py-1 flexCenter  ">
                               <p className="mr-1 ">
                                 <TbCurrencyTaka />
                               </p>
@@ -207,7 +207,7 @@ const SingleProductDetails = () => {
                         </div>
                         {offerPrice ? (
                           <div
-                            className=" rounded-2xl   flex justify-center items-center
+                            className=" rounded-2xl   flexCenter
                     
                     bg-[#f5f6fc]  "
                           >
@@ -217,7 +217,7 @@ const SingleProductDetails = () => {
                           bg-[#f5f6fc]
                          text-gray-700 text-sm  text-center"
                               >
-                                <p className="mr-1  flex justify-center items-center">
+                                <p className="mr-1  flexCenter">
                                   Regular Price: <TbCurrencyTaka className="" />
                                 </p>
                                 <p className="text-sm font-bold ">
@@ -231,7 +231,7 @@ const SingleProductDetails = () => {
                           justify-center items-center
                          bg-[#f5f6fc] text-gray-700 text-sm text-center"
                               >
-                                <p className=" flex justify-center items-center font-bold">
+                                <p className=" flexCenter font-bold">
                                   Regular Price: <TbCurrencyTaka />
                                 </p>
                                 <p className="text-sm font-bold"> {oldPrice}</p>
@@ -240,34 +240,30 @@ const SingleProductDetails = () => {
                           </div>
                         ) : (
                           <div
-                            className=" flex justify-center items-center rounded-2xl  py-1 px-2
+                            className=" flexCenter rounded-2xl  py-1 px-2
                          bg-[#f5f6fc] text-gray-700 text-sm text-center"
                           >
-                            <p className=" flex justify-center items-center font-bold">
+                            <p className=" flexCenter font-bold">
                               Regular Price: <TbCurrencyTaka />
                             </p>
                             <p className="text-sm font-bold"> {oldPrice}</p>
                           </div>
                         )}
                         <div
-                          className=" flex justify-center items-center rounded-2xl  py-1 px-2
+                          className=" flexCenter rounded-2xl  py-1 px-2
                          bg-[#f5f6fc] text-gray-700 text-sm text-center"
                         >
-                          <p className=" flex justify-center items-center">
-                            Product Pin:
-                          </p>
+                          <p className=" flexCenter">Product Pin:</p>
                           <p className="text-sm font-bold ml-2">
                             {" "}
                             {productPin}
                           </p>
                         </div>
                         <div
-                          className=" flex justify-center items-center rounded-2xl  py-1 px-2
+                          className=" flexCenter rounded-2xl  py-1 px-2
                          bg-[#f5f6fc] text-gray-700 text-sm text-center"
                         >
-                          <p className=" flex justify-center items-center ">
-                            In Stock:
-                          </p>
+                          <p className=" flexCenter ">In Stock:</p>
                           <p className="text-sm font-bold ml-2">
                             {stock > 0 ? (
                               "In Stock"
@@ -279,12 +275,10 @@ const SingleProductDetails = () => {
                           </p>
                         </div>
                         <div
-                          className=" flex justify-center items-center rounded-2xl  py-1 px-2
+                          className=" flexCenter rounded-2xl  py-1 px-2
                          bg-[#f5f6fc] text-gray-700 text-sm text-center"
                         >
-                          <p className=" flex justify-center items-center ">
-                            Brand :
-                          </p>
+                          <p className=" flexCenter ">Brand :</p>
                           <p className="text-sm font-bold ml-2 capitalize">
                             {" "}
                             {brand}

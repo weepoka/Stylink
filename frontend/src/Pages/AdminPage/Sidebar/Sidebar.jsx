@@ -63,8 +63,8 @@ const Sidebar = () => {
               onClick={() => setOpen(!open)}
             />
           </div>
-          <div className="flex-col border-b  md:flex justify-center items-center px-4 ">
-            <div className="flex justify-center items-center">
+          <div className="flex-col border-b  md:flexCenter px-4 ">
+            <div className="flexCenter">
               <img
                 src={profile?.image}
                 alt=""
