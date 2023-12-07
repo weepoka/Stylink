@@ -6,7 +6,8 @@ import ProductDetails from "./ProductDetails";
 const Products = () => {
   const [productCategory, setProductCategory] = useState([]);
   const [filterProductCategory, setFilterProductCategory] = useState([]);
-  const [noOfElement, setNoOfElement] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [selectedPrice, setSelectedPrice] = useState();
   const [searchParams] = useSearchParams();
 
@@ -15,62 +16,64 @@ const Products = () => {
   useEffect(() => {
     setProductCategory(product);
   }, [product]);
-  // console.log("products", product);
+  console.log("products", product);
 
-  // console.log("productCategory", productCategory);
-  // console.log("product", product);
+  // const min_price =
+  //   searchParams.get("min_price") === null ? "" : searchParams.get("min_price");
+  // const max_price =
+  //   searchParams.get("max_price") === null ? "" : searchParams.get("max_price");
+  // const search =
+  //   searchParams.get("search") === null ? "" : searchParams.get("search");
 
-  // console.log(product);
-  // // Load product data
+  // check price and search items
+
+  // check price and search items
   // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_SERVER}/products/displayProducts`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // setProduct(data.data);
-  //       setProductCategory(data.data);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-  // console.log(productCategory);
+  //   filterProducts();
+  // }, [search, min_price, max_price, productCategory]);
 
-  // category filter
+  // const filterProducts = () => {
+  //   if (search.length || min_price.length || max_price.length) {
+  //     const min = parseFloat(min_price);
+  //     const max = parseFloat(max_price);
 
-  //check category
+  //     const filtered = productCategory.filter((product) => {
+  //       if (min > 0 && min > product.oldPrice) {
+  //         return false;
+  //       }
 
-  //for searching for products
+  //       if (max > 0 && max < product.oldPrice) {
+  //         return false;
+  //       }
 
-  //more product show
+  //       if (
+  //         search.length > 0 &&
+  //         !product.name.toLowerCase().includes(search.toLowerCase())
+  //       ) {
+  //         return false;
+  //       }
 
-  // console.log(searchParams);
+  //       return true;
+  //     });
+  //     setFilterProductCategory(filtered);
+  //     setCurrentPage(1);
+  //   } else {
+  //     setFilterProductCategory(productCategory);
+  //   }
+  // };
 
-  const loadMore = () => {
-    setNoOfElement(noOfElement + noOfElement);
-    // console.log("click");
-  };
-
-  //  console.log(products);
-
-  // console.log(`searchParams`, searchParams.get("min_price"));
-  // console.log(`searchParams`, searchParams.get("max_price"));
-  // console.log(`searchParams`, searchParams.get("search"));
-  const min_price =
-    searchParams.get("min_price") === null ? "" : searchParams.get("min_price");
-  const max_price =
-    searchParams.get("max_price") === null ? "" : searchParams.get("max_price");
-  const search =
-    searchParams.get("search") === null ? "" : searchParams.get("search");
-
-  // check price and search items
-
-  // check price and search items
+  // console.log(selectedPrice);
   useEffect(() => {
     filterProducts();
-  }, [search, min_price, max_price, productCategory]);
-
+  }, [searchParams, productCategory, itemsPerPage]);
   const filterProducts = () => {
-    if (search.length || min_price.length || max_price.length) {
-      const min = parseFloat(min_price);
-      const max = parseFloat(max_price);
+    if (
+      searchParams.get("search") ||
+      searchParams.get("min_price") ||
+      searchParams.get("max_price")
+    ) {
+      const min = parseFloat(searchParams.get("min_price")) || 0;
+      const max = parseFloat(searchParams.get("max_price")) || Number.MAX_VALUE;
 
       const filtered = productCategory.filter((product) => {
         if (min > 0 && min > product.oldPrice) {
@@ -82,21 +85,23 @@ const Products = () => {
         }
 
         if (
-          search.length > 0 &&
-          !product.name.toLowerCase().includes(search.toLowerCase())
+          searchParams.get("search") &&
+          !product.name
+            .toLowerCase()
+            .includes(searchParams.get("search").toLowerCase())
         ) {
           return false;
         }
 
         return true;
       });
+
       setFilterProductCategory(filtered);
+      setCurrentPage(1);
     } else {
       setFilterProductCategory(productCategory);
     }
   };
-
-  // console.log(selectedPrice);
   const handleChange = (e) => {
     const { value } = e.target;
     // console.log(e.target.value);
@@ -129,8 +134,42 @@ const Products = () => {
     productCategory,
     filterProductCategory,
   ]);
-  const slice = filteredList?.slice(0, noOfElement);
-  // console.log(slice);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredList.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleChangeItemsPerPage = (e) => {
+    const { value } = e.target;
+    setItemsPerPage(Number(value));
+    setCurrentPage(1); // Reset to the first page when changing items per page
+  };
+
+  const totalPages = Math.ceil(filterProductCategory.length / itemsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
+  };
+
   return (
     <div className=" bg-[#f6f9fc]">
       {/* [products] text*/}
@@ -147,11 +186,30 @@ const Products = () => {
               <h2 className="text-center  text-md">
                 Showing Products:{" "}
                 <span className="text-heading ml-2 font-bold text-md">
-                  {slice.length}
+                  {currentItems.length}
                 </span>
               </h2>
             </div>
-
+            {/* items per page dropdown */}
+            <div className="flexCenter ">
+              <label className="mb-0 font-bold text-md">Items per page:</label>
+              <div className="form-control ml-3">
+                <select
+                  onChange={handleChangeItemsPerPage}
+                  className="w-full border h-10 p-2"
+                  type="text"
+                  required
+                  name="itemsPerPage"
+                  value={itemsPerPage}
+                >
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  {/* Add more options as needed */}
+                </select>
+              </div>
+            </div>
             {/* price filtering */}
             <div className="flexCenter ">
               <label className="mb-0 font-bold text-xl">Filter:</label>
@@ -178,15 +236,14 @@ const Products = () => {
         {/* prodcuts images */}
 
         <div className="px-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 ">
-          {/* {slice?.map((product) => (
+          {currentItems?.map((product) => (
             <ProductDetails
               key={product._id}
               product={product}
             ></ProductDetails>
-          ))} */}
-          <ProductDetails />
+          ))}
         </div>
-        <div className="text-center mt-8">
+        {/* <div className="text-center mt-8">
           <button
             onClick={() => loadMore()}
             className="px-3 py-2 text-white duration-300
@@ -194,6 +251,54 @@ const Products = () => {
           >
             More products
           </button>
+        </div> */}
+        <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={goToFirstPage}
+              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+              disabled={currentPage === 1}
+            >
+              First
+            </button>
+            <button
+              onClick={prevPage}
+              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            {Array.from({ length: Math.min(3, totalPages) }).map((_, index) => {
+              const pageNumber = currentPage - 1 + index + 1;
+              return (
+                pageNumber <= totalPages && (
+                  <button
+                    key={pageNumber}
+                    onClick={() => paginate(pageNumber)}
+                    className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
+                      currentPage === pageNumber ? "bg-gray-900" : ""
+                    }`}
+                  >
+                    {pageNumber}
+                  </button>
+                )
+              );
+            })}
+            <button
+              onClick={nextPage}
+              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+            <button
+              onClick={goToLastPage}
+              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+              disabled={currentPage === totalPages}
+            >
+              Last
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductDetails from "../Product/ProductDetails";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { HiArrowNarrowRight, HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 const NextArrow = (props) => {
   const { onClick } = props;
   return (
@@ -48,7 +49,7 @@ const FlashCard = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -57,7 +58,7 @@ const FlashCard = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -79,25 +80,20 @@ const FlashCard = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+  const { product } = useContext(AuthContext);
+  console.log(product);
+  const filterFlashProduct = product.filter((item) => item.offerPercentage);
+  console.log(filterFlashProduct);
+  const slice = filterFlashProduct?.slice(0, 8);
   return (
     <div className="py-10">
       {" "}
       <Slider {...settings} className="px-5">
-        <div className="px-3 ">
-          <ProductDetails />
-        </div>
-        <div className="px-3 ">
-          <ProductDetails />
-        </div>
-        <div className="px-3">
-          <ProductDetails />
-        </div>
-        <div className="px-3">
-          <ProductDetails />
-        </div>
-        <div className="px-3 ">
-          <ProductDetails />
-        </div>
+        {slice?.map((product) => (
+          <div className="px-3 " key={product._id}>
+            <ProductDetails product={product}></ProductDetails>
+          </div>
+        ))}
       </Slider>
     </div>
   );

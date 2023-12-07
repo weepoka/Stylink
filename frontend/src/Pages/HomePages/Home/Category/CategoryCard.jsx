@@ -38,6 +38,7 @@ const CategoryCard = () => {
       },
     ],
   };
+
   return (
     <div className="overflow-hidden py-5">
       <Slider {...settings}>
