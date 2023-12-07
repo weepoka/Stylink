@@ -243,63 +243,6 @@ const Products = () => {
             ></ProductDetails>
           ))}
         </div>
-        {/* <div className="text-center mt-8">
-          <button
-            onClick={() => loadMore()}
-            className="px-3 py-2 text-white duration-300
-             bg-button hover:bg-gray-900"
-          >
-            More products
-          </button>
-        </div> */}
-        <div className="flex justify-center mt-8">
-          <div className="flex justify-center mt-8">
-            <button
-              onClick={goToFirstPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === 1}
-            >
-              First
-            </button>
-            <button
-              onClick={prevPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            {Array.from({ length: Math.min(3, totalPages) }).map((_, index) => {
-              const pageNumber = currentPage - 1 + index + 1;
-              return (
-                pageNumber <= totalPages && (
-                  <button
-                    key={pageNumber}
-                    onClick={() => paginate(pageNumber)}
-                    className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
-                      currentPage === pageNumber ? "bg-gray-900" : ""
-                    }`}
-                  >
-                    {pageNumber}
-                  </button>
-                )
-              );
-            })}
-            <button
-              onClick={nextPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-            <button
-              onClick={goToLastPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === totalPages}
-            >
-              Last
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
