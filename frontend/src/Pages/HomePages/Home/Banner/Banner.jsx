@@ -22,23 +22,26 @@ const Banner = () => {
   };
 
   const { banners } = useContext(AuthContext);
-  const Banner = banners.filter(
+  const BannerImage = banners.filter(
     (element) => element.megaOffer === false && element.offerDate === ""
   );
-
+  console.log(BannerImage);
   const megaBanner = banners.filter((b) => b.megaOffer === true);
   // console.log(megaBanner);
   return (
     <div className=" homeSlide overflow-hidden pb-5 relative">
       <Slider {...settings}>
-        <div className="w-full">
-          <img
-            src={banner0}
-            alt=""
-            className=" md:bg-cover md:h-[620px] aspect-video  w-full"
-          />
-        </div>
-        <div>
+        {BannerImage?.map((item, i) => (
+          <div key={i} className="w-full">
+            <img
+              src={item?.image}
+              alt=""
+              className=" md:bg-cover md:h-[620px] aspect-video  w-full"
+            />
+          </div>
+        ))}
+
+        {/* <div>
           <img
             src={banner1}
             alt=""
@@ -51,7 +54,7 @@ const Banner = () => {
             alt=""
             className=" md:bg-cover md:h-[620px]  aspect-video  w-full"
           />
-        </div>
+        </div> */}
       </Slider>
     </div>
   );
