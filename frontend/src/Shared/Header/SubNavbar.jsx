@@ -31,7 +31,7 @@ const SubNavbar = () => {
         <nav className="container  ">
           <div className="flex items-center lg:justify-center  text-blue-gray-900">
             <div className="flex items-center gap-10">
-              <div className="mr-4 hidden md:block">
+              <div className="mr-4 hidden lg:block">
                 <ul
                   className="mt-2 mb-4 flex flex-col gap-4 md:mb-0 md:mt-0 md:flex-row
                  md:items-center md:gap-6"
@@ -87,7 +87,7 @@ const SubNavbar = () => {
                 // h-6 w-6
                 className="ml-auto  p-4 text-inherit cursor-pointer
                hover:bg-transparent focus:bg-transparent
-                active:bg-transparent md:hidden"
+                active:bg-transparent lg:hidden"
                 onClick={() => setOpenNav(!openNav)}
               >
                 {openNav ? (

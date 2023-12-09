@@ -33,7 +33,7 @@ const ProductDetails = ({ product }) => {
     dispatch(addToWishList({ ...product }));
   };
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full h-full">
       {" "}
       <div className="w-full">
         <div className="relative p-4 bg-white rounded shadow dark:bg-gray-700">
@@ -103,14 +103,14 @@ const ProductDetails = ({ product }) => {
               <p className="">
                 {stock > "0" ? (
                   <button
-                    className="text-green-500 text-[16px] dark:text-green-400 px-3 py-1  
+                    className="text-green-500 text-[15px] dark:text-green-400 px-3 py-1  
                       "
                   >
                     In Stock
                   </button>
                 ) : (
                   <button
-                    className="text-green-500 text-[16px] dark:text-green-400 px-3 py-1  
+                    className="text-green-500 text-[15px] dark:text-green-400 px-3 py-1  
                   "
                   >
                     Out of Stock

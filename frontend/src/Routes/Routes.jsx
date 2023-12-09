@@ -21,6 +21,7 @@ import AddBanner from "../Pages/AdminPage/pages/AdminBanner/AddBanner";
 import AdminBanners from "../Pages/AdminPage/pages/AdminBanner/AdminBanner";
 import User from "../Pages/AdminPage/pages/User/User";
 import SingleProductDetails from "../Pages/HomePages/Home/Product/SingleProductDetails";
+import Discount from "../Pages/HomePages/Discount/Discount";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ export const router = createBrowserRouter([
         path: "/SingleProductDetails/:id",
         element: <SingleProductDetails />,
       },
+      { path: "/offer", element: <Discount /> },
       {
         path: "/login",
         element: <Login />,
