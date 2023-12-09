@@ -8,7 +8,7 @@ const FlashDeals = () => {
         <div className="flexBetween gap-2 ">
           <div className="flex gap-2">
             <FaBolt size={25} className="text-red-500" />
-            <h1 className="bold-32 text-primary">Flash Deals</h1>
+            <h1 className="bold-20 md:bold-32 text-primary">Flash Deals</h1>
           </div>
           <div>
             <Link

@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 import ProductDetails from "./ProductDetails";
-
+import { MdFirstPage, MdLastPage, MdNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
 const Products = () => {
   const [productCategory, setProductCategory] = useState([]);
 
@@ -176,15 +177,15 @@ const Products = () => {
       {/* [products] text*/}
       <div className=" container py-10 ">
         <div className="  my-10">
-          <h2 className="pb-2 md:px-8 text-xl font-bold text-left text-gray-800 md:text-3xl dark:text-gray-400">
+          <h2 className="pb-2 md:px-8 text-xl font-bold text-center md:text-left text-gray-800 md:text-3xl dark:text-gray-400">
             Featured Products
           </h2>
           {/* <div className="w-60 mb-6 border-b border-button dark:border-gray-400"></div> */}
         </div>
         <div className=" my-10 ">
-          <div className="flex md:px-8  gap-10 items-center justify-between my-5 ">
-            <div className="pt-3">
-              <h2 className="text-center  text-md">
+          <div className="flex flex-wrap md:px-8  gap-2 md:gap-10 items-center justify-center md:justify-between my-5 ">
+            <div className="md:pt-3">
+              <h2 className="text-center text-sm  md:text-md">
                 Showing Products:{" "}
                 <span className="text-heading ml-2 font-bold text-md">
                   {currentItems.length}
@@ -192,8 +193,10 @@ const Products = () => {
               </h2>
             </div>
             {/* items per page dropdown */}
-            <div className="flexCenter ">
-              <label className="mb-0 font-bold text-md">Items per page:</label>
+            <div className="flexCenter hidden">
+              <label className="mb-0 font-bold text-xs md:text-md">
+                Items per page:
+              </label>
               <div className="form-control ml-3">
                 <select
                   onChange={handleChangeItemsPerPage}
@@ -213,7 +216,9 @@ const Products = () => {
             </div>
             {/* price filtering */}
             <div className="flexCenter ">
-              <label className="mb-0 font-bold text-xl">Filter:</label>
+              <label className="mb-0 font-bold text-xs md:text-xl">
+                Filter:
+              </label>
               <div className="form-control ml-3  ">
                 <select
                   onChange={handleChange}
@@ -244,52 +249,60 @@ const Products = () => {
             ></ProductDetails>
           ))}
         </div>
-        <div className="flex justify-center mt-8">
-          <div className="flex justify-center mt-8">
-            <button
-              onClick={goToFirstPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === 1}
-            >
-              First
-            </button>
-            <button
-              onClick={prevPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            {Array.from({ length: Math.min(3, totalPages) }).map((_, index) => {
-              const pageNumber = currentPage - 1 + index + 1;
-              return (
-                pageNumber <= totalPages && (
-                  <button
-                    key={pageNumber}
-                    onClick={() => paginate(pageNumber)}
-                    className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
-                      currentPage === pageNumber ? "bg-gray-900" : ""
-                    }`}
-                  >
-                    {pageNumber}
-                  </button>
-                )
-              );
-            })}
-            <button
-              onClick={nextPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-            <button
-              onClick={goToLastPage}
-              className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-              disabled={currentPage === totalPages}
-            >
-              Last
-            </button>
+        <div className="flex justify-center mt-8 ">
+          <div className="flex justify-center gap-2 md:gap-5 mt-8">
+            <div className=" flex flex-col md:flex-row gap-2">
+              <button
+                onClick={goToFirstPage}
+                className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                disabled={currentPage === 1}
+              >
+                <MdFirstPage />
+              </button>
+              <button
+                onClick={prevPage}
+                className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                disabled={currentPage === 1}
+              >
+                <GrFormPrevious />
+              </button>
+            </div>
+            <div className="flexCenter">
+              {Array.from({ length: Math.min(3, totalPages) }).map(
+                (_, index) => {
+                  const pageNumber = currentPage - 1 + index + 1;
+                  return (
+                    pageNumber <= totalPages && (
+                      <button
+                        key={pageNumber}
+                        onClick={() => paginate(pageNumber)}
+                        className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
+                          currentPage === pageNumber ? "bg-gray-900" : ""
+                        }`}
+                      >
+                        {pageNumber}
+                      </button>
+                    )
+                  );
+                }
+              )}
+            </div>
+            <div className=" flex flex-col md:flex-row gap-2">
+              <button
+                onClick={nextPage}
+                className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                disabled={currentPage === totalPages}
+              >
+                <MdNavigateNext />
+              </button>
+              <button
+                onClick={goToLastPage}
+                className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                disabled={currentPage === totalPages}
+              >
+                <MdLastPage />
+              </button>
+            </div>
           </div>
         </div>
       </div>

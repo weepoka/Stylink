@@ -16,7 +16,7 @@ const Category = () => {
       <section className="container ">
         <div className="flexStart gap-2 ">
           <FaBorderAll size={25} className="text-red-500" />
-          <h1 className="bold-32 text-primary">Category</h1>
+          <h1 className="bold-20 md:bold-32 text-primary">Category</h1>
         </div>
         <div>
           <CategoryCard />
