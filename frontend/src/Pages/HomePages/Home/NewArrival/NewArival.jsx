@@ -4,9 +4,9 @@ import ProductDetails from "../Product/ProductDetails";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 const NewArival = () => {
   const { product } = useContext(AuthContext);
-  console.log(product);
+  // console.log(product);
   const filterNewArrivalProduct = product.filter((item) => item.newArrival);
-  console.log(filterNewArrivalProduct);
+  // console.log(filterNewArrivalProduct);
   const slice = filterNewArrivalProduct?.slice(0, 8);
   return (
     <div>

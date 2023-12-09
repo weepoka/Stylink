@@ -81,9 +81,9 @@ const FlashCard = () => {
     prevArrow: <PrevArrow />,
   };
   const { product } = useContext(AuthContext);
-  console.log(product);
+  // console.log(product);
   const filterFlashProduct = product.filter((item) => item.offerPercentage);
-  console.log(filterFlashProduct);
+  // console.log(filterFlashProduct);
   const slice = filterFlashProduct?.slice(0, 8);
   return (
     <div className="py-10">

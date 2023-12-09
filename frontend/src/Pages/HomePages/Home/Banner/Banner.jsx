@@ -25,7 +25,7 @@ const Banner = () => {
   const BannerImage = banners.filter(
     (element) => element.megaOffer === false && element.offerDate === ""
   );
-  console.log(BannerImage);
+  // console.log(BannerImage);
   const megaBanner = banners.filter((b) => b.megaOffer === true);
   // console.log(megaBanner);
   return (

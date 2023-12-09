@@ -8,7 +8,7 @@ const ProductDetails = ({ product }) => {
   // if (!product) {
   //   return null; // or return a loading/error message as needed
   // }
-  console.log(product);
+  // console.log(product);
   const {
     _id,
     image,
@@ -118,14 +118,20 @@ const ProductDetails = ({ product }) => {
                 )}
               </p>
             </div>
-            <div
+            <button
               onClick={() => addToCart(addToWishlist)}
               title="Add to wishlist"
-              className="flex gap-3 mt-3  rating"
+              className="flex gap-3 mt-3 group cursor-pointer rating"
             >
-              <FaHeart size={30} className="hover:text-red-500 transition" />
-              <span className="text-md text-gray-500"> wishList</span>
-            </div>
+              <FaHeart
+                size={30}
+                className="group-hover:text-red-500 transition"
+              />
+              <span className="text-md text-gray-500 group-hover:text-red-500">
+                {" "}
+                wishList
+              </span>
+            </button>
 
             <button
               title="Add To Cart"

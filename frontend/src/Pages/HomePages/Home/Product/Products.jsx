@@ -5,6 +5,7 @@ import ProductDetails from "./ProductDetails";
 
 const Products = () => {
   const [productCategory, setProductCategory] = useState([]);
+
   const [filterProductCategory, setFilterProductCategory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -16,7 +17,7 @@ const Products = () => {
   useEffect(() => {
     setProductCategory(product);
   }, [product]);
-  console.log("products", product);
+  // console.log("products", product);
 
   // const min_price =
   //   searchParams.get("min_price") === null ? "" : searchParams.get("min_price");

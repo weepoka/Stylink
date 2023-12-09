@@ -26,8 +26,8 @@ const Navbar = () => {
   }, [pathname]);
 
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cart.cartItems);
-  const total = useSelector((state) => state.cart.cartTotal);
+  const items = useSelector((state) => state?.cart?.cartItems);
+  const total = useSelector((state) => state?.cart?.cartTotal);
   // console.log({ total });
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
