@@ -7,6 +7,7 @@ import image2 from "../../../../assets/category/category-2.png";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 import { getCategories } from "../../../../Api/ApiServices/ApiSerivces";
 import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 const CategoryCard = () => {
   const settings = {
     dots: false,
@@ -78,6 +79,35 @@ const CategoryCard = () => {
           </div>
         ))}
       </Slider>
+      <div className="px-5">
+        <Marquee pauseOnHover className="pt-10 ">
+          <div className="marquee-container ">
+            {categoriesArray.map((categoryItem, i) => (
+              <div key={i} className="px-5 marquee-card">
+                <Link to={`category/${categoryItem.category}`}>
+                  <div className="bg-white rounded-md p-4 ">
+                    <div className="relative w-full  flex">
+                      <span className="absolute left-0 bg-[#f6f9fc] text-black text-[12px] rounded-3xl py-[5px] px-[10px] m-[5px] top-[10px]">
+                        {categoryItem.category}
+                      </span>
+                      <span className="right-0 absolute  bg-[#0f3460] text-white text-[12px] py-[5px]  rounded-3xl  px-[10px] m-[5px] top-[10px]">
+                        3k orders this week
+                      </span>
+                    </div>
+                    <div className="rounded-[10px]">
+                      <img
+                        src={imageArray[i % imageArray.length]}
+                        alt=""
+                        className="w-full rounded-[5px]"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Marquee>
+      </div>
     </div>
   );
 };

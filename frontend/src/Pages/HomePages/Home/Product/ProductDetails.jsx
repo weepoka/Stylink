@@ -3,6 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../Redux/Store/cartSlice";
 import { addToWishList } from "../../../../Redux/Store/wishSlice";
+
 // import { addToWishList } from "../../../../Redux/Store/wishSlice";
 const ProductDetails = ({ product }) => {
   // if (!product) {
@@ -34,7 +35,6 @@ const ProductDetails = ({ product }) => {
   };
   return (
     <div className="bg-white w-full h-full">
-      {" "}
       <div className="w-full">
         <div className="relative p-4 bg-white rounded shadow dark:bg-gray-700">
           <div className="block mb-2" href="#">

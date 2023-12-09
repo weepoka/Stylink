@@ -1,0 +1,11 @@
+.marquee-container {
+  display: flex;
+  width: 100%; /* Set a fixed width for the container */
+  overflow: hidden;
+}
+
+.marquee-card {
+  flex: 0 0 20%;
+  box-sizing: border-box;
+  padding: 0 20px; /* Optional padding between cards */
+}

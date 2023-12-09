@@ -89,8 +89,8 @@ const Discount = () => {
         </div>
         <div className="flexBetween">
           <div className="  px-5 pt-5">
-            <h1 className=" py-5 text-heading bold-32">Discount Products</h1>
-            <div className="bg-button w-20 h-[2px] "></div>
+            <h1 className=" py-5 text-heading bold-32">Flash Deals </h1>
+            <div className="bg-button w-72 h-[2px] "></div>
           </div>
           {/* items per page dropdown */}
           <div className="flexCenter px-5 ">
