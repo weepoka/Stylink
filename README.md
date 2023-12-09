@@ -11,7 +11,7 @@
 
 
 ## 💦 Screenshot
-![App Screenshot](https://i.ibb.co/bRM4rqd/screencapture-localhost-5173-2023-12-09-19-34-07.png)
+![App Screenshot](https://i.ibb.co/Z6xB7K9/stylink.png)
 
 
 ## 🌐 API Reference
