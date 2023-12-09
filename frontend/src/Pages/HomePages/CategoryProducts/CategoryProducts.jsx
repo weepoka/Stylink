@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { getProductsByCategory } from "../../../Api/ApiServices/ApiSerivces";
 import ProductDetails from "../Home/Product/ProductDetails";
+import Pagination from "../../../Component/hompage/pagination/Pagination";
 const CategoryProducts = () => {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -388,62 +389,16 @@ const CategoryProducts = () => {
               </div>
             )}
           </div>
-          <div className="flex justify-center mt-8 ">
-            <div className="flex justify-center gap-2 md:gap-5 mt-8">
-              <div className=" flex flex-col md:flex-row gap-2">
-                <button
-                  onClick={goToFirstPage}
-                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-                  disabled={currentPage === 1}
-                >
-                  <MdFirstPage />
-                </button>
-                <button
-                  onClick={prevPage}
-                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-                  disabled={currentPage === 1}
-                >
-                  <GrFormPrevious />
-                </button>
-              </div>
-              <div className="flexCenter">
-                {Array.from({ length: Math.min(3, totalPages) }).map(
-                  (_, index) => {
-                    const pageNumber = currentPage - 1 + index + 1;
-                    return (
-                      pageNumber <= totalPages && (
-                        <button
-                          key={pageNumber}
-                          onClick={() => paginate(pageNumber)}
-                          className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
-                            currentPage === pageNumber ? "bg-gray-900" : ""
-                          }`}
-                        >
-                          {pageNumber}
-                        </button>
-                      )
-                    );
-                  }
-                )}
-              </div>
-              <div className=" flex flex-col md:flex-row gap-2">
-                <button
-                  onClick={nextPage}
-                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-                  disabled={currentPage === totalPages}
-                >
-                  <MdNavigateNext />
-                </button>
-                <button
-                  onClick={goToLastPage}
-                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
-                  disabled={currentPage === totalPages}
-                >
-                  <MdLastPage />
-                </button>
-              </div>
-            </div>
-          </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            paginate={paginate}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            goToFirstPage={goToFirstPage}
+            goToLastPage={goToLastPage}
+          />
         </div>
       </div>
     </div>

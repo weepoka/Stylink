@@ -54,7 +54,7 @@ const CategoryCard = () => {
 
   return (
     <div className="overflow-hidden py-5">
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         {categoriesArray.map((categoryItem, i) => (
           <div key={i} className="px-5">
             <Link to={`category/${categoryItem.category}`}>
@@ -78,7 +78,7 @@ const CategoryCard = () => {
             </Link>
           </div>
         ))}
-      </Slider>
+      </Slider> */}
       <div className="px-5">
         <Marquee pauseOnHover className="pt-10 ">
           <div className="marquee-container ">
