@@ -4,6 +4,7 @@ import ProductDetails from "../Product/ProductDetails";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
+import Discount from "../../Discount/Discount";
 const NewArival = () => {
   const { product } = useContext(AuthContext);
   // console.log(product);
@@ -22,7 +23,7 @@ const NewArival = () => {
             </div>
             <div>
               <Link
-                to="/newOffer"
+                to="/newArrival"
                 className="bold-16 mx-10 text-button hover:text-primary"
               >
                 View All

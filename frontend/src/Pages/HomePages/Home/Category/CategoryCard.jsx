@@ -47,7 +47,7 @@ const CategoryCard = () => {
   const [imageArray, setImageArray] = useState([image1, image2]);
   const [categoriesArray, setCategoriesArray] = useState([]);
 
-  console.log(categoriesArray);
+  // console.log(categoriesArray);
   useEffect(() => {
     getCategories(setCategory, setCategoriesArray);
   }, []);

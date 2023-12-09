@@ -12,7 +12,7 @@ const FlashDeals = () => {
           </div>
           <div>
             <Link
-              to="/offer"
+              to="/flash"
               className="bold-16 mx-10 text-button hover:text-primary"
             >
               View All

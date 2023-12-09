@@ -5,7 +5,8 @@ import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
-
+import { MdFirstPage, MdLastPage, MdNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
 import { AiFillHome } from "react-icons/ai";
 
 import {
@@ -23,7 +24,8 @@ import { getProductsByCategory } from "../../../Api/ApiServices/ApiSerivces";
 import ProductDetails from "../Home/Product/ProductDetails";
 const CategoryProducts = () => {
   const location = useLocation();
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const queryParams = new URLSearchParams(location.search);
   const subCategory = queryParams.get("subcategory");
 
@@ -156,6 +158,41 @@ const CategoryProducts = () => {
   const handleClickAway = () => {
     setOpen(false);
   };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = instock.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleChangeItemsPerPage = (e) => {
+    const { value } = e.target;
+    setItemsPerPage(Number(value));
+    setCurrentPage(1); // Reset to the first page when changing items per page
+  };
+
+  const totalPages = Math.ceil(currentItems.length / itemsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
+  };
   return (
     <div className="max-w-screen-2xl  mx-auto py-5 px-5 ">
       <div className="md:px-10  flex items-center px-2 bg-slate-100 py-5 mb-5 ">
@@ -181,7 +218,7 @@ const CategoryProducts = () => {
       >
         <div
           onClick={() => setOpen(!open)}
-          className="text-2xl absolute left-3 top-10 cursor-pointer block md:hidden"
+          className="text-2xl absolute left-3 top-2 cursor-pointer block md:hidden"
         >
           {" "}
           {open ? (
@@ -261,95 +298,154 @@ const CategoryProducts = () => {
                   name="brand"
                   onClick={updateFilterValue}
                 >
-                  {/* {BrandData.map((curEl, index) => {
-                  return (
-                    <button
-                      value={curEl}
-                      key={index}
-                      name="brand"
-                      className="bg-red-"
-                    >
-                      {curEl}
-                      {selectedCategory ? (
-                        updateProduct.length
-                      ) : (
-                        <p className="hidden">{updateProduct.length}</p>
-                      )}
-                    </button>
-                  );
-                })} */}
                   {brandElements}
                 </label>
-                {/* <p className="absolute top-0 right-32">
-                ({updateProduct.length})
-              </p> */}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="w-full z-1">
-          <div className="mb-5 py-2 bg-slate-100">
-            <div className="flex gap-5 md:gap-10 items-center md:justify-between my-5 justify-end">
-              <div>
-                <h1 className="font-bold text-gray-500 flex gap-2 md:items-center md:flex-col md:px-10">
-                  {" "}
-                  <span>{updateProduct.length} Items</span>
-                </h1>
-              </div>
-              <div className="flex flex-col md:flex-row  justify-center items-center  mr-3 md:mr-0 md:px-3">
-                <label className="mb-0 font-bold text-xl hidden md:block">
-                  Filter:
-                </label>
-                <div className="form-control md:ml-3  ">
-                  <select
-                    onChange={handleChange}
-                    className="md:w-full w-28  py-2 border px-2"
-                    type="text"
-                    required
-                    name="category"
-                  >
-                    <option value="">Default</option>
-                    <option value="Low">Lowest Price</option>
-                    <option value="High">Highest Price</option>
-                    <option value="Offer">Offer</option>
-                    <option value="Newest">Newest</option>
-                  </select>
+        <div className="flex flex-col">
+          <div className="w-full z-1 ">
+            <div className="mb-5 py-2 bg-slate-100">
+              <div className="flex flex-wrap gap-5 md:gap-10 items-center justify-center md:justify-between my-5 pt-5 md:pt-0 ">
+                <div>
+                  <h1 className="font-bold text-gray-500 flex gap-2 md:items-center md:flex-col md:px-10">
+                    {" "}
+                    <span>{currentItems.length} Items</span>
+                  </h1>
+                </div>
+                {/* items per page dropdown */}
+                <div className="flexCenter  px-5  md:pt-0  ">
+                  <label className="mb-0 font-bold text-md">
+                    Items per page:
+                  </label>
+                  <div className="form-control ml-3">
+                    <select
+                      onChange={handleChangeItemsPerPage}
+                      className="w-full border h-10 p-2"
+                      type="text"
+                      required
+                      name="itemsPerPage"
+                      value={itemsPerPage}
+                    >
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      {/* Add more options as needed */}
+                    </select>
+                  </div>
+                </div>
+                <div className="flex flex-col md:flex-row  justify-center items-center  mr-3 md:mr-0 md:px-3">
+                  <label className="mb-0 font-bold text-xl hidden md:block">
+                    Filter:
+                  </label>
+                  <div className="form-control md:ml-3  ">
+                    <select
+                      onChange={handleChange}
+                      className="md:w-full w-28  py-2 border px-2"
+                      type="text"
+                      required
+                      name="category"
+                    >
+                      <option value="">Default</option>
+                      <option value="Low">Lowest Price</option>
+                      <option value="High">Highest Price</option>
+                      <option value="Offer">Offer</option>
+                      <option value="Newest">Newest</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {currentItems.length >= 1 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5  price-range-shadow p-2">
+                {currentItems.map((product) => {
+                  return (
+                    <ProductDetails
+                      key={product._id}
+                      product={product}
+                    ></ProductDetails>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="mt-20 py-15 px-0 text-center">
+                <div>
+                  <h2 className="text-3xl text-gray-500 py-10">
+                    {" "}
+                    Not Found. Search Again..
+                  </h2>
+
+                  <NavLink to="/">
+                    <button className="py-2 px-4 rounded bg-gray-500 text-white font-semibold ">
+                      Go to Home
+                    </button>
+                  </NavLink>
+                </div>
+              </div>
+            )}
           </div>
-
-          {instock.length >= 1 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5  price-range-shadow p-2">
-              {instock.map((product) => {
-                return (
-                  <ProductDetails
-                    key={product._id}
-                    product={product}
-                  ></ProductDetails>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="mt-20 py-15 px-0 text-center">
-              <div>
-                <h2 className="text-3xl text-gray-500 py-10">
-                  {" "}
-                  Not Found. Search Again..
-                </h2>
-
-                <NavLink to="/">
-                  <button className="py-2 px-4 rounded bg-gray-500 text-white font-semibold ">
-                    Go to Home
-                  </button>
-                </NavLink>
+          <div className="flex justify-center mt-8 ">
+            <div className="flex justify-center gap-2 md:gap-5 mt-8">
+              <div className=" flex flex-col md:flex-row gap-2">
+                <button
+                  onClick={goToFirstPage}
+                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                  disabled={currentPage === 1}
+                >
+                  <MdFirstPage />
+                </button>
+                <button
+                  onClick={prevPage}
+                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                  disabled={currentPage === 1}
+                >
+                  <GrFormPrevious />
+                </button>
+              </div>
+              <div className="flexCenter">
+                {Array.from({ length: Math.min(3, totalPages) }).map(
+                  (_, index) => {
+                    const pageNumber = currentPage - 1 + index + 1;
+                    return (
+                      pageNumber <= totalPages && (
+                        <button
+                          key={pageNumber}
+                          onClick={() => paginate(pageNumber)}
+                          className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
+                            currentPage === pageNumber ? "bg-gray-900" : ""
+                          }`}
+                        >
+                          {pageNumber}
+                        </button>
+                      )
+                    );
+                  }
+                )}
+              </div>
+              <div className=" flex flex-col md:flex-row gap-2">
+                <button
+                  onClick={nextPage}
+                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                  disabled={currentPage === totalPages}
+                >
+                  <MdNavigateNext />
+                </button>
+                <button
+                  onClick={goToLastPage}
+                  className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+                  disabled={currentPage === totalPages}
+                >
+                  <MdLastPage />
+                </button>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
-      <div>{/* <CategoryFilter product={product} /> */}</div>
     </div>
   );
 };
