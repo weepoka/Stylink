@@ -11,7 +11,7 @@
 
 
 ## 💦 Screenshot
-![App Screenshot](https://i.ibb.co/2YFqMns/Whats-App-Image-2023-11-28-at-6-17-39-PM.jpg)
+![App Screenshot](https://i.ibb.co/Z6xB7K9/stylink.png)
 
 
 ## 🌐 API Reference
