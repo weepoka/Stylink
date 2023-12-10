@@ -7,7 +7,7 @@ import { ImCross } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 
 import swal from "sweetalert";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import { Icon } from "@iconify/react";
@@ -16,6 +16,7 @@ import { remove, updateCart } from "../../../Redux/Store/cartSlice";
 import CheckOutpage from "./CheckOutpage";
 const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.cartItems);
   const { profile } = useContext(AuthContext);
@@ -134,6 +135,7 @@ const Cart = () => {
             if (res.ok) {
               localStorage.clear();
               window.open(`/profile`, "_self");
+              navigate("/thankYou");
             }
           })
 

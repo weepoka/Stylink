@@ -23,6 +23,7 @@ import User from "../Pages/AdminPage/pages/User/User";
 import SingleProductDetails from "../Pages/HomePages/Home/Product/SingleProductDetails";
 import Discount from "../Pages/HomePages/Discount/Discount";
 import NewAArrivalProduct from "../Pages/HomePages/NewArrivalProduct/NewAArrivalProduct";
+import ThankYou from "../Pages/HomePages/Cart/ThankYou";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/thankYou",
+        element: <ThankYou />,
       },
       {
         path: "/profile/:activePage",

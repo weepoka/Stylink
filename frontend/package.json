@@ -12,9 +12,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.2",
+    "canvas-confetti": "^1.9.2",
     "react": "^18.2.0",
     "react-accessible-accordion": "^5.0.0",
     "react-calendar": "^4.6.1",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.2",
     "react-form-stepper": "^2.0.3",
@@ -25,6 +27,7 @@
     "react-router-hash-link": "^2.4.3",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
+    "react-use": "^17.4.2",
     "slick-carousel": "^1.8.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.10.1"

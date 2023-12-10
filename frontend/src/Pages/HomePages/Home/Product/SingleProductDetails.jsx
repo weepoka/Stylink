@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { HashLink } from "react-router-hash-link";
 import cart_logo from "../../../../assets/icon/shopping-cart 1.png";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { Link, NavLink, useSearchParams } from "react-router-dom";
+import { Link, NavLink, useSearchParams, useParams } from "react-router-dom";
 import { AuthContext } from "../../../../Api/AuthProvider/AuthProvider";
 import ProductDetails from "./ProductDetails";
 import { Icon } from "@iconify/react";
@@ -15,6 +15,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_SERVER;
 const SingleProductDetails = () => {
   const [isShown, setIsShown] = useState(true);
   const [isShown1, setIsShown1] = useState(true);
+  const [tab, setTab] = useState("moreInfo");
 
   const handleClickHide = (event) => {
     // 👇️ toggle shown state
@@ -25,10 +26,12 @@ const SingleProductDetails = () => {
     setIsShown1((current) => !current);
   };
   const dispatch = useDispatch();
-  const { id } = useSearchParams();
+  // const { id } = useSearchParams();
+  const { id } = useParams();
   const { profile } = useContext(AuthContext);
-
+  console.log(id);
   const [product, setProduct] = useState({});
+  // const { product } = useContext(AuthContext);
   console.log("product:", product);
   const [relatedProduct, setRelatedProduct] = useState([]);
   const {
@@ -46,7 +49,7 @@ const SingleProductDetails = () => {
     name,
     productPin,
   } = product;
-
+  console.log(_id);
   const [sliderImage, setSliderImage] = useState(image);
 
   const [pdCount, setPdCount] = useState(1);
@@ -110,8 +113,9 @@ const SingleProductDetails = () => {
   const loadMore = () => {
     setNoOfElement(noOfElement + noOfElement);
   };
+  // console.log(shuffledNames);
   return (
-    <div>
+    <div className="container">
       {" "}
       <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
         {/* ====> homepage Navigation */}
@@ -294,21 +298,8 @@ const SingleProductDetails = () => {
                                 <th className="bg-white border-none rounded-none tracking-widest">
                                   Key Features
                                 </th>
-
-                                {/* <th className="bg-white rounded-none">{}</th> */}
                               </tr>
                             </thead>
-                            {/* {featureDatas?.map((item, index) => (
-                        <div key={index}>
-                          {Object.entries(item.features).map(
-                            ([key, value]) => (
-                              <div key={key}>
-                                {key}: {value}
-                              </div>
-                            )
-                          )}
-                        </div>
-                      ))} */}
 
                             <tbody>
                               {featureDatas?.slice(0, 1).map((item, index) => (
@@ -323,24 +314,12 @@ const SingleProductDetails = () => {
                                   )}
                                 </div>
                               ))}
-                              {/* <tr>
-                          <td className="border-none">Model</td>
-                          <td className="border-none">{Model}</td>
-                        </tr>
-                        <tr>
-                          <td className="border-none">Quality</td>
-                          <td className="border-none">{Quality} </td>{" "}
-                        </tr>
-                        <tr>
-                          <td className="border-none"></td>
-                          <td className="border-none">{Zoom}</td>
-                        </tr> */}
                             </tbody>
                           </table>
                           <div id="view-more">
                             <HashLink
                               to="#view-more"
-                              onClick={handleClickHide}
+                              // onClick={handleClickHide}
                               className="font-bold text-[#ea6b28] decoration-sky-500"
                             >
                               View More Info
@@ -414,49 +393,37 @@ const SingleProductDetails = () => {
             {/* details, Reviews */}
           </div>
           <section className="bg-slate-100  mt-20" id="view-more">
-            <div className="py-10 max-w-screen-2xl mx-auto">
-              <div className="flex flex-col md:flex-row px-5 py-5">
-                <div className="">
-                  <button
-                    className="details-btn bg-white
-             text-black border-none hover:bg-[#006fba]hover:text-white rounded"
-                  >
-                    {" "}
-                    <NavLink
-                      onClick={handleClickHide1}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "bg-[#ea6b28] px-3 py-2 hover:bg-gray-900 duration-300 text-white font-bold  border-none rounded-none"
-                          : " px-3 py-2 details-btn bg-gray-900 text-white border-none hover:bg-[#006fba]"
-                      }
-                    >
-                      Description
-                    </NavLink>
-                  </button>
-                </div>
-                <div>
-                  <button className="details-btn bg-white text-black border-none hover:bg-[#006fba]hover:text-white rounded">
-                    {" "}
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "bg-[#006fba] font-bold btn btn-sm border-none rounded-none"
-                          : "btn btn-sm details-btn bg-white text-black border-none hover:bg-[#000] hover:text-white "
-                      }
-                    >
-                      Reviews (0)
-                    </NavLink>
-                  </button>
-                </div>
+            <div className="p-5 ">
+              <div className=" border-b border-solid border-[#0066ff34]">
+                <button
+                  onClick={() => setTab("moreInfo")}
+                  className={`${
+                    tab === "moreInfo" &&
+                    "border-b border-solid border-gray-500"
+                  } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor`}
+                >
+                  Description
+                </button>
+                <button
+                  onClick={() => setTab("feedback")}
+                  className={` ${
+                    tab === "feedback" &&
+                    "border-b border-solid border-gray-500"
+                  } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor font-semibold`}
+                >
+                  Feedback
+                </button>
               </div>
-              {isShown1 && <ProductMoreInfo product={product} />}
-              {isShown && <ProductReview product={product} />}
+              <div className="mt-[30px]">
+                {tab === "moreInfo" && <ProductMoreInfo product={product} />}
+                {tab === "feedback" && <ProductReview product={product} />}
+              </div>
             </div>
           </section>
         </section>
       </div>
       {/* related products */}
-      <section className="">
+      <section className="container py-10">
         <h1 className="text-[26px] text-center py-14 font-bold">
           Related Products
         </h1>
