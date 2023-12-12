@@ -448,7 +448,10 @@ const Navbar = () => {
               >
                 Tk. {total}
               </p>
-              <div className="bg-button rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+              <div
+                className="bg-button rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px]
+               text-white grid place-items-center translate-x-1 -translate-y-1"
+              >
                 {items.length ? items.length : 0}
               </div>
             </div>
@@ -467,7 +470,7 @@ const Navbar = () => {
                     <div className="mt-5  ">
                       <div>
                         <div
-                          className="flex font-bold text-md px-5 border-b-2
+                          className="flex font-bold text-md px-5 text-black border-b-2
                          border-b-gray-900 pb-3"
                         >
                           <h2>Photo</h2>
@@ -500,10 +503,10 @@ const Navbar = () => {
                                       </NavLink>
                                     </div>
                                     <div className="mx-5 sm:mr-0 px-2 py-3 w-full bg-slate-50 rounded ">
-                                      <p className="font-semibold">
+                                      <p className="font-semibold text-sm pb-2">
                                         {e?.item?.name}
                                       </p>
-                                      <p>
+                                      <p className="text-sm">
                                         Price:{" "}
                                         <span className="text-sm">৳</span>{" "}
                                         {e?.item?.offerPrice
@@ -529,18 +532,24 @@ const Navbar = () => {
                         </div>
                       </div>
                     </div>
-                    <p className="py-2 text-center text-xl font-semibold">
+                    <p className="py-2 text-center text-xl text-black font-semibold">
                       Total : {total}
                     </p>
                     <div className="">
                       <NavLink to="cart">
-                        <button className="inline-block my-1 p-2 w-full bg-[#403bf4] text-white duration-700 hover:bg-[#403bf4] hover:rounded-3xl">
+                        <button
+                          className="inline-block my-1 p-2 w-full bg-black text-white duration-700 
+                        hover:bg-button hover:rounded-3xl"
+                        >
                           View Cart
                         </button>
                       </NavLink>
 
                       <NavLink to="/">
-                        <button className="p-2 w-full bg-[#605bf1] text-white duration-700  hover:rounded-3xl">
+                        <button
+                          className="p-2 w-full bg-secondary hover:bg-button text-white duration-700
+                          hover:rounded-3xl"
+                        >
                           Home
                         </button>
                       </NavLink>

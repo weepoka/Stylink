@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import weero from "../../assets/Logo/weero.png";
 const Footer = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+
   return (
     <div>
       <div className="bg-[#e2e8f0]">
@@ -170,12 +173,13 @@ const Footer = () => {
               <div className="flex justify-center md:justify-start">
                 <div className="text-center md:text-start weero mx-auto">
                   <small className="flex items-center justify-center">
-                    <span>© 2023.Rashid Telecom. All rights reserved.</span>
+                    <span>©{year}.StyLink Tech. All rights reserved.</span>
                     <span className="font-bold font-serif ml-3">
-                      <a href="https://weerodigital.com">Developed by</a>
+                      <a href="https://weepoka.com">Developed by</a>
                     </span>
-                    <a href="https://weerodigital.com">
-                      <img src={weero} alt="" className="w-20 drop-shadow-xl" />
+                    <a href="https://weepoka.com">
+                      {/* <img src={weero} alt="" className="w-20 drop-shadow-xl" /> */}
+                      Weepoka
                     </a>
                   </small>
                 </div>

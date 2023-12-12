@@ -166,8 +166,8 @@ const FilterProduct = ({ newArrival, offerPercentage }) => {
             <div className="bg-button w-20 md:w-40 h-[2px] "></div>{" "}
           </div>
           {/* items per page dropdown */}
-          <div className="flexCenter hidden md:block px-5 pt-5 md:pt-0  ">
-            <label className="mb-0 font-bold text-md">Items per page:</label>
+          <div className="md:flexCenter hidden md:block px-5 pt-5 md:pt-0  ">
+            <label className="mb-0  text-md">Items per page:</label>
             <div className="form-control ml-3">
               <select
                 onChange={handleChangeItemsPerPage}

@@ -17,14 +17,16 @@ const Pagination = ({
         <div className=" flex flex-col md:flex-row gap-2">
           <button
             onClick={goToFirstPage}
-            className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+            className="mx-2 px-3 py-2 text-white
+             duration-300 hover:bg-button bg-gray-900"
             disabled={currentPage === 1}
           >
             <MdFirstPage />
           </button>
           <button
             onClick={prevPage}
-            className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+            className="mx-2 px-3 py-2 text-white
+             duration-300 hover:bg-button bg-gray-900"
             disabled={currentPage === 1}
           >
             <GrFormPrevious />
@@ -38,8 +40,8 @@ const Pagination = ({
                 <button
                   key={pageNumber}
                   onClick={() => paginate(pageNumber)}
-                  className={`mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900 ${
-                    currentPage === pageNumber ? "bg-gray-900" : ""
+                  className={`mx-2 px-3 py-2 text-white duration-300  ${
+                    currentPage === pageNumber ? "bg-button" : "bg-secondary"
                   }`}
                 >
                   {pageNumber}
@@ -51,14 +53,14 @@ const Pagination = ({
         <div className=" flex flex-col md:flex-row gap-2">
           <button
             onClick={nextPage}
-            className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+            className="mx-2 px-3 py-2 text-white duration-300 hover:bg-button bg-gray-900"
             disabled={currentPage === totalPages}
           >
             <MdNavigateNext />
           </button>
           <button
             onClick={goToLastPage}
-            className="mx-2 px-3 py-2 text-white duration-300 bg-button hover:bg-gray-900"
+            className="mx-2 px-3 py-2 text-white duration-300 hover:bg-button bg-gray-900"
             disabled={currentPage === totalPages}
           >
             <MdLastPage />

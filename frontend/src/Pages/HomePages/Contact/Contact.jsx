@@ -14,7 +14,7 @@ const Contact = () => {
                 <div className="absolute hidden md:block -top-14 left-0 text-[120px] text-gray-400 font-bold opacity-10">
                   Contact
                 </div>
-                <h1 className="text-5xl font-bold dark:text-white">
+                <h1 className="md:text-5xl text-4xl font-bold dark:text-white">
                   {" "}
                   Our <span className="text-[#589041]"> Contact</span>{" "}
                 </h1>
@@ -129,11 +129,11 @@ const Contact = () => {
             </div>
           </div>
           <div
-            className="px-8 grid grid-cols-1  gap-10 md:grid-cols-2  py-8 bg-white border rounded-md shadow-md
+            className="px-8 flexCenter gap-10   py-8 bg-white border rounded-md shadow-md
            dark:border-gray-800 dark:bg-gray-800"
           >
-            <div className="md:border-r">
-              <h1 className="md:text-5xl text-2xl  font-bold pb-5">
+            <div className="">
+              <h1 className="md:text-4xl text-2xl  font-bold pb-5">
                 Our Office
               </h1>
               <div className="lg:w-52 w-28 mb-6 border-b border-button dark:border-gray-400"></div>
@@ -170,7 +170,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
+            {/* 
             <form action="">
               <div className="mb-6">
                 <h2 className="text-xl font-bold text-gray-00 dark:text-gray-400">
@@ -216,7 +216,7 @@ const Contact = () => {
               >
                 Send Message
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </section>

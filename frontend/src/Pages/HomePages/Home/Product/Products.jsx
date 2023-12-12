@@ -15,7 +15,7 @@ const Products = () => {
   const [searchParams] = useSearchParams();
 
   const { product } = useContext(AuthContext);
-
+  console.log(product);
   useEffect(() => {
     setProductCategory(product);
   }, [product]);
@@ -195,7 +195,7 @@ const Products = () => {
             </div>
             {/* items per page dropdown */}
             <div className="flexCenter hidden">
-              <label className="mb-0 font-bold text-xs md:text-md">
+              <label className="mb-0  text-xs md:text-md">
                 Items per page:
               </label>
               <div className="form-control ml-3">
@@ -217,13 +217,11 @@ const Products = () => {
             </div>
             {/* price filtering */}
             <div className="flexCenter ">
-              <label className="mb-0 font-bold text-xs md:text-xl">
-                Filter:
-              </label>
+              <label className="mb-0  text-xs md:text-md">Filter:</label>
               <div className="form-control ml-3  ">
                 <select
                   onChange={handleChange}
-                  className="w-full border h-10 p-2"
+                  className="w-full border text-xs md:text-md  h-10 p-2"
                   type="text"
                   required
                   name="category"

@@ -320,7 +320,7 @@ const SingleProductDetails = () => {
                             <HashLink
                               to="#view-more"
                               // onClick={handleClickHide}
-                              className="font-bold text-[#ea6b28] decoration-sky-500"
+                              className="font-bold text-button decoration-sky-500"
                             >
                               View More Info
                             </HashLink>
@@ -347,7 +347,7 @@ const SingleProductDetails = () => {
                                 onClick={() => addToCart(product)}
                                 type="button"
                                 className="p-3 flex items-center rounded bg-gray-900
-                           text-white font-semibold hover:bg-[#ea6b28]"
+                           text-white font-semibold hover:bg-button"
                               >
                                 <img
                                   className="w-8 mr-4"
@@ -374,10 +374,10 @@ const SingleProductDetails = () => {
                           </>
                         ) : (
                           <>
-                            <p className=" text-red-500 font-bold">
-                              Please login to access add to cart
-                            </p>
-                            <Link to="/login" className=" btn btn-warning">
+                            <Link
+                              to="/login"
+                              className=" px-4 py-2 rounded-md text-white bg-black hover:bg-button"
+                            >
                               Login
                             </Link>
                           </>

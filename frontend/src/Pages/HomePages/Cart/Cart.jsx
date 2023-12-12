@@ -231,12 +231,12 @@ const Cart = () => {
            text-black text-sm md:text-lg rounded 
            overflow-hidden md:w-full "
           >
-            <div className="grid grid-cols-6 md:gap-14 gap-5 ">
-              <div>img</div>
-              <div className="hidden sm:block">Name</div>
-              <div>Qty</div>
-              <div>Price</div>
-              <div>SubTotal</div>
+            <div className="grid grid-cols-6 md:gap gap-5 ">
+              <div className="flexCenter">img</div>
+              <div className="hidden sm:block flexCenter">Name</div>
+              <div className="flexCenter">Qty</div>
+              <div className="flexCenter">Price</div>
+              <div className="flexCenter">SubTotal</div>
               <div className="pl-5 md:pl-0 ">Delete</div>
             </div>
           </div>
@@ -247,69 +247,69 @@ const Cart = () => {
                 key={cartItem?.item?._id}
               >
                 <div className="grid grid-cols-6">
-                  <div className="md:shrink-0">
+                  <div className="md:shrink-0 flexCenter">
                     <img
                       className="object-cover h-[32px] w-[32px] sm:h-[50px] sm:w-[50px] md:w-[120px] md:h-[80px]"
                       src={cartItem?.item?.image}
                       alt="Modern building architecture"
                     />
                   </div>
-                  <div className=" col-span-5 flex items-center justify-center ">
+                  <div className="  flex items-center justify-center ">
                     <p
-                      className="hidden sm:block pl-2 w-[13vh] uppercase tracking-wide text-sm
-                   text-black font-semibold"
+                      className="hidden sm:block   w-[13vh] uppercase tracking-wide text-sm
+                   text-black "
                     >
                       {cartItem?.item?.name}
                     </p>
-                    {/* //!====> Counting qty btn */}
-                    <div
-                      className="w-[18vh] sm:mx-2 p-2 sm:p-3 flexBetween
+                  </div>
+                  {/* //!====> Counting qty btn */}
+                  <div
+                    className="w-[18vh] sm:mx-2 p-2 sm:p-3 flexBetween
                    bg-gray-100 rounded text-black "
-                    >
-                      <button
-                        onClick={() =>
-                          handleUpdateQuantity(cartItem, cartItem.quantity - 1)
-                        }
-                      >
-                        {" "}
-                        <HiOutlineMinus />{" "}
-                      </button>
-
-                      <span className="px-3 sm:px-3">{cartItem?.quantity}</span>
-                      <button
-                        onClick={() =>
-                          handleUpdateQuantity(cartItem, cartItem.quantity + 1)
-                        }
-                      >
-                        {" "}
-                        <HiOutlinePlus />{" "}
-                      </button>
-                    </div>
-                    {/* //!====> Counting Price*/}
-                    <div className="col-span-2 mx-1 w-[18vh] text-slate-700">
-                      {cartItem?.item?.offerPrice
-                        ? cartItem?.item?.offerPrice
-                        : cartItem?.item?.oldPrice}
-                    </div>
-                    {/* //!====> Counting SubTotal*/}
-                    <div className="w-[18vh] mx-1 text-black font-semibold">
-                      {(cartItem?.item?.offerPrice
-                        ? cartItem?.item?.offerPrice * cartItem.quantity
-                        : cartItem?.item?.oldPrice * cartItem.quantity
-                      ).toFixed(1)}
-                    </div>
-                    {/* //!====> Remove btn*/}
+                  >
                     <button
-                      onClick={() => handleRemove(cartItem)}
-                      className="p-3 w-[10vh] flex items-center font-semibold  "
+                      onClick={() =>
+                        handleUpdateQuantity(cartItem, cartItem.quantity - 1)
+                      }
                     >
-                      <Icon
-                        icon="line-md:close-small"
-                        width={30}
-                        className="font-bold text-red-500"
-                      />
+                      {" "}
+                      <HiOutlineMinus />{" "}
+                    </button>
+
+                    <span className="px-3 sm:px-3">{cartItem?.quantity}</span>
+                    <button
+                      onClick={() =>
+                        handleUpdateQuantity(cartItem, cartItem.quantity + 1)
+                      }
+                    >
+                      {" "}
+                      <HiOutlinePlus />{" "}
                     </button>
                   </div>
+                  {/* //!====> Counting Price*/}
+                  <div className=" flexCenter w-[18vh] text-slate-700">
+                    {cartItem?.item?.offerPrice
+                      ? cartItem?.item?.offerPrice
+                      : cartItem?.item?.oldPrice}
+                  </div>
+                  {/* //!====> Counting SubTotal*/}
+                  <div className="w-[18vh] mx-1 text-black flexCenter font-semibold">
+                    {(cartItem?.item?.offerPrice
+                      ? cartItem?.item?.offerPrice * cartItem.quantity
+                      : cartItem?.item?.oldPrice * cartItem.quantity
+                    ).toFixed(1)}
+                  </div>
+                  {/* //!====> Remove btn*/}
+                  <button
+                    onClick={() => handleRemove(cartItem)}
+                    className="p-3 w-[10vh] flexCenter font-semibold  "
+                  >
+                    <Icon
+                      icon="line-md:close-small"
+                      width={30}
+                      className="font-bold text-red-500"
+                    />
+                  </button>
                 </div>
               </div>
             ))}
@@ -390,22 +390,24 @@ const Cart = () => {
                 <label htmlFor="promo-code" className="text-[18px]">
                   Have A Promo Code?
                 </label>
-                <input
-                  type="text"
-                  className="appearance-none border
+                <div className="flex gap-5">
+                  <input
+                    type="text"
+                    className="appearance-none border
                    w-full border-gray-100 shadow-sm 
                    focus:shadow-md focus:placeholder-gray-600 
                     transition pl-5   py-2 text-gray-600 
                     leading-tight focus:outline-none
                      focus:ring-gray-600 focus:shadow-outline"
-                />
+                  />
+                  <button
+                    type="button"
+                    className=" bg-red-500 w-20  px-1 py-2 text-white"
+                  >
+                    Apply
+                  </button>
+                </div>
               </div>
-              <button
-                type="button"
-                className=" bg-red-500 w-20  px-1 py-2 text-white"
-              >
-                Apply
-              </button>
             </div>
 
             {/* //! ===========>Checkout Page <========== */}

@@ -295,7 +295,7 @@ const CategoryProducts = () => {
               </h3>
               <div className="  px-8 relative">
                 <label
-                  className="cursor-pointer  flex flex-col justify-start items-start text-[#ea6b28]"
+                  className="cursor-pointer  flex flex-col justify-start items-start  text-[15px] text-secondary"
                   name="brand"
                   onClick={updateFilterValue}
                 >
@@ -309,22 +309,25 @@ const CategoryProducts = () => {
         <div className="flex flex-col">
           <div className="w-full z-1 ">
             <div className="mb-5 py-2 bg-slate-100">
-              <div className="flex flex-wrap gap-5 md:gap-10 items-center justify-center md:justify-between my-5 pt-5 md:pt-0 ">
+              <div
+                className="flex flex-wrap gap-5 md:gap-10 items-center justify-center 
+              md:justify-between my-5 pt-5 md:pt-0 "
+              >
                 <div>
-                  <h1 className="font-bold text-gray-500 flex gap-2 md:items-center md:flex-col md:px-10">
+                  <h1 className=" text-xs md:text-[14px] flex gap-2 md:items-center md:flex-col md:px-10">
                     {" "}
                     <span>{currentItems.length} Items</span>
                   </h1>
                 </div>
                 {/* items per page dropdown */}
                 <div className="flexCenter  px-5  md:pt-0  ">
-                  <label className="mb-0 font-bold text-md">
+                  <label className="mb-0 text-xs md:text-[14px]">
                     Items per page:
                   </label>
                   <div className="form-control ml-3">
                     <select
                       onChange={handleChangeItemsPerPage}
-                      className="w-full border h-10 p-2"
+                      className="w-full text-xs border h-10 p-2"
                       type="text"
                       required
                       name="itemsPerPage"
@@ -339,13 +342,13 @@ const CategoryProducts = () => {
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row  justify-center items-center  mr-3 md:mr-0 md:px-3">
-                  <label className="mb-0 font-bold text-xl hidden md:block">
+                  <label className="mb-0  text-xs md:text-[15px] hidden md:block">
                     Filter:
                   </label>
                   <div className="form-control md:ml-3  ">
                     <select
                       onChange={handleChange}
-                      className="md:w-full w-28  py-2 border px-2"
+                      className="md:w-full w-28 text-[15px]  py-2 border px-2"
                       type="text"
                       required
                       name="category"
