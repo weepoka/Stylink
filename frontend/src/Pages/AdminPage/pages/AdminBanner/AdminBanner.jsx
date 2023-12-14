@@ -48,23 +48,27 @@ const AdminBanners = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-between p-5 md:p-10 gap-3">
-      <div>Banner Images</div>
-      {banners?.map((item) => (
-        <div
-          key={item._id}
-          className="max-w-sm gap-5 relative rounded overflow-hidden"
-        >
-          <img src={item.image} alt="" className="p-1 border" />
+    <div className=" p-5 md:p-10 gap-3">
+      <div>
+        <h1 className="text-center font-bold text-2xl pb-5">Banner Images</h1>
+      </div>
+      <div className="flex flex-wrap justify-between gap-2">
+        {banners?.map((item) => (
+          <div
+            key={item._id}
+            className="max-w-sm gap-5 relative rounded overflow-hidden"
+          >
+            <img src={item.image} alt="" className="p-1 border" />
 
-          <Icon
-            onClick={() => handleDelete(item._id)}
-            icon="line-md:close-small"
-            className="cursor-pointer hover:bg-black duration-300 top-0 right-0 absolute text-white rounded-full p-px bg-red-600"
-            width={30}
-          />
-        </div>
-      ))}
+            <Icon
+              onClick={() => handleDelete(item._id)}
+              icon="line-md:close-small"
+              className="cursor-pointer hover:bg-black duration-300 top-0 right-0 absolute text-white rounded-full p-px bg-red-600"
+              width={30}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
