@@ -31,7 +31,7 @@ const Wrapper = () => {
         <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {data.map((val, index) => {
             return (
-              <div className="bg-white p-3" key={index}>
+              <div data-aos="fade-up" className="bg-white p-3" key={index}>
                 <div className="m-auto flexCenter w-[70px] h-[70px] leading-[70px] mb-[20px] rounded-full bg-gray-200">
                   <p className="text-[25px]  ">{val.cover}</p>
                 </div>

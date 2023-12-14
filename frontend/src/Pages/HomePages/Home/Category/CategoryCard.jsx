@@ -53,7 +53,7 @@ const CategoryCard = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden py-5">
+    <div data-aos="fade-up" className="overflow-hidden py-5">
       {/* <Slider {...settings}>
         {categoriesArray.map((categoryItem, i) => (
           <div key={i} className="px-5">

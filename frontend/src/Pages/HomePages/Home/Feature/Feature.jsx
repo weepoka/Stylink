@@ -1,4 +1,5 @@
 import FeatureCard from "./FeatureCard";
+
 import { TbDiscount2, TbTruckDelivery } from "react-icons/tb";
 import { RiRefund2Fill } from "react-icons/ri";
 import { MdSupportAgent } from "react-icons/md";
@@ -33,14 +34,17 @@ const Feature = () => {
  mx-auto grid gap-5 sm:grid-cols-2
   lg:grid-cols-3 xl:grid-cols-4 mt-8 pb-10 "
       >
-        {data.map((item) => (
-          <FeatureCard
-            title={item.title}
-            icon={item.icon}
-            desc={item.desc}
-            key={item.title}
-          />
-        ))}
+        {data.map((item) => {
+          return (
+            <FeatureCard
+              title={item.title}
+              icon={item.icon}
+              desc={item.desc}
+              key={item.title}
+              data-aos="fade-up"
+            />
+          );
+        })}
       </div>
     </div>
   );

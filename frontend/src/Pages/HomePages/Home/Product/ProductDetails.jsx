@@ -35,7 +35,7 @@ const ProductDetails = ({ product }) => {
     dispatch(addToWishList({ ...product }));
   };
   return (
-    <div className="bg-white w-full h-full">
+    <div data-aos="fade-up" className="bg-white w-full h-full">
       <Link to={`/SingleProductDetails/${_id}`}>
         <div className="w-full">
           <div className="relative p-4 bg-white rounded shadow dark:bg-gray-700">

@@ -43,7 +43,10 @@ const SubNavbar = () => {
                         to={`category/${item.category}`}
                       >
                         <div className="relative   group cursor-pointer ">
-                          <div className="flex items-center capitalize justify-center gap-2 hover:text-heading font-semibold">
+                          <div
+                            className="flex items-center capitalize justify-center
+                           gap-2 hover:text-heading "
+                          >
                             {item.category} <FaCaretDown />
                           </div>
                           <div

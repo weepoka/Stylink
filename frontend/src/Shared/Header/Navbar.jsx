@@ -231,7 +231,7 @@ const Navbar = () => {
                             />
                           </div>
                           <div>
-                            <p className="font-bold text-gray-900">
+                            <p className=" text-gray-900">
                               <Link to="/login">Account</Link>
                             </p>
                             <p className="flex items-center gap-1 text-gray-900">
