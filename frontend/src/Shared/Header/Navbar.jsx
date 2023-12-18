@@ -28,8 +28,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state?.cart?.cartItems);
   const total = useSelector((state) => state?.cart?.cartTotal);
+
   const wishListitems = useSelector((state) => state?.wishlists?.wishlistItems);
   // console.log({ total });
+  // console.log("items", typeof items);
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const toggleDiv = () => {

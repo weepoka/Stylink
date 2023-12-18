@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/wishList",
+        path: "/:wishList",
         element: <WishListITems />,
       },
       {

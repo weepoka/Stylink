@@ -6,12 +6,10 @@ import swal from "sweetalert";
 
 import { FaTrash } from "react-icons/fa6";
 import { add } from "../../../Redux/Store/cartSlice";
-import {
-  clearAllWishlist,
-  removeWishItem,
-} from "../../../Redux/Store/wishSlice";
+import { removeWishItem } from "../../../Redux/Store/wishSlice";
 
-const Wish = ({ wishlist }) => {
+const Wish = ({ wishlist, handleWishItemsRemove }) => {
+  // console.log("data type", typeof wishlist);
   const { _id, image, title, offerPrice, name, category } = wishlist || {};
   const [pdCount, setPdCount] = useState(1);
   const dispatch = useDispatch();
@@ -23,10 +21,10 @@ const Wish = ({ wishlist }) => {
     navigate("/cart");
   };
   // remove wish item
-  const handleWishItemsRemove = (product) => {
-    dispatch(removeWishItem(product));
-  };
-  const handleRemove = (pdId) => {
+  // const handleWishItemsRemove = (product) => {
+  //   dispatch(removeWishItem(product));
+  // };
+  const handleRemove = () => {
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this!",
@@ -35,7 +33,7 @@ const Wish = ({ wishlist }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        dispatch(removeWishItem(pdId));
+        dispatch(removeWishItem(wishlist));
         swal("Now! Your Selected product has been deleted!", {
           icon: "success",
         });
@@ -45,6 +43,7 @@ const Wish = ({ wishlist }) => {
     });
   };
 
+  // console.log(typeof wishlist);
   return (
     <div>
       <div className="flex flex-col items-center  bg-white rounded-lg shadow md:flex-row md:max-w-xl dark:bg-gray-900 ">
@@ -72,10 +71,7 @@ const Wish = ({ wishlist }) => {
             >
               Add To Cart
             </button>
-            <button
-              onClick={() => handleWishItemsRemove(wishlist)}
-              className="dark:text-rose-600"
-            >
+            <button onClick={handleRemove} className="dark:text-rose-600">
               <FaTrash className="text-red-600" />
             </button>
           </div>
