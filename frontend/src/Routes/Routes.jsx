@@ -24,6 +24,8 @@ import SingleProductDetails from "../Pages/HomePages/Home/Product/SingleProductD
 import Discount from "../Pages/HomePages/Discount/Discount";
 import NewAArrivalProduct from "../Pages/HomePages/NewArrivalProduct/NewAArrivalProduct";
 import ThankYou from "../Pages/HomePages/Cart/ThankYou";
+import WishList from "../Pages/HomePages/WishList/WishList";
+import WishListITems from "../Pages/HomePages/Cart/WishListITems";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/wishList",
+        element: <WishListITems />,
       },
       {
         path: "/profile",

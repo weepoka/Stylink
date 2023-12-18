@@ -17,7 +17,7 @@ import logo from "../../assets/Logo/stylink.png";
 import { remove } from "../../Redux/Store/cartSlice";
 import { AuthContext } from "../../Api/AuthProvider/AuthProvider";
 import { logOut } from "../../Api/ApiServices/Auth";
-import { FaUserAlt } from "react-icons/fa";
+import { FaHeart, FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
   const { pathname } = useLocation();
 
@@ -28,6 +28,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state?.cart?.cartItems);
   const total = useSelector((state) => state?.cart?.cartTotal);
+  const wishListitems = useSelector((state) => state?.wishlists?.wishlistItems);
   // console.log({ total });
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -245,17 +246,31 @@ const Navbar = () => {
                   </Link>
                 </div>
               </div>
-              <div className="text-gray-500 text-[32px]  relative">
-                <Link to="/cart">
-                  <AiOutlineShoppingCart color="#000" />
-                  <div
-                    className="absolute top-[-15px] right-[-10px] bg-button
+              <div className="gap-2 flex">
+                <div className="text-gray-500 text-[32px]  relative">
+                  <Link to="/cart">
+                    <AiOutlineShoppingCart color="#000" />
+                    <div
+                      className="absolute top-[-15px] right-[-10px] bg-heading
      w-[25px] h-[25px] rounded-full text-white
       text-[14px] grid place-items-center"
-                  >
-                    {items?.length}
-                  </div>
-                </Link>
+                    >
+                      {items?.length}
+                    </div>
+                  </Link>
+                </div>
+                <div className="text-gray-500 text-[32px]  relative">
+                  <Link to="/wishList">
+                    <FaHeart color="red" />
+                    <div
+                      className="absolute top-[-15px] right-[-10px] bg-heading
+     w-[25px] h-[25px] rounded-full text-white
+      text-[14px] grid place-items-center"
+                    >
+                      {wishListitems?.length}
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

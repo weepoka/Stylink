@@ -12,7 +12,7 @@ const SubNavbar = () => {
   const [category, setCategory] = useState([]);
   const [categoriesArray, setCategoriesArray] = useState([]);
   const [openNav, setOpenNav] = React.useState(false);
-  console.log(categoriesArray);
+  // console.log(categoriesArray);
   useEffect(() => {
     getCategories(setCategory, setCategoriesArray);
   }, []);

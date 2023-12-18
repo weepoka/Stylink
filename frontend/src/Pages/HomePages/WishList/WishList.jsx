@@ -30,7 +30,7 @@ relative  capitalize px-5  flex items-center"
               My Wishlists ❤️❤️❤️
             </h1>
             <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 items-center justify-center">
-              {wishlistsItems?.map((wishlist) => {
+              {wishlistItems?.map((wishlist) => {
                 return <Wish key={wishlist?._id} wishlist={wishlist} />;
               })}
             </div>

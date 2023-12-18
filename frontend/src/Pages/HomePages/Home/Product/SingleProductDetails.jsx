@@ -29,10 +29,10 @@ const SingleProductDetails = () => {
   // const { id } = useSearchParams();
   const { id } = useParams();
   const { profile } = useContext(AuthContext);
-  console.log(id);
+  // console.log(id);
   const [product, setProduct] = useState({});
   // const { product } = useContext(AuthContext);
-  console.log("product:", product);
+  // console.log("product:", product);
   const [relatedProduct, setRelatedProduct] = useState([]);
   const {
     _id,
@@ -49,7 +49,7 @@ const SingleProductDetails = () => {
     name,
     productPin,
   } = product;
-  console.log(_id);
+  // console.log(_id);
   const [sliderImage, setSliderImage] = useState(image);
 
   const [pdCount, setPdCount] = useState(1);
@@ -71,7 +71,7 @@ const SingleProductDetails = () => {
   //! AddToCart
   const addToCart = (product) => {
     dispatch(add({ ...product, pdCount }));
-    console.log("product item send to cart :", product);
+    // console.log("product item send to cart :", product);
   };
 
   //? Counting item
@@ -427,7 +427,7 @@ const SingleProductDetails = () => {
         <h1 className="text-[26px] text-center py-14 font-bold">
           Related Products
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 px-5">
           {shuffledNames.map((product) => (
             <ProductDetails
               key={product._id}

@@ -5,7 +5,6 @@ import { add } from "../../../../Redux/Store/cartSlice";
 import { addToWishList } from "../../../../Redux/Store/wishSlice";
 import { Link } from "react-router-dom";
 
-// import { addToWishList } from "../../../../Redux/Store/wishSlice";
 const ProductDetails = ({ product }) => {
   // if (!product) {
   //   return null; // or return a loading/error message as needed
@@ -31,8 +30,8 @@ const ProductDetails = ({ product }) => {
   const addToCart = (product) => {
     dispatch(add({ ...product, pdCount }));
   };
-  const addToWishlist = (product) => {
-    dispatch(addToWishList({ ...product }));
+  const addToWishlistHandler = (product) => {
+    dispatch(addToWishList({ ...product, pdCount }));
   };
   return (
     <div data-aos="fade-up" className="bg-white w-full h-full">
@@ -121,7 +120,7 @@ const ProductDetails = ({ product }) => {
                 </p>
               </div>
               <button
-                onClick={() => addToCart(addToWishlist)}
+                onClick={() => addToWishlistHandler(product)}
                 title="Add to wishlist"
                 className="flex gap-3 mt-3 group cursor-pointer rating"
               >
