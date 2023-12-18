@@ -119,7 +119,7 @@ const SingleProductDetails = () => {
       {" "}
       <div className="font-medium mt-10 bg-slate-100 py-5 relative  capitalize px-5 flex items-center">
         {/* ====> homepage Navigation */}
-        <NavLink to="/" className="text-[#ea6b28]">
+        <NavLink to="/" className="text-heading">
           <span className="text-sm">HOME</span>
         </NavLink>
         <span className="ml-1 flex items-center">
@@ -438,7 +438,7 @@ const SingleProductDetails = () => {
         <div className="text-center mt-5">
           <button
             onClick={() => loadMore()}
-            className="px-3 py-2 bg-[#ea6b28]  text-white hover:bg-black hover:text-white"
+            className="px-3 py-2 bg-heading  text-white hover:bg-black hover:text-white"
           >
             More products
           </button>

@@ -334,7 +334,7 @@ const Cart = () => {
                     <div className="">
                       <button
                         onClick={orderNow}
-                        className="mb-2 mt-3  py-3 px-3 w-full text-center   bg-[#ea6b28]
+                        className="mb-2 mt-3  py-3 px-3 w-full text-center   bg-heading
                        rounded text-white font-4xl transition duration-700"
                       >
                         {loading ? "order progress..." : "Order Now"}

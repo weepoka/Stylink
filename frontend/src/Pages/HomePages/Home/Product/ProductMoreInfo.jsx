@@ -16,7 +16,7 @@ const ProductMoreInfo = ({ product }) => {
                 <div key={idx}>
                   <h3
                     className="my-3 text-xl bg-[#f1f5f9] capitalize  p-1
-									 text-[#ea6b28]"
+									 text-heading"
                   >
                     {item.header}
                   </h3>

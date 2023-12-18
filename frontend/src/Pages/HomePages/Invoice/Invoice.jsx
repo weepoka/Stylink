@@ -76,7 +76,7 @@ const Invoice = ({ order }) => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-[#ea6b28] inline py-2">
+            <h3 className="text-xl font-bold text-heading inline py-2">
               Products
             </h3>
             <table className="w-full mt-4">

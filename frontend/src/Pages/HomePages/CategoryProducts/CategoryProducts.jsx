@@ -201,7 +201,7 @@ const CategoryProducts = () => {
           <h2 className="text-center  ">
             <NavLink
               to="/"
-              className="text-gray-400 hover:border-b-2 hover:text-[#ea6b28] duration-300"
+              className="text-gray-400 hover:border-b-2 hover:text-heading duration-300"
             >
               <AiFillHome className="md:mr-3 md:text-xl" />
             </NavLink>
